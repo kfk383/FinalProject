@@ -18,16 +18,16 @@ public class FinalProject extends JFrame implements ActionListener{
     private Container textyStuff;
     private Image backgroundImage;
 
-    public FinalProject(){
+    public FinalProject() throws IOException{
 	this.setTitle("2D Bowling -- Fall 2014 APCS Final Project");
 	this.setSize(1000,1000);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	this.JPanelWithBackground(".//mainmenu.jpg");
     }
 
     public void JPanelWithBackground(String fileName) throws IOException{
-	String path = ".//mainmenu.jpg";
-	File mainmenu = new File(path);
+	File mainmenu = new File(fileName);
 	backgroundImage = ImageIO.read(mainmenu);
     }
 
@@ -41,9 +41,16 @@ public class FinalProject extends JFrame implements ActionListener{
     }
 
     public static void main(String[]args){
-	FinalProject a = new FinalProject();
+	try{
+	    FinalProject a = new FinalProject();
+	    a.setVisible(true);
+	}
+	catch (IOException e){
+	    System.out.println("error");
+	}
     }
 
 
 
 }
+
