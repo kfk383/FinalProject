@@ -27,26 +27,28 @@ public class FinalProject extends JFrame implements ActionListener{
     }
 
     public void JPanelWithBackground(String fileName) throws IOException{
-	File mainmenu = new File(fileName);
-	backgroundImage = ImageIO.read(mainmenu);
+	File f = new File(fileName);
+	backgroundImage = ImageIO.read(f);
     }
 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
     }
 
-    public void paintComponent(Graphics g) {
-	paintComponent(g);
+    public void paint(Graphics g) {
 	g.drawImage(backgroundImage, 0, 0, this);
     }
 
     public static void main(String[]args){
 	try{
 	    FinalProject a = new FinalProject();
+	    Graphics g = a.getGraphics();
+	    a.JPanelWithBackground("mainmenu.jpg");
+	    a.paint(g);
 	    a.setVisible(true);
 	}
 	catch (IOException e){
-	    System.out.println("error");
+	    e.printStackTrace();
 	}
     }
 
