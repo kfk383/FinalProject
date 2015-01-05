@@ -1,2 +1,19 @@
 FinalProject - 2D Bowling
 =========================
+The goal of the project is to create a simple bowling game.
+
+Features that will be utilized:
+- A main menu with buttons for game start, instructions, and settings.
+- Before launching the ball:
+   - Setting the power of launch
+   - Setting the position on the alley that the ball will be launched
+   - Setting that the ball will be launched from.
+- Upon launch:
+   - The movement of the ball will be controlled by the computer mouse by some degree to allow for curve balls and a slight change of angle after launch.
+   - The view of the GUI will shift so that the striking of the ball with the pins at the end of the alley will be at a bird's eye view.
+
+This project will require:
+- The use of JPanel from a regular java program
+- The calculation of effective angular movement while the ball is moving (and the implementation of this with the position of the ball in the GUI)
+- Knowledge of the rules in bowling
+- 
