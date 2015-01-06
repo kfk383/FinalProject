@@ -25,8 +25,9 @@ January 5, 2015:
 
 January 6, 2015:
 - Added images to GUI
-- Researched mouse input on JPanel
+- Researched mouse input/control on JFrame
 - Switch project to processing? (if simpler)
-- Photoshopped main menu background & logo
+- Photoshopped main menu background & logo, but without functions at this point
+- Discussed basic functions of the game
 
 
