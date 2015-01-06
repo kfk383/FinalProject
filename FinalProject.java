@@ -17,6 +17,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	pane = this.getContentPane();
 	pane.setLayout(new FlowLayout());
+    }
 
     public void JPanelWithBackground(String fileName) throws IOException{
 	File f = new File(fileName);
