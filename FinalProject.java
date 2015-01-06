@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-public class StartWindow extends JFrame implements ActionListener{
+public class FinalProject extends JFrame implements ActionListener{
     private Container pane;
     private JLabel title;
 
@@ -18,7 +18,7 @@ public class StartWindow extends JFrame implements ActionListener{
 	pane = this.getContentPane();
 	pane.setLayout(new FlowLayout());
 
-	title = new ImageIcon("Name.png");
+	title = new ImageIcon("mainmenu.jpg");
 	pane.add(title);
     }
     
@@ -26,7 +26,7 @@ public class StartWindow extends JFrame implements ActionListener{
     }
  
     public static void main(String[] args){
-	StartWindow a = new StartWindow();
+	FinalProject a = new FinalProject();
 	a.setVisible(true);
     }
 }
