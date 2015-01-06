@@ -11,25 +11,21 @@ public class FinalProject extends JFrame implements ActionListener{
 
     public StartWindow(){
 	this.setTitle("Lucky Strike");
-	this.setSize(500,1000);
+	this.setSize(700,900);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 	pane = this.getContentPane();
 	pane.setLayout(new FlowLayout());
 
-<<<<<<< HEAD
     public void JPanelWithBackground(String fileName) throws IOException{
 	File f = new File(fileName);
 	backgroundImage = ImageIO.read(f);
-=======
 	title = new ImageIcon("mainmenu.jpg");
 	pane.add(title);
->>>>>>> c6bbf39cdf90b41f77ccc159fb3f19a9ff4d57da
     }
     
     public void actionPerformed(ActionEvent e){
-<<<<<<< HEAD
 	String action = e.getActionCommand();
     }
 
@@ -48,13 +44,11 @@ public class FinalProject extends JFrame implements ActionListener{
 	catch (IOException e){
 	    e.printStackTrace();
 	}
-=======
     }
  
     public static void main(String[] args){
 	FinalProject a = new FinalProject();
 	a.setVisible(true);
->>>>>>> c6bbf39cdf90b41f77ccc159fb3f19a9ff4d57da
     }
 }
 
