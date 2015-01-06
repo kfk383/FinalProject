@@ -1,37 +1,35 @@
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
-import java.lang.Object;
+import java.io.*;
+import java.util.logging.*;
 import javax.imageio.ImageIO;
-import java.io.IOException;
 
 public class FinalProject extends JFrame implements ActionListener{
     private Container pane;
-    private JButton b,clear;
-    private JLabel l;
-    private JTextField text;
-    private Container buttons;
-    private Container textyStuff;
-    private Image backgroundImage;
+    private JLabel title;
 
-    public FinalProject() throws IOException{
-	this.setTitle("2D Bowling -- Fall 2014 APCS Final Project");
-	this.setSize(1000,1000);
+    public StartWindow(){
+	this.setTitle("Lucky Strike");
+	this.setSize(500,1000);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	this.JPanelWithBackground(".//mainmenu.jpg");
-    }
+	
+	pane = this.getContentPane();
+	pane.setLayout(new FlowLayout());
 
+<<<<<<< HEAD
     public void JPanelWithBackground(String fileName) throws IOException{
 	File f = new File(fileName);
 	backgroundImage = ImageIO.read(f);
+=======
+	title = new ImageIcon("mainmenu.jpg");
+	pane.add(title);
+>>>>>>> c6bbf39cdf90b41f77ccc159fb3f19a9ff4d57da
     }
-
+    
     public void actionPerformed(ActionEvent e){
+<<<<<<< HEAD
 	String action = e.getActionCommand();
     }
 
@@ -50,9 +48,14 @@ public class FinalProject extends JFrame implements ActionListener{
 	catch (IOException e){
 	    e.printStackTrace();
 	}
+=======
     }
-
-
-
+ 
+    public static void main(String[] args){
+	FinalProject a = new FinalProject();
+	a.setVisible(true);
+>>>>>>> c6bbf39cdf90b41f77ccc159fb3f19a9ff4d57da
+    }
 }
 
+    
