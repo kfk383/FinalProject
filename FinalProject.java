@@ -42,6 +42,10 @@ class ImagePanel extends JPanel implements ActionListener{
 	g.drawImage(img, 0, 0, null);
     }
 
+    public void actionPerformed(ActionEvent e){
+	String action = e.getActionCommand();
+    }
+
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
 	}
