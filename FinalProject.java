@@ -20,7 +20,7 @@ public class FinalProject{
     }
 }
 
-class ImagePanel extends JPanel{
+class ImagePanel extends JPanel implements ActionListener{
     
     private Image img;
     
@@ -40,6 +40,19 @@ class ImagePanel extends JPanel{
 
     public void paintComponent(Graphics g){
 	g.drawImage(img, 0, 0, null);
+    }
+
+    class CustomMouseListener implements MouseListener{
+	public void mouseClicked(MouseEvent e){
+	}
+	public void mousePressed(MouseEvent e){
+	}
+	public void mouseReleased(MouseEvent e){
+	}
+	public void mouseEntered(MouseEvent e){
+	}
+	public void mouseExited(MouseEvent e){
+	}
     }
 }
 	
