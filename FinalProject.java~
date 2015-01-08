@@ -1,75 +1,59 @@
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
-import java.lang.Object;
+import java.io.*;
+import java.util.logging.*;
 import javax.imageio.ImageIO;
-import java.io.IOException;
 
-public class FinalProject extends JFrame implements ActionListener{
-    private Container pane;
-    private JButton b,clear;
-    private JLabel l;
-    private JTextField text;
-    private Container buttons;
-    private Container textyStuff;
-    private Image backgroundImage;
+public class FinalProject{
+    
+    public static void main(String[] args){
+	JFrame frame;
+	ImagePanel background;
+	
+	frame = new JFrame();
+	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
 
-    public FinalProject() throws IOException{
-	this.setTitle("2D Bowling -- Fall 2014 APCS Final Project");
-	this.setSize(1000,1000);
-	this.setLocation(100,100);
-	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	this.JPanelWithBackground(".//mainmenu.jpg");
+	frame.getContentPane().add(background);
+	frame.pack();
+	frame.setVisible(true);
     }
-
-    public void JPanelWithBackground(String fileName) throws IOException{
-<<<<<<< HEAD
-	File mainmenu = new File(fileName);
-	backgroundImage = ImageIO.read(mainmenu);
-=======
-	File f = new File(fileName);
-	backgroundImage = ImageIO.read(f);
->>>>>>> c6bbf39cdf90b41f77ccc159fb3f19a9ff4d57da
-    }
-
-    public void actionPerformed(ActionEvent e){
-	String action = e.getActionCommand();
-    }
-
-<<<<<<< HEAD
-    public void paintComponent(Graphics g) {
-	paintComponent(g);
-=======
-    public void paint(Graphics g) {
->>>>>>> c6bbf39cdf90b41f77ccc159fb3f19a9ff4d57da
-	g.drawImage(backgroundImage, 0, 0, this);
-    }
-
-    public static void main(String[]args){
-	try{
-	    FinalProject a = new FinalProject();
-<<<<<<< HEAD
-	    a.setVisible(true);
-	}
-	catch (IOException e){
-	    System.out.println("error");
-=======
-	    Graphics g = a.getGraphics();
-	    a.JPanelWithBackground("mainmenu.jpg");
-	    a.paint(g);
-	    a.setVisible(true);
-	}
-	catch (IOException e){
-	    e.printStackTrace();
->>>>>>> c6bbf39cdf90b41f77ccc159fb3f19a9ff4d57da
-	}
-    }
-
-
-
 }
 
+class ImagePanel extends JPanel implements ActionListener{
+    
+    private Image img;
+    
+    public ImagePanel(String img){
+	this(new ImageIcon(img).getImage());
+    }
+
+    public ImagePanel(Image img){
+	this.img = img;
+	Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+	setPreferredSize(size);
+	setMinimumSize(size);
+	setMaximumSize(size);
+	setSize(size);
+	setLayout(null);
+    }
+
+    public void paintComponent(Graphics g){
+	g.drawImage(img, 0, 0, null);
+    }
+
+    class CustomMouseListener implements MouseListener{
+	public void mouseClicked(MouseEvent e){
+	}
+	public void mousePressed(MouseEvent e){
+	}
+	public void mouseReleased(MouseEvent e){
+	}
+	public void mouseEntered(MouseEvent e){
+	}
+	public void mouseExited(MouseEvent e){
+	}
+    }
+}
+	
+	
