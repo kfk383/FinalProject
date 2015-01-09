@@ -37,4 +37,7 @@ January 7, 2015
 - Discussed how the buttons would work in the main menu (using the mouse location and whether the mouse is clicked)
 - Maybe: Change the appearance of the button when the mouse is over it
 
-
+January 8, 2015
+- Used JButton instead of buttons photoshopped into the main menu
+- Switched to JPanel for a more flexible interface
+- Enhanced GUI and started on actionPerformed method functions
