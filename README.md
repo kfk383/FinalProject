@@ -31,7 +31,12 @@ January 6, 2015:
 - Discussed basic functions of the game
 
 January 7, 2015
--Perfected code to fit image
--Learned mouse commands @ www.tutorialspoint.com/swing/swing_mouse_listener.htm
+- Altered code to fit the menu screen background
+- Started on mouse commands ( used www.tutorialspoint.com/swing/swing_mouse_listener.htm )
+- Added in java documentation for methods already written, excluding mouse commands.
+- Discussed how the buttons would work in the main menu (using the mouse location and whether the mouse is clicked)
+- Maybe: Change the appearance of the button when the mouse is over it
 
-
+January 8, 2015
+- Separated the buttons on the main menu in JButtons
+- 
