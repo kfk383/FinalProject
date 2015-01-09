@@ -1,0 +1,8 @@
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Game extends JPanel implements ActionListener{
+}
