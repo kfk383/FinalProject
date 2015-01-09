@@ -38,5 +38,11 @@ January 7, 2015
 - Maybe: Change the appearance of the button when the mouse is over it
 
 January 8, 2015
+<<<<<<< HEAD
 - Separated the buttons on the main menu in JButtons
 - 
+=======
+- Used JButton instead of buttons photoshopped into the main menu
+- Switched to JPanel for a more flexible interface
+- Enhanced GUI and started on actionPerformed method functions
+>>>>>>> cde098a25b1e38db97dd7f6bf863f4e8d0f17550

@@ -1,6 +1,3 @@
-
-	
-	
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
@@ -8,16 +5,6 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-<<<<<<< HEAD
-public class FinalProject{
-    /**
-     *Main function to set up GUI and allow the user to interact with the program
-     */
-    public static void main(String[] args){
-	JFrame frame;
-	ImagePanel background;
-	
-=======
 public class FinalProject extends JFrame implements ActionListener{
 
     JFrame frame;
@@ -31,7 +18,6 @@ public class FinalProject extends JFrame implements ActionListener{
     private boolean titlescreen;
  
     public FinalProject(){
->>>>>>> cde098a25b1e38db97dd7f6bf863f4e8d0f17550
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
 	
@@ -42,8 +28,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	instructions = new JButton("Instructions");
 	settings = new JButton("Settings");
 	difficulty = new JButton("Difficulty");
-
-	titlescreen = true;
 	
 	frame.add(start);
 	frame.add(instructions);
@@ -69,7 +53,7 @@ public class FinalProject extends JFrame implements ActionListener{
 
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
-	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")"); */
+	    statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mousePressed(MouseEvent e){
 	    int x = getX();
@@ -80,7 +64,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	public void mouseEntered(MouseEvent e){
 	    int x = getX();
 	    int y = getY();
-	    //  ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")"); */
+	    ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mouseExited(MouseEvent e){
 	}
@@ -91,15 +75,70 @@ public class FinalProject extends JFrame implements ActionListener{
 class ImagePanel extends JPanel{
     private Image img;
 
-<<<<<<< HEAD
+    public ImagePanel(String img){
+	this(new ImageIcon(img).getImage());
+	titlescreen = true;
+    }
+
+    public ImagePanel(Image img){
+	this.img = img;
+	titlescreen = true;
+	Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+	setPreferredSize(size);
+	setMinimumSize(size);
+	setMaximumSize(size);
+	setSize(size);
+	setLayout(null);
+    }
+
+    public void paintComponent(Graphics g){
+	g.drawImage(img, 0, 0, null);
+    }
+
+
+}
+
+
+
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+import java.util.logging.*;
+import javax.imageio.ImageIO;
+
+public class FinalProject{
+    /**
+     *Main function to set up GUI and allow the user to interact with the program
+     */
+    public static void main(String[] args){
+	JFrame frame;
+	ImagePanel background;
+	
+	frame = new JFrame();
+	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
+
+	frame.getContentPane().add(background);
+	frame.pack();
+	frame.setVisible(true);
+    }
+}
+
+class ImagePanel extends JPanel implements ActionListener{
+    private Image img;
+    private JButton start;
+    private JButton instructions;
+    private JButton settings;
+    private JButton difficulty;
+    private boolean titlescreen;
+
     /**
      *Converts the image into an icon that can be added into the GUI container.
      *@param img the file path of the image that will be converted into an icon.
      */    
-=======
->>>>>>> cde098a25b1e38db97dd7f6bf863f4e8d0f17550
     public ImagePanel(String img){
 	this(new ImageIcon(img).getImage());
+	titlescreen = true;
     }
 
     /**
@@ -108,12 +147,21 @@ class ImagePanel extends JPanel{
      */
     public ImagePanel(Image img){
 	this.img = img;
+	titlescreen = true;
 	Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
 	setPreferredSize(size);
 	setMinimumSize(size);
 	setMaximumSize(size);
 	setSize(size);
 	setLayout(null);
+
+	start = new JButton("Start");
+	instructions = new JButton("Instructions");
+	settings = new JButton("Settings");
+	difficulty = new JButton("Difficulty");
+
+	frame.add(start);
+	frame.instructions(
     }
 
     /**
@@ -124,28 +172,35 @@ class ImagePanel extends JPanel{
 	g.drawImage(img, 0, 0, null);
     }
 
-<<<<<<< HEAD
     /**
      *Takes actions that have been performed in the GUI and translates it to call on the code for the game.
      *@param e the commands that are coming in from the GUI.
      */
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
+	if (titlescreen){
+	    if(action.contains("Mouse Entered: ")){
+		System.out.println(action);
+	    }else if (action.contains("Mouse Clicked: ")){
+		System.out.println(action);
+	    }   
+	}
     }
 
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
-	    
+	    statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mousePressed(MouseEvent e){
 	    int x = getX();
 	    int y = getY();
 	}
 	public void mouseReleased(MouseEvent e){
- 	}
+	}
 	public void mouseEntered(MouseEvent e){
 	    int x = getX();
 	    int y = getY();
+	    ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mouseExited(MouseEvent e){
 	}
@@ -153,7 +208,3 @@ class ImagePanel extends JPanel{
 }
 	
 	
-=======
-
-}
->>>>>>> cde098a25b1e38db97dd7f6bf863f4e8d0f17550
