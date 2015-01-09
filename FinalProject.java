@@ -1,6 +1,3 @@
-
-	
-	
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
@@ -24,13 +21,22 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
 	
-	frame.getContentPane().add(background);
+	frame.setLayout(new FlowLayout());
+       	frame.getContentPane().add(background);
 	frame.pack();
 	
 	start = new JButton("Start");
+	start.setBounds(100,200,200,100);
+	start.setLocation(300,500);
 	instructions = new JButton("Instructions");
+	instructions.setBounds(10,20,20,10);
+	instructions.setLocation(400,500);
 	settings = new JButton("Settings");
+	settings.setBounds(10,20,20,10);
+	settings.setLocation(300,400);
 	difficulty = new JButton("Difficulty");
+	difficulty.setBounds(10,20,20,10);
+	difficulty.setLocation(400,500);
 
 	titlescreen = true;
 	
@@ -38,9 +44,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.add(instructions);
 	frame.add(settings);
 	frame.add(difficulty);
+
+	frame.setResizable(true);
+	frame.setVisible(true);
     }
 
-    public static void main(String[] args){	
+    public static void main(String[] args){
 	FinalProject a = new FinalProject();
 	a.setVisible(true);
     }
