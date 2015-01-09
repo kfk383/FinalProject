@@ -1,6 +1,3 @@
-
-	
-	
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
@@ -8,16 +5,6 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-<<<<<<< HEAD
-public class FinalProject{
-    /**
-     *Main function to set up GUI and allow the user to interact with the program
-     */
-    public static void main(String[] args){
-	JFrame frame;
-	ImagePanel background;
-	
-=======
 public class FinalProject extends JFrame implements ActionListener{
 
     JFrame frame;
@@ -31,7 +18,6 @@ public class FinalProject extends JFrame implements ActionListener{
     private boolean titlescreen;
  
     public FinalProject(){
->>>>>>> cde098a25b1e38db97dd7f6bf863f4e8d0f17550
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
 	
@@ -91,13 +77,10 @@ public class FinalProject extends JFrame implements ActionListener{
 class ImagePanel extends JPanel{
     private Image img;
 
-<<<<<<< HEAD
     /**
      *Converts the image into an icon that can be added into the GUI container.
      *@param img the file path of the image that will be converted into an icon.
      */    
-=======
->>>>>>> cde098a25b1e38db97dd7f6bf863f4e8d0f17550
     public ImagePanel(String img){
 	this(new ImageIcon(img).getImage());
     }
@@ -124,7 +107,6 @@ class ImagePanel extends JPanel{
 	g.drawImage(img, 0, 0, null);
     }
 
-<<<<<<< HEAD
     /**
      *Takes actions that have been performed in the GUI and translates it to call on the code for the game.
      *@param e the commands that are coming in from the GUI.
@@ -151,9 +133,3 @@ class ImagePanel extends JPanel{
 	}
     }
 }
-	
-	
-=======
-
-}
->>>>>>> cde098a25b1e38db97dd7f6bf863f4e8d0f17550
