@@ -5,25 +5,101 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-public class FinalProject{
-    
-    public static void main(String[] args){
-	JFrame frame;
-	ImagePanel background;
-	
+public class FinalProject extends JFrame implements ActionListener{
+
+    private JFrame frame;
+    private ImagePanel background;
+
+    private JPanel start = new JPanel();
+    private JPanel instructions = new JPanel();
+    private JPanel settings = new JPanel();
+    private JPanel difficulty = new JPanel();
+
+    private JButton start1;
+    private JButton instructions1;
+    private JButton settings1;
+    private JButton difficulty1;
+
+    private boolean titlescreen;
+ 
+    public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
-
-	frame.getContentPane().add(background);
+	
+	frame.setLayout(new FlowLayout());
+       	frame.getContentPane().add(background);
 	frame.pack();
+	
+	start1 = new JButton("Start");
+	start1.setPreferredSize(new Dimension(500,300));
+	start.setPreferredSize(new Dimension(50,30));
+	start.setLocation(300,500);
+	start.add(start1);
+
+	instructions1 = new JButton("Instructions");
+	instructions1.setPreferredSize(new Dimension(50,30));
+	instructions.setPreferredSize(new Dimension(50,30));
+	instructions.setLocation(40,50);
+	instructions.add(instructions1);
+
+	settings1 = new JButton("Settings");
+	settings.setPreferredSize(new Dimension(40,40));
+	settings.setLocation(300,400);
+
+	difficulty1 = new JButton("Difficulty");
+	difficulty.setPreferredSize(new Dimension(40,40));
+	difficulty.setLocation(400,500);
+
+	titlescreen = true;
+	
+	frame.add(start);
+	frame.add(instructions);
+	frame.add(settings);
+	frame.add(difficulty);
+
+	frame.setResizable(true);
 	frame.setVisible(true);
     }
+
+    public static void main(String[] args){
+	FinalProject a = new FinalProject();
+    }
+
+    public void actionPerformed(ActionEvent e){
+	String action = e.getActionCommand();
+	if (titlescreen){
+	    if(action.contains("Mouse Entered: ")){
+		System.out.println(action);
+	    }else if (action.contains("Mouse Clicked: ")){
+		System.out.println(action);
+	    }   
+	}
+    } 
+
+    class CustomMouseListener implements MouseListener{
+	public void mouseClicked(MouseEvent e){
+	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")"); */
+	}
+	public void mousePressed(MouseEvent e){
+	    int x = getX();
+	    int y = getY();
+	}
+	public void mouseReleased(MouseEvent e){
+	}
+	public void mouseEntered(MouseEvent e){
+	    int x = getX();
+	    int y = getY();
+	    //  ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")"); */
+	}
+	public void mouseExited(MouseEvent e){
+	}
+    }
+
 }
 
-class ImagePanel extends JPanel implements ActionListener{
-    
+class ImagePanel extends JPanel{
     private Image img;
-    
+
     public ImagePanel(String img){
 	this(new ImageIcon(img).getImage());
     }
@@ -42,18 +118,5 @@ class ImagePanel extends JPanel implements ActionListener{
 	g.drawImage(img, 0, 0, null);
     }
 
-    class CustomMouseListener implements MouseListener{
-	public void mouseClicked(MouseEvent e){
-	}
-	public void mousePressed(MouseEvent e){
-	}
-	public void mouseReleased(MouseEvent e){
-	}
-	public void mouseEntered(MouseEvent e){
-	}
-	public void mouseExited(MouseEvent e){
-	}
-    }
+
 }
-	
-	

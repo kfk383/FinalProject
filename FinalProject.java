@@ -7,13 +7,18 @@ import javax.imageio.ImageIO;
 
 public class FinalProject extends JFrame implements ActionListener{
 
-    JFrame frame;
-    ImagePanel background;
+    private JFrame frame;
+    private ImagePanel background;
 
-    private JButton start;
-    private JButton instructions;
-    private JButton settings;
-    private JButton difficulty;
+    private JPanel start = new JPanel();
+    private JPanel instructions = new JPanel();
+    private JPanel settings = new JPanel();
+    private JPanel difficulty = new JPanel();
+
+    private JButton start1;
+    private JButton instructions1;
+    private JButton settings1;
+    private JButton difficulty1;
 
     private boolean titlescreen;
  
@@ -21,25 +26,33 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
 	
-	frame.setLayout(new FlowLayout());
+	frame.setLayout(null);
+	frame.setPreferredSize(new Dimension(background.getWidth(), background.getHeight()));
        	frame.getContentPane().add(background);
 	frame.pack();
 	
-	start = new JButton("Start");
-	start.setBounds(100,200,200,100);
-	start.setLocation(300,500);
-	instructions = new JButton("Instructions");
-	instructions.setBounds(10,20,20,10);
-	instructions.setLocation(400,500);
-	settings = new JButton("Settings");
-	settings.setBounds(10,20,20,10);
-	settings.setLocation(300,400);
-	difficulty = new JButton("Difficulty");
-	difficulty.setBounds(10,20,20,10);
-	difficulty.setLocation(400,500);
+	start1 = new JButton("Start");
+	start1.setPreferredSize(new Dimension(150,50));
+	start.setBounds(60,300,150,100);
+	start.add(start1);
+
+	instructions1 = new JButton("Instructions");
+	instructions1.setPreferredSize(new Dimension(150,50));
+	instructions.setBounds(540,300,150,100);
+	instructions.add(instructions1);
+
+	settings1 = new JButton("Settings");
+	settings1.setPreferredSize(new Dimension(150,50));
+	settings.setBounds(450,375,150,100);
+	settings.add(settings1);
+	
+	difficulty1 = new JButton("Difficulty");
+	difficulty1.setPreferredSize(new Dimension(150,50));
+	difficulty.setBounds(150,375,150,100);
+	difficulty.add(difficulty1);
 
 	titlescreen = true;
-	
+
 	frame.add(start);
 	frame.add(instructions);
 	frame.add(settings);
@@ -51,7 +64,6 @@ public class FinalProject extends JFrame implements ActionListener{
 
     public static void main(String[] args){
 	FinalProject a = new FinalProject();
-	a.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e){
