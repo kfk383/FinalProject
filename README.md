@@ -41,3 +41,7 @@ January 8, 2015
 - Used JButton instead of buttons photoshopped into the main menu
 - Switched to JPanel for a more flexible interface
 - Enhanced GUI and started on actionPerformed method functions
+
+January 9, 2015
+-Put buttons onto individual JPanels in order to layer it on top of the background image
+-Buttons now appear when scrolled over to the options displayed on the background image
