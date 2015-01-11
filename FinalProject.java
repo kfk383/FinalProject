@@ -90,10 +90,9 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.validate();
 	}
     } 
-
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
-	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")"); */
+	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mousePressed(MouseEvent e){
 	    int x = getX();
@@ -104,7 +103,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	public void mouseEntered(MouseEvent e){
 	    int x = getX();
 	    int y = getY();
-	    //  ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")"); */
+	    //  ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mouseExited(MouseEvent e){
 	}
