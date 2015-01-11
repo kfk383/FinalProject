@@ -14,10 +14,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JPanel instructions = new JPanel();
     private JPanel settings = new JPanel();
     private JPanel difficulty = new JPanel();
-    private JPanel startS = new JPanel();
-    private JPanel instructionsS = new JPanel();
-    private JPanel settingsS = new JPanel();
-    private JPanel difficultyS = new JPanel();
+    private JPanel headerS = new JPanel();
 
     private JButton start1;
     private JButton instructions1;
@@ -78,6 +75,19 @@ public class FinalProject extends JFrame implements ActionListener{
 	FinalProject a = new FinalProject();
     }
 
+    public void menuSelection(String s){
+	frame.getContentPane().removeAll();
+	frame.getContentPane().repaint();
+	
+	frame.getContentPane().setBackground(Color.WHITE);
+	header = new JLabel(s, null, JLabel.CENTER);
+	headerS.setLayout(new FlowLayout());
+	headerS.add(header);
+	frame.getContentPane().add(headerS);
+	frame.pack();
+	frame.revalidate();
+    }
+
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
 	if (action.equals("start")){
@@ -89,31 +99,11 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.pack();
 	    frame.revalidate();
 	}else if (action.equals("instructions")){
-	    frame.getContentPane().removeAll();
-	    frame.getContentPane().repaint();
-
-	    background = new ImagePanel(new ImageIcon("instructions.jpg").getImage());
-	    frame.add(background);
-	    frame.pack();
-	    frame.revalidate();
+	    menuSelection("INSTRUCTIONS:");
 	}else if (action.equals("settings")){
-	    frame.getContentPane().removeAll();
-	    frame.getContentPane().repaint();
-
-	    background = new ImagePanel(new ImageIcon("settings.jpg").getImage());
-	    frame.add(background);
-	    frame.add(settingsS);
-	    frame.pack();
-	    frame.revalidate();
+	    menuSelection("SETTINGS:");
 	}else if (action.equals("difficulty")){
-	    frame.getContentPane().removeAll();
-	    frame.getContentPane().repaint();
-
-	    background = new ImagePanel(new ImageIcon("difficulty.jpg").getImage());
-	    frame.add(background);
-	    frame.add(difficultyS);
-	    frame.pack();
-	    frame.revalidate();
+	    menuSelection("DIFFICULTY:");
 	}
     } 
     class CustomMouseListener implements MouseListener{
