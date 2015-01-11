@@ -21,7 +21,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficulty1;
 
     private boolean titlescreen;
- 
+
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
@@ -33,32 +33,39 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	start1 = new JButton("Start");
 	start1.setPreferredSize(new Dimension(150,50));
+	start1.setActionCommand("start");
+	start1.addActionListener(this);
 	start.setBounds(60,300,150,100);
 	start.add(start1);
 
 	instructions1 = new JButton("Instructions");
 	instructions1.setPreferredSize(new Dimension(150,50));
+	instructions1.setActionCommand("instructions");
+	instructions1.addActionListener(this);
 	instructions.setBounds(540,300,150,100);
 	instructions.add(instructions1);
 
 	settings1 = new JButton("Settings");
 	settings1.setPreferredSize(new Dimension(150,50));
+	settings1.setActionCommand("settings");
+	settings1.addActionListener(this);
 	settings.setBounds(450,375,150,100);
 	settings.add(settings1);
 	
 	difficulty1 = new JButton("Difficulty");
 	difficulty1.setPreferredSize(new Dimension(150,50));
+	difficulty1.setActionCommand("difficulty");
+	difficulty1.addActionListener(this);
 	difficulty.setBounds(150,375,150,100);
-	difficulty.add(difficulty1);
+        difficulty.add(difficulty1);
 
 	titlescreen = true;
-
 	frame.add(start);
 	frame.add(instructions);
 	frame.add(settings);
 	frame.add(difficulty);
 
-	frame.setResizable(true);
+	frame.setResizable(false);
 	frame.setVisible(true);
     }
 
@@ -68,12 +75,19 @@ public class FinalProject extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
-	if (titlescreen){
-	    if(action.contains("Mouse Entered: ")){
-		System.out.println(action);
-	    }else if (action.contains("Mouse Clicked: ")){
-		System.out.println(action);
-	    }   
+	if (action.equals("start")){
+	    frame.getContentPane().removeAll();
+	    JLabel l = new JLabel("WELCOME TO 2D BOWLING", null, JLabel.CENTER);
+	    frame.validate();
+	}else if (action.equals("instructions")){
+	    frame.getContentPane().removeAll();
+	    frame.validate();
+	}else if (action.equals("settings")){
+	    frame.getContentPane().removeAll();
+	    frame.validate();
+	}else if (action.equals("difficulty")){
+	    frame.getContentPane().removeAll();
+	    frame.validate();
 	}
     } 
 
