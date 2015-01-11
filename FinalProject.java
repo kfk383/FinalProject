@@ -14,6 +14,10 @@ public class FinalProject extends JFrame implements ActionListener{
     private JPanel instructions = new JPanel();
     private JPanel settings = new JPanel();
     private JPanel difficulty = new JPanel();
+    private JPanel startS = new JPanel();
+    private JPanel instructionsS = new JPanel();
+    private JPanel settingsS = new JPanel();
+    private JPanel difficultyS = new JPanel();
 
     private JButton start1;
     private JButton instructions1;
@@ -21,7 +25,6 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficulty1;
     private JLabel header;
 
-    private boolean titlescreen;
 
     public FinalProject(){
 	frame = new JFrame();
@@ -60,7 +63,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	difficulty.setBounds(150,375,150,100);
         difficulty.add(difficulty1);
 
-	titlescreen = true;
 	frame.add(start);
 	frame.add(instructions);
 	frame.add(settings);
@@ -68,6 +70,8 @@ public class FinalProject extends JFrame implements ActionListener{
 
 	frame.setResizable(false);
 	frame.setVisible(true);
+	frame.setLocation(100, 100);
+	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args){
@@ -77,30 +81,38 @@ public class FinalProject extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
 	if (action.equals("start")){
-	    System.out.println("start");
 	    frame.getContentPane().removeAll();
 	    frame.getContentPane().repaint();
+
 	    frame.getContentPane().setBackground(new Color(255, 051, 051));
-	    frame.getContentPane().add(new JLabel("START:", null, JLabel.CENTER));
+	    //ADD IN GAME COMPONENTS HERE
+	    frame.pack();
 	    frame.revalidate();
-	    System.out.println("done");
 	}else if (action.equals("instructions")){
 	    frame.getContentPane().removeAll();
 	    frame.getContentPane().repaint();
-	    frame.getContentPane().setBackground(Color.WHITE);
-	    frame.getContentPane().add(new JLabel("INSTRUCTIONS", null, JLabel.CENTER));
+
+	    background = new ImagePanel(new ImageIcon("instructions.jpg").getImage());
+	    frame.add(background);
+	    frame.pack();
 	    frame.revalidate();
 	}else if (action.equals("settings")){
 	    frame.getContentPane().removeAll();
 	    frame.getContentPane().repaint();
-	    frame.getContentPane().setBackground(Color.WHITE);
-	    frame.getContentPane().add(new JLabel("SETTINGS:", null, JLabel.CENTER));
+
+	    background = new ImagePanel(new ImageIcon("settings.jpg").getImage());
+	    frame.add(background);
+	    frame.add(settingsS);
+	    frame.pack();
 	    frame.revalidate();
 	}else if (action.equals("difficulty")){
 	    frame.getContentPane().removeAll();
 	    frame.getContentPane().repaint();
-	    frame.getContentPane().setBackground(Color.WHITE);
-	    frame.getContentPane().add(new JLabel("DIFFICULTY:", null, JLabel.CENTER));
+
+	    background = new ImagePanel(new ImageIcon("difficulty.jpg").getImage());
+	    frame.add(background);
+	    frame.add(difficultyS);
+	    frame.pack();
 	    frame.revalidate();
 	}
     } 
