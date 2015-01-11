@@ -46,3 +46,4 @@ January 9, 2015
 - Put buttons onto individual JPanels in order to layer it on top of the background image
 - Buttons now appear when scrolled over to the options displayed on the background image
 - Fixed the button functions to go to new screens.
+- Photoshopped bagkround images for settings, instructions, and difficulty
