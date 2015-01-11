@@ -19,6 +19,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton instructions1;
     private JButton settings1;
     private JButton difficulty1;
+    private JLabel header;
 
     private boolean titlescreen;
 
@@ -76,18 +77,31 @@ public class FinalProject extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
 	if (action.equals("start")){
+	    System.out.println("start");
 	    frame.getContentPane().removeAll();
-	    JLabel l = new JLabel("WELCOME TO 2D BOWLING", null, JLabel.CENTER);
-	    frame.validate();
+	    frame.getContentPane().repaint();
+	    frame.getContentPane().setBackground(new Color(255, 051, 051));
+	    frame.getContentPane().add(new JLabel("START:", null, JLabel.CENTER));
+	    frame.revalidate();
+	    System.out.println("done");
 	}else if (action.equals("instructions")){
 	    frame.getContentPane().removeAll();
-	    frame.validate();
+	    frame.getContentPane().repaint();
+	    frame.getContentPane().setBackground(Color.WHITE);
+	    frame.getContentPane().add(new JLabel("INSTRUCTIONS", null, JLabel.CENTER));
+	    frame.revalidate();
 	}else if (action.equals("settings")){
 	    frame.getContentPane().removeAll();
-	    frame.validate();
+	    frame.getContentPane().repaint();
+	    frame.getContentPane().setBackground(Color.WHITE);
+	    frame.getContentPane().add(new JLabel("SETTINGS:", null, JLabel.CENTER));
+	    frame.revalidate();
 	}else if (action.equals("difficulty")){
 	    frame.getContentPane().removeAll();
-	    frame.validate();
+	    frame.getContentPane().repaint();
+	    frame.getContentPane().setBackground(Color.WHITE);
+	    frame.getContentPane().add(new JLabel("DIFFICULTY:", null, JLabel.CENTER));
+	    frame.revalidate();
 	}
     } 
     class CustomMouseListener implements MouseListener{
