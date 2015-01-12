@@ -25,16 +25,24 @@ public class FinalProject extends JFrame implements ActionListener{
 
     //Settings Options */
     private JPanel settingsMenu = new JPanel();
+    private JPanel settingsBack = new JPanel();
 
-    private JCheckBox settingsBG1;
-    private JCheckBox settingsBG2;
+    private ButtonGroup settingsOptions = new ButtonGroup();
+    private JRadioButton settingsBG1;
+    private JRadioButton settingsBG2;
+
+    private JButton settingsBackButton;
 
     //Difficulty Options */
     private JPanel difficultyMenu = new JPanel();
+    private JPanel difficultyBack = new JPanel();
 
-    private JCheckBox difficultyEasy;
-    private JCheckBox difficultyNormal;
-    private JCheckBox difficultyHard;
+    private ButtonGroup difficultyOptions = new ButtonGroup();
+    private JRadioButton difficultyEasy;
+    private JRadioButton difficultyNormal;
+    private JRadioButton difficultyHard;
+
+    private JButton difficultyBackButton;
 
     public FinalProject(){
 	frame = new JFrame();
@@ -115,26 +123,45 @@ public class FinalProject extends JFrame implements ActionListener{
 	}else if (action.equals("settings")){
 	    menuSelection("settings.jpg");
 
-	    settingsBG1 = new JCheckBox("Background 1");
-	    settingsBG2 = new JCheckBox("Background 2");
+	    settingsBG1 = new JRadioButton("Background 1");
+	    settingsBG2 = new JRadioButton("Background 2");
 
+	    settingsOptions.add(settingsBG1);
+	    settingsOptions.add(settingsBG2);
 	    settingsMenu.add(settingsBG1);
 	    settingsMenu.add(settingsBG2);
+	    settingsMenu.setBounds(300,200,200,200);
+
+	    settingsBackButton = new JButton("Main Menu");
+	    settingsBackButton.setPreferredSize(new Dimension(100,20));
+	    settingsBack.add(settingsBackButton);
+	    settingsBack.setBounds(328,350,150,100);
 
        	    frame.add(settingsMenu);
+	    frame.add(settingsBack);
 	    frame.pack();
 	}else if (action.equals("difficulty")){
 	    menuSelection("difficulty.jpg");
 
-	    difficultyEasy = new JCheckBox("Easy");
-	    difficultyNormal = new JCheckBox("Normal");
-	    difficultyHard = new JCheckBox("Hard");
+	    difficultyEasy = new JRadioButton("Easy    ");
+	    difficultyNormal = new JRadioButton("Normal");
+	    difficultyHard = new JRadioButton("Hard    ");
 
+	    difficultyOptions.add(difficultyEasy);
+	    difficultyOptions.add(difficultyNormal);
+	    difficultyOptions.add(difficultyHard);
 	    difficultyMenu.add(difficultyEasy);
 	    difficultyMenu.add(difficultyNormal);
 	    difficultyMenu.add(difficultyHard);
+	    difficultyMenu.setBounds(340,180,100,200);
+
+	    difficultyBackButton = new JButton("Main Menu");
+	    difficultyBackButton.setPreferredSize(new Dimension(100,20));
+	    difficultyBack.add(difficultyBackButton);
+	    difficultyBack.setBounds(315,350,150,100);
 
 	    frame.add(difficultyMenu);
+	    frame.add(difficultyBack);
 	    frame.pack();
 	}
     } 

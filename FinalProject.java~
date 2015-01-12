@@ -10,6 +10,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JFrame frame;
     private ImagePanel background;
 
+    //Main Menu Options */
     private JPanel start = new JPanel();
     private JPanel instructions = new JPanel();
     private JPanel settings = new JPanel();
@@ -22,6 +23,18 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficulty1;
     private JLabel header;
 
+    //Settings Options */
+    private JPanel settingsMenu = new JPanel();
+
+    private JCheckBox settingsBG1;
+    private JCheckBox settingsBG2;
+
+    //Difficulty Options */
+    private JPanel difficultyMenu = new JPanel();
+
+    private JCheckBox difficultyEasy;
+    private JCheckBox difficultyNormal;
+    private JCheckBox difficultyHard;
 
     public FinalProject(){
 	frame = new JFrame();
@@ -32,26 +45,6 @@ public class FinalProject extends JFrame implements ActionListener{
        	frame.getContentPane().add(background);
 	frame.pack();
 	
-<<<<<<< HEAD
-	start = new JButton("Start");
-	start.setBounds(100,200,200,100);
-	start.setLocation(300,500);
-	start.setActionCommand("start");
-	instructions = new JButton("Instructions");
-	instructions.setBounds(10,20,20,10);
-	instructions.setLocation(400,500);
-	instructions.setActionCommand("instructions");
-	settings = new JButton("Settings");
-	settings.setBounds(10,20,20,10);
-	settings.setLocation(300,400);
-	settings.setActionCommand("settings");
-	difficulty = new JButton("Difficulty");
-	difficulty.setBounds(10,20,20,10);
-	difficulty.setLocation(400,500);
-	difficulty.setActionCommand("difficulty")
-
-	titlescreen = true;
-=======
 	start1 = new JButton("Start");
 	start1.setPreferredSize(new Dimension(150,50));
 	start1.setActionCommand("start");
@@ -72,7 +65,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	settings1.addActionListener(this);
 	settings.setBounds(450,375,150,100);
 	settings.add(settings1);
->>>>>>> 8177482cb16199d42685eafbd6409283563eaa74
 	
 	difficulty1 = new JButton("Difficulty");
 	difficulty1.setPreferredSize(new Dimension(150,50));
@@ -96,20 +88,14 @@ public class FinalProject extends JFrame implements ActionListener{
 	FinalProject a = new FinalProject();
     }
 
-    public void menuSelection(String s){
+    public void menuSelection(String imageName){
 	frame.getContentPane().removeAll();
 	frame.getContentPane().repaint();
 	
-	frame.getContentPane().setBackground(Color.WHITE);
-	header = new JLabel(s, null, JLabel.CENTER);
-	headerS.setLayout(new BorderLayout());
-	headerS.setBounds( frame.getContentPane().getWidth() / 2, 0, 100, 20);
-	headerS.add(header, BorderLayout.CENTER);
+	background = new ImagePanel(new ImageIcon(imageName).getImage());
+	frame.getContentPane().add(background);
 
-	frame.getContentPane().add(headerS);
 	frame.pack();
-	frame.revalidate();
-	frame.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e){
@@ -122,13 +108,34 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.getContentPane().setBackground(new Color(255, 051, 051));
 	    //ADD IN GAME COMPONENTS HERE
 	    frame.pack();
-	    frame.revalidate();
 	}else if (action.equals("instructions")){
-	    menuSelection("INSTRUCTIONS:");
+	    menuSelection("instructions.jpg");
+
+	    frame.pack();
 	}else if (action.equals("settings")){
-	    menuSelection("SETTINGS:");
+	    menuSelection("settings.jpg");
+
+	    settingsBG1 = new JCheckBox("Background 1");
+	    settingsBG2 = new JCheckBox("Background 2");
+
+	    settingsMenu.add(settingsBG1);
+	    settingsMenu.add(settingsBG2);
+
+       	    frame.add(settingsMenu);
+	    frame.pack();
 	}else if (action.equals("difficulty")){
-	    menuSelection("DIFFICULTY:");
+	    menuSelection("difficulty.jpg");
+
+	    difficultyEasy = new JCheckBox("Easy");
+	    difficultyNormal = new JCheckBox("Normal");
+	    difficultyHard = new JCheckBox("Hard");
+
+	    difficultyMenu.add(difficultyEasy);
+	    difficultyMenu.add(difficultyNormal);
+	    difficultyMenu.add(difficultyHard);
+
+	    frame.add(difficultyMenu);
+	    frame.pack();
 	}
     } 
     class CustomMouseListener implements MouseListener{
