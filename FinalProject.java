@@ -7,71 +7,109 @@ import javax.imageio.ImageIO;
 
 public class FinalProject extends JFrame implements ActionListener{
 
-    JFrame frame;
-    ImagePanel background;
+    private JFrame frame;
+    private ImagePanel background;
 
-    private JButton start;
-    private JButton instructions;
-    private JButton settings;
-    private JButton difficulty;
+    private JPanel start = new JPanel();
+    private JPanel instructions = new JPanel();
+    private JPanel settings = new JPanel();
+    private JPanel difficulty = new JPanel();
+    private JPanel headerS = new JPanel();
 
-    private boolean titlescreen;
- 
+    private JButton start1;
+    private JButton instructions1;
+    private JButton settings1;
+    private JButton difficulty1;
+    private JLabel header;
+
+
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
 	
-	frame.setLayout(new FlowLayout());
+	frame.setLayout(null);
+	frame.setPreferredSize(new Dimension(background.getWidth(), background.getHeight()));
        	frame.getContentPane().add(background);
 	frame.pack();
 	
-	start = new JButton("Start");
-	start.setBounds(100,200,200,100);
-	start.setLocation(300,500);
-	start.setActionCommand("start");
-	instructions = new JButton("Instructions");
-	instructions.setBounds(10,20,20,10);
-	instructions.setLocation(400,500);
-	instructions.setActionCommand("instructions");
-	settings = new JButton("Settings");
-	settings.setBounds(10,20,20,10);
-	settings.setLocation(300,400);
-	settings.setActionCommand("settings");
-	difficulty = new JButton("Difficulty");
-	difficulty.setBounds(10,20,20,10);
-	difficulty.setLocation(400,500);
-	difficulty.setActionCommand("difficulty")
+	start1 = new JButton("Start");
+	start1.setPreferredSize(new Dimension(150,50));
+	start1.setActionCommand("start");
+	start1.addActionListener(this);
+	start.setBounds(60,300,150,100);
+	start.add(start1);
 
-	titlescreen = true;
+	instructions1 = new JButton("Instructions");
+	instructions1.setPreferredSize(new Dimension(150,50));
+	instructions1.setActionCommand("instructions");
+	instructions1.addActionListener(this);
+	instructions.setBounds(540,300,150,100);
+	instructions.add(instructions1);
+
+	settings1 = new JButton("Settings");
+	settings1.setPreferredSize(new Dimension(150,50));
+	settings1.setActionCommand("settings");
+	settings1.addActionListener(this);
+	settings.setBounds(450,375,150,100);
+	settings.add(settings1);
 	
+	difficulty1 = new JButton("Difficulty");
+	difficulty1.setPreferredSize(new Dimension(150,50));
+	difficulty1.setActionCommand("difficulty");
+	difficulty1.addActionListener(this);
+	difficulty.setBounds(150,375,150,100);
+        difficulty.add(difficulty1);
+
 	frame.add(start);
 	frame.add(instructions);
 	frame.add(settings);
 	frame.add(difficulty);
 
-	frame.setResizable(true);
+	frame.setResizable(false);
 	frame.setVisible(true);
+	frame.setLocation(100, 100);
+	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args){
 	FinalProject a = new FinalProject();
-	a.setVisible(true);
+    }
+
+    public void menuSelection(String imageName){
+	frame.getContentPane().removeAll();
+	frame.getContentPane().repaint();
+	
+	background = new ImagePanel(new ImageIcon(imageName).getImage());
+	frame.getContentPane().add(background);
+	headerS.setLayout(new BorderLayout());
+	headerS.setBounds( frame.getContentPane().getWidth() / 2, 0, 100, 20);
+	headerS.add(header, BorderLayout.CENTER);
+
+	frame.getContentPane().add(headerS);
+	frame.pack();
     }
 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
-	if (titlescreen){
-	    if(action.contains("Mouse Entered: ")){
-		System.out.println(action);
-	    }else if (action.contains("Mouse Clicked: ")){
-		System.out.println(action);
-	    }   
+
+	if (action.equals("start")){
+	    frame.getContentPane().removeAll();
+	    frame.getContentPane().repaint();
+
+	    frame.getContentPane().setBackground(new Color(255, 051, 051));
+	    //ADD IN GAME COMPONENTS HERE
+	    frame.pack();
+	}else if (action.equals("instructions")){
+	    menuSelection("instructions.jpg");
+	}else if (action.equals("settings")){
+	    menuSelection("settings.jpg");
+	}else if (action.equals("difficulty")){
+	    menuSelection("difficulty.jpg");
 	}
     } 
-
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
-	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")"); */
+	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mousePressed(MouseEvent e){
 	    int x = getX();
@@ -82,7 +120,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	public void mouseEntered(MouseEvent e){
 	    int x = getX();
 	    int y = getY();
-	    //  ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")"); */
+	    //  ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mouseExited(MouseEvent e){
 	}

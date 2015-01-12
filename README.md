@@ -38,13 +38,18 @@ January 7, 2015
 - Maybe: Change the appearance of the button when the mouse is over it
 
 January 8, 2015
-- Separated the buttons on the main menu in JButtons
 - Used JButton instead of buttons photoshopped into the main menu
 - Switched to JPanel for a more flexible interface
 - Enhanced GUI and started on actionPerformed method functions
 
 January 9, 2015
-- Perfect JButtons on the main menu
-- Work on the animations of the actual game
-- Work on the mouse control of the bowling component (absolutely need MouseIn and MouseClicked)
-- Worked on the actionPerformed method
+- Put buttons onto individual JPanels in order to layer it on top of the background image
+- Buttons now appear when scrolled over to the options displayed on the background image
+
+January 10, 2015
+- Fixed the button functions to go to new screens.
+- Photoshopped bagkround images for settings, instructions, and difficulty
+
+January 11, 2015
+- Settings will have checkboxes for two backgrounds to the main game
+- Difficulty will have three settings to determine how much the mouse can affect the movement of the ball when playing the game
