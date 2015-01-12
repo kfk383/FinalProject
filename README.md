@@ -53,3 +53,6 @@ January 10, 2015
 January 11, 2015
 - Settings will have checkboxes for two backgrounds to the main game
 - Difficulty will have three settings to determine how much the mouse can affect the movement of the ball when playing the game
+
+January 12, 2015
+- Radio buttons and back buttons have been added to settings and difficulty
