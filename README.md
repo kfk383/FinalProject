@@ -45,5 +45,11 @@ January 8, 2015
 January 9, 2015
 - Put buttons onto individual JPanels in order to layer it on top of the background image
 - Buttons now appear when scrolled over to the options displayed on the background image
+
+January 10, 2015
 - Fixed the button functions to go to new screens.
 - Photoshopped bagkround images for settings, instructions, and difficulty
+
+January 11, 2015
+-Settings will have checkboxes for two backgrounds to the main game
+-Difficulty will have three settings to determine how much the mouse can affect the movement of the ball when playing the game
