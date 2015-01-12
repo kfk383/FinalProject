@@ -118,6 +118,9 @@ public class FinalProject extends JFrame implements ActionListener{
 	    settingsBG1 = new JCheckBox("Background 1");
 	    settingsBG2 = new JCheckBox("Background 2");
 
+	    settingsMenu.add(settingsBG1);
+	    settingsMenu.add(settingsBG2);
+
        	    frame.add(settingsMenu);
 	    frame.pack();
 	}else if (action.equals("difficulty")){
@@ -126,6 +129,10 @@ public class FinalProject extends JFrame implements ActionListener{
 	    difficultyEasy = new JCheckBox("Easy");
 	    difficultyNormal = new JCheckBox("Normal");
 	    difficultyHard = new JCheckBox("Hard");
+
+	    difficultyMenu.add(difficultyEasy);
+	    difficultyMenu.add(difficultyNormal);
+	    difficultyMenu.add(difficultyHard);
 
 	    frame.add(difficultyMenu);
 	    frame.pack();
