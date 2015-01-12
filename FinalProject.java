@@ -81,15 +81,19 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	frame.getContentPane().setBackground(Color.WHITE);
 	header = new JLabel(s, null, JLabel.CENTER);
-	headerS.setLayout(new FlowLayout());
-	headerS.add(header);
+	headerS.setLayout(new BorderLayout());
+	headerS.setBounds( frame.getContentPane().getWidth() / 2, 0, 100, 20);
+	headerS.add(header, BorderLayout.CENTER);
+
 	frame.getContentPane().add(headerS);
 	frame.pack();
 	frame.revalidate();
+	frame.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
+
 	if (action.equals("start")){
 	    frame.getContentPane().removeAll();
 	    frame.getContentPane().repaint();
