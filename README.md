@@ -51,5 +51,5 @@ January 10, 2015
 - Photoshopped bagkround images for settings, instructions, and difficulty
 
 January 11, 2015
--Settings will have checkboxes for two backgrounds to the main game
--Difficulty will have three settings to determine how much the mouse can affect the movement of the ball when playing the game
+- Settings will have checkboxes for two backgrounds to the main game
+- Difficulty will have three settings to determine how much the mouse can affect the movement of the ball when playing the game
