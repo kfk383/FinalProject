@@ -10,6 +10,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JFrame frame;
     private ImagePanel background;
 
+    //Main Menu Options */
     private JPanel start = new JPanel();
     private JPanel instructions = new JPanel();
     private JPanel settings = new JPanel();
@@ -22,6 +23,18 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficulty1;
     private JLabel header;
 
+    //Settings Options */
+    private JPanel settingsMenu = new JPanel();
+
+    private JCheckBox settingsBG1;
+    private JCheckBox settingsBG2;
+
+    //Difficulty Options */
+    private JPanel difficultyMenu = new JPanel();
+
+    private JCheckBox difficultyEasy;
+    private JCheckBox difficultyNormal;
+    private JCheckBox difficultyHard;
 
     public FinalProject(){
 	frame = new JFrame();
@@ -81,11 +94,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	background = new ImagePanel(new ImageIcon(imageName).getImage());
 	frame.getContentPane().add(background);
-	headerS.setLayout(new BorderLayout());
-	headerS.setBounds( frame.getContentPane().getWidth() / 2, 0, 100, 20);
-	headerS.add(header, BorderLayout.CENTER);
 
-	frame.getContentPane().add(headerS);
 	frame.pack();
     }
 
@@ -101,10 +110,25 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.pack();
 	}else if (action.equals("instructions")){
 	    menuSelection("instructions.jpg");
+
+	    frame.pack();
 	}else if (action.equals("settings")){
 	    menuSelection("settings.jpg");
+
+	    settingsBG1 = new JCheckBox("Background 1");
+	    settingsBG2 = new JCheckBox("Background 2");
+
+       	    frame.add(settingsMenu);
+	    frame.pack();
 	}else if (action.equals("difficulty")){
 	    menuSelection("difficulty.jpg");
+
+	    difficultyEasy = new JCheckBox("Easy");
+	    difficultyNormal = new JCheckBox("Normal");
+	    difficultyHard = new JCheckBox("Hard");
+
+	    frame.add(difficultyMenu);
+	    frame.pack();
 	}
     } 
     class CustomMouseListener implements MouseListener{
