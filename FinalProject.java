@@ -23,27 +23,32 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficulty1;
     private JLabel header;
 
-    //Settings Options */
+    //Instructions Features
+    private JPanel instructionsBack = new JPanel();
+
+    private JButton instructionsBackButton = new JButton("Main Menu");
+
+    //Settings Features */
     private JPanel settingsMenu = new JPanel();
     private JPanel settingsBack = new JPanel();
 
     private ButtonGroup settingsOptions = new ButtonGroup();
-    private JRadioButton settingsBG1;
-    private JRadioButton settingsBG2;
+    private JRadioButton settingsBG1 = new JRadioButton("Background 1");
+    private JRadioButton settingsBG2 = new JRadioButton("Background 2");
 
-    private JButton settingsBackButton;
+    private JButton settingsBackButton = new JButton("Main Menu");
 
-    //Difficulty Options */
+    //Difficulty Features */
     private String diffSet = "";
     private JPanel difficultyMenu = new JPanel();
     private JPanel difficultyBack = new JPanel();
 
     private ButtonGroup difficultyOptions = new ButtonGroup();
-    private JRadioButton difficultyEasy;
-    private JRadioButton difficultyNormal;
-    private JRadioButton difficultyHard;
+    private JRadioButton difficultyEasy = new JRadioButton("Easy    ");
+    private JRadioButton difficultyNormal = new JRadioButton("Normal");
+    private JRadioButton difficultyHard = new JRadioButton("Hard    ");
 
-    private JButton difficultyBackButton;
+    private JButton difficultyBackButton = new JButton("Main Menu");
 
     public FinalProject(){
 	frame = new JFrame();
@@ -91,6 +96,9 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.setVisible(true);
 	frame.setLocation(100, 100);
 	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+	settingsBG1.setSelected(true);
+	difficultyNormal.setSelected(true);
     }
 
     public static void main(String[] args){
@@ -117,15 +125,21 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.getContentPane().setBackground(new Color(255, 051, 051));
 	    //ADD IN GAME COMPONENTS HERE
 	    frame.pack();
-	}else if (action.equals("instructions")){
+	}
+	if (action.equals("instructions")){
 	    menuSelection("instructions.jpg");
 
-	    frame.pack();
-	}else if (action.equals("settings")){
-	    menuSelection("settings.jpg");
+	    instructionsBackButton.setPreferredSize(new Dimension(130, 20));
+	    instructionsBack.add(instructionsBackButton);
+	    instructionsBackButton.setActionCommand("mainmenu");
+	    instructionsBackButton.addActionListener(this);
+	    instructionsBack.setBounds(370,392,175,125);
 
-	    settingsBG1 = new JRadioButton("Background 1");
-	    settingsBG2 = new JRadioButton("Background 2");
+	    frame.add(instructionsBack);
+	    frame.pack();
+	}
+	if (action.equals("settings")){
+	    menuSelection("settings.jpg");
 
 	    settingsOptions.add(settingsBG1);
 	    settingsOptions.add(settingsBG2);
@@ -133,20 +147,18 @@ public class FinalProject extends JFrame implements ActionListener{
 	    settingsMenu.add(settingsBG2);
 	    settingsMenu.setBounds(300,200,200,200);
 
-	    settingsBackButton = new JButton("Main Menu");
-	    settingsBackButton.setPreferredSize(new Dimension(100,20));
+	    settingsBackButton.setPreferredSize(new Dimension(130,20));
 	    settingsBack.add(settingsBackButton);
+	    settingsBackButton.setActionCommand("mainmenu");
+	    settingsBackButton.addActionListener(this);
 	    settingsBack.setBounds(328,350,150,100);
 
        	    frame.add(settingsMenu);
 	    frame.add(settingsBack);
 	    frame.pack();
-	}else if (action.equals("difficulty")){
+	}
+	if (action.equals("difficulty")){
 	    menuSelection("difficulty.jpg");
-
-	    difficultyEasy = new JRadioButton("Easy    ");
-	    difficultyNormal = new JRadioButton("Normal");
-	    difficultyHard = new JRadioButton("Hard    ");
 
 	    difficultyOptions.add(difficultyEasy);
 	    difficultyOptions.add(difficultyNormal);
@@ -156,13 +168,22 @@ public class FinalProject extends JFrame implements ActionListener{
 	    difficultyMenu.add(difficultyHard);
 	    difficultyMenu.setBounds(340,180,100,200);
 
-	    difficultyBackButton = new JButton("Main Menu");
-	    difficultyBackButton.setPreferredSize(new Dimension(100,20));
+	    difficultyBackButton.setPreferredSize(new Dimension(130,20));
+	    difficultyBackButton.setActionCommand("mainmenu");
+	    difficultyBackButton.addActionListener(this);
 	    difficultyBack.add(difficultyBackButton);
 	    difficultyBack.setBounds(315,350,150,100);
 
 	    frame.add(difficultyMenu);
 	    frame.add(difficultyBack);
+	    frame.pack();
+	}
+	if (action.equals("mainmenu")){
+	    menuSelection("mainmenu.jpg");
+	    frame.add(start);
+	    frame.add(difficulty);
+	    frame.add(settings);
+	    frame.add(instructions);
 	    frame.pack();
 	}
     } 
