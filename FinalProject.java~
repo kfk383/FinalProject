@@ -34,7 +34,6 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton settingsBackButton;
 
     //Difficulty Options */
-    private String diffSet = "";
     private JPanel difficultyMenu = new JPanel();
     private JPanel difficultyBack = new JPanel();
 
