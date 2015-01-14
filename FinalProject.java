@@ -57,6 +57,8 @@ public class FinalProject extends JFrame implements ActionListener{
     private JPanel mouseSpace = new JPanel();
     private JPanel buttonScreen = new JPanel();
 
+    private JButton gameBackButton = new JButton("Main Menu");
+
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
@@ -99,9 +101,9 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.add(settings);
 	frame.add(difficulty);
 
-	frame.setResizable(false);
+	frame.setResizable(true);
 	frame.setVisible(true);
-	frame.setLocation(100, 100);
+	frame.setLocation(0,0);
 	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	settingsBG1.setSelected(true);
@@ -207,22 +209,30 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.getContentPane().repaint();
 
 	gameScreen.setBackground(new Color(255,244,77));
-	gameScreen.setBounds(100,100,100,100);
+	gameScreen.setBounds(0,0,400,495);
 
 	scoreBoard.setBackground(new Color(0,77,204));
-	scoreBoard.setBounds(200,200,100,100);
+	scoreBoard.setBounds(400,0,386,150);
 
 	mouseSpace.setBackground(new Color(77,153,77));
-	mouseSpace.setBounds(300,300,100,100);
+	mouseSpace.setBounds(400,150,386,250);
 	
 	buttonScreen.setBackground(new Color(255,204,153));
-	buttonScreen.setBounds(400,400,100,100);
+	buttonScreen.setBounds(400,400,386,95);
 	    
+	gameBackButton.setPreferredSize(new Dimension(130, 20));
+	gameBackButton.setActionCommand("mainmenu");
+	gameBackButton.addActionListener(this);
+	
+	buttonScreen.add(gameBackButton);
+
 	frame.add(gameScreen);
 	frame.add(scoreBoard);
 	frame.add(mouseSpace);
 	frame.add(buttonScreen);
-				 
+
+	frame.setVisible(true);
+			 
 	int bowlnum = 1;
 	while (bowlnum <= 10){
 	    if (diffSet.equals("easy")){
