@@ -36,10 +36,11 @@ public class FinalProject extends JFrame implements ActionListener{
     private JRadioButton settingsBG1 = new JRadioButton("Background 1");
     private JRadioButton settingsBG2 = new JRadioButton("Background 2");
 
+    private String bgSet = "";
     private JButton settingsBackButton = new JButton("Main Menu");
 
     //Difficulty Features */
-    private String diffSet = "";
+    private String diffSet = "Normal";
     private JPanel difficultyMenu = new JPanel();
     private JPanel difficultyBack = new JPanel();
 
@@ -186,7 +187,26 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.add(instructions);
 	    frame.pack();
 	}
+	if (difficultyEasy.isSelected()) diffSet = "easy";
+	else if (difficultyNormal.isSelected()) diffSet = "normal";
+	else if (difficultyHard.isSelected()) diffSet = "hard";
+	if (settingsBG1.isSelected()) bgSet = "1";
+	else if (settingsBG2.isSelected()) bgSet = "2";
     } 
+
+    public void Game(){
+	int bowlnum = 1;
+	while (bowlnum <= 10){
+	    if (diffSet.equals("easy")){
+
+	    }else if (diffSet.equals("normal")){
+
+	    }else if (diffSet.equals("hard")){
+
+	    }
+	    bowlnum+=1;
+	}
+    }
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
 	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
