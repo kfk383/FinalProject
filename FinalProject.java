@@ -51,6 +51,12 @@ public class FinalProject extends JFrame implements ActionListener{
 
     private JButton difficultyBackButton = new JButton("Main Menu");
 
+    //Starting the Game! */
+    private JPanel gameScreen = new JPanel();
+    private JPanel scoreBoard = new JPanel();
+    private JPanel mouseSpace = new JPanel();
+    private JPanel buttonScreen = new JPanel();
+
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
@@ -120,12 +126,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	String action = e.getActionCommand();
 
 	if (action.equals("start")){
-	    frame.getContentPane().removeAll();
-	    frame.getContentPane().repaint();
-
-	    frame.getContentPane().setBackground(new Color(255, 051, 051));
-	    //ADD IN GAME COMPONENTS HERE
-	    frame.pack();
+	    game();
 	}
 	if (action.equals("instructions")){
 	    menuSelection("instructions.jpg");
@@ -134,7 +135,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	    instructionsBack.add(instructionsBackButton);
 	    instructionsBackButton.setActionCommand("mainmenu");
 	    instructionsBackButton.addActionListener(this);
-	    instructionsBack.setBounds(370,392,175,125);
+	    instructionsBack.setBounds(600,420,175,125);
 
 	    frame.add(instructionsBack);
 	    frame.pack();
@@ -187,14 +188,41 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.add(instructions);
 	    frame.pack();
 	}
-	if (difficultyEasy.isSelected()) diffSet = "easy";
-	else if (difficultyNormal.isSelected()) diffSet = "normal";
-	else if (difficultyHard.isSelected()) diffSet = "hard";
-	if (settingsBG1.isSelected()) bgSet = "1";
-	else if (settingsBG2.isSelected()) bgSet = "2";
+	if (difficultyEasy.isSelected()){
+	    diffSet = "easy";
+	}else if (difficultyNormal.isSelected()){
+	    diffSet = "normal";
+	}else if (difficultyHard.isSelected()){
+	    diffSet = "hard";
+	}
+	if (settingsBG1.isSelected()){
+	    bgSet = "1";
+	}else if (settingsBG2.isSelected()){
+	    bgSet = "2";
+	}
     } 
 
-    public void Game(){
+    public void game(){
+	frame.getContentPane().removeAll();
+	frame.getContentPane().repaint();
+
+	gameScreen.setBackground(new Color(255,244,77));
+	gameScreen.setBounds(100,100,100,100);
+
+	scoreBoard.setBackground(new Color(0,77,204));
+	scoreBoard.setBounds(200,200,100,100);
+
+	mouseSpace.setBackground(new Color(77,153,77));
+	mouseSpace.setBounds(300,300,100,100);
+	
+	buttonScreen.setBackground(new Color(255,204,153));
+	buttonScreen.setBounds(400,400,100,100);
+	    
+	frame.add(gameScreen);
+	frame.add(scoreBoard);
+	frame.add(mouseSpace);
+	frame.add(buttonScreen);
+				 
 	int bowlnum = 1;
 	while (bowlnum <= 10){
 	    if (diffSet.equals("easy")){
