@@ -10,6 +10,12 @@ public class FinalProject extends JFrame implements ActionListener{
     private JFrame frame;
     private ImagePanel background;
 
+    private int bowlnum;
+    private int[][]scores = new int[10][2];
+
+    //Game
+    Oval ball = new Oval(200,200,200,200);
+
     //Main Menu Options */
     private JPanel start = new JPanel();
     private JPanel instructions = new JPanel();
@@ -101,7 +107,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.add(settings);
 	frame.add(difficulty);
 
-	frame.setResizable(true);
+	frame.setResizable(false);
 	frame.setVisible(true);
 	frame.setLocation(0,0);
 	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -226,6 +232,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	buttonScreen.add(gameBackButton);
 
+
 	frame.add(gameScreen);
 	frame.add(scoreBoard);
 	frame.add(mouseSpace);
@@ -233,18 +240,27 @@ public class FinalProject extends JFrame implements ActionListener{
 
 	frame.setVisible(true);
 			 
-	int bowlnum = 1;
+	bowlnum = 1;
+	scores = new int[10][2];
 	while (bowlnum <= 10){
 	    if (diffSet.equals("easy")){
-
+		
+		score(bowlnum);
 	    }else if (diffSet.equals("normal")){
-
+		
+		score(bowlnum);
 	    }else if (diffSet.equals("hard")){
-
+		
+		score(bowlnum);
 	    }
 	    bowlnum+=1;
 	}
     }
+	public void score(int bowl){
+	    if (){
+
+	    }
+	}
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
 	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
@@ -286,6 +302,23 @@ class ImagePanel extends JPanel{
     public void paintComponent(Graphics g){
 	g.drawImage(img, 0, 0, null);
     }
+}
 
+class GraphicsSurface extends JComponent{
+    public GraphicsSurface(){
+	
+    }
+    public void paint(Graphics g){
+	Graphics2D g2d = (Graphics2D) g;
+	
+	g2d.setColor(new Color(55,255,55,255));
+	g2d.fillRect(0,0,getWidth(),getHeight());
+	
+	g2d.setColor(new Color(124,23,179,255));
+	g2d.fillOval(getWidth()/2, 50,200,200);
+	
+	g2d.drawRect(200,200,200,200);
 
+	repaint();
+    }
 }
