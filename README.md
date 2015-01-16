@@ -64,3 +64,7 @@ January 13, 2015
 - Started on game method 
 - Added functions to all of the buttons and radioButtons so far
 - Still need to draw bowling ball and bowling pin shapes for the game
+
+January 14, 2015
+- Worked on animations and drawing objects
+- Reference file MyPanel.java
