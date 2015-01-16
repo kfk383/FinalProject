@@ -13,9 +13,6 @@ public class FinalProject extends JFrame implements ActionListener{
     private int bowlnum;
     private int[][]scores = new int[10][2];
 
-    //Game
-    Oval ball = new Oval(200,200,200,200);
-
     //Main Menu Options */
     private JPanel start = new JPanel();
     private JPanel instructions = new JPanel();
@@ -65,6 +62,9 @@ public class FinalProject extends JFrame implements ActionListener{
 
     private JButton gameBackButton = new JButton("Main Menu");
 
+    private int ovalX = 40, ovalY = 400, ovalWidth = 50, ovalHeight = 50;
+    private int ovalDx = -20, ovalDy = 0;
+    private Timer clock = new Timer(1000,this);
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
@@ -232,7 +232,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	buttonScreen.add(gameBackButton);
 
-
 	frame.add(gameScreen);
 	frame.add(scoreBoard);
 	frame.add(mouseSpace);
@@ -247,7 +246,7 @@ public class FinalProject extends JFrame implements ActionListener{
 		
 		score(bowlnum);
 	    }else if (diffSet.equals("normal")){
-		
+		clock.start();
 		score(bowlnum);
 	    }else if (diffSet.equals("hard")){
 		
@@ -256,14 +255,22 @@ public class FinalProject extends JFrame implements ActionListener{
 	    bowlnum+=1;
 	}
     }
-	public void score(int bowl){
-	    if (){
 
-	    }
-	}
+    public void ballMove(){
+	repaint();
+	updateVectors();
+    }
+
+    public void score(int bowl){
+	
+    }
+
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
-	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
+	    if (((e.getX() <= ovalX + 10) || (e.getX() <= ovalX - 10))
+		&& ((e.getY() <= ovalY + 10) || (e.getY() <= ovalY - 10))){
+		ballMove();
+	    }
 	}
 	public void mousePressed(MouseEvent e){
 	    int x = getX();
@@ -280,6 +287,16 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
     }
 
+    public void paint(Graphics g){
+	Graphics2D g2d = (Graphics2D) g;
+	g2d.setColor(new Color(0,204,204));
+	g2d.drawOval(ovalX, ovalY, ovalWidth, ovalHeight);
+    }
+    
+    public void updateVectors(){
+	ovalX += ovalDx;
+	ovalY += ovalDy;
+    }
 }
 
 class ImagePanel extends JPanel{
@@ -304,21 +321,4 @@ class ImagePanel extends JPanel{
     }
 }
 
-class GraphicsSurface extends JComponent{
-    public GraphicsSurface(){
-	
-    }
-    public void paint(Graphics g){
-	Graphics2D g2d = (Graphics2D) g;
-	
-	g2d.setColor(new Color(55,255,55,255));
-	g2d.fillRect(0,0,getWidth(),getHeight());
-	
-	g2d.setColor(new Color(124,23,179,255));
-	g2d.fillOval(getWidth()/2, 50,200,200);
-	
-	g2d.drawRect(200,200,200,200);
 
-	repaint();
-    }
-}
