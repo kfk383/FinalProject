@@ -10,6 +10,9 @@ public class FinalProject extends JFrame implements ActionListener{
     private JFrame frame;
     private ImagePanel background;
 
+    private int bowlnum;
+    private int[][]scores = new int[10][2];
+
     //Main Menu Options */
     private JPanel start = new JPanel();
     private JPanel instructions = new JPanel();
@@ -57,6 +60,11 @@ public class FinalProject extends JFrame implements ActionListener{
     private JPanel mouseSpace = new JPanel();
     private JPanel buttonScreen = new JPanel();
 
+    private JButton gameBackButton = new JButton("Main Menu");
+
+    private int ovalX = 40, ovalY = 400, ovalWidth = 50, ovalHeight = 50;
+    private int ovalDx = -20, ovalDy = 0;
+    private Timer clock = new Timer(1000,this);
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
@@ -101,7 +109,7 @@ public class FinalProject extends JFrame implements ActionListener{
 
 	frame.setResizable(false);
 	frame.setVisible(true);
-	frame.setLocation(100, 100);
+	frame.setLocation(0,0);
 	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	settingsBG1.setSelected(true);
@@ -110,8 +118,6 @@ public class FinalProject extends JFrame implements ActionListener{
 
     public static void main(String[] args){
 	FinalProject a = new FinalProject();
-	System.out.println(background.getWidth());
-	System.out.println(background.getHeight());
     }
 
     public void menuSelection(String imageName){
@@ -209,37 +215,62 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.getContentPane().repaint();
 
 	gameScreen.setBackground(new Color(255,244,77));
-	gameScreen.setBounds(100,100,100,100);
+	gameScreen.setBounds(0,0,400,495);
 
 	scoreBoard.setBackground(new Color(0,77,204));
-	scoreBoard.setBounds(200,200,100,100);
+	scoreBoard.setBounds(400,0,386,150);
 
 	mouseSpace.setBackground(new Color(77,153,77));
-	mouseSpace.setBounds(300,300,100,100);
+	mouseSpace.setBounds(400,150,386,250);
 	
 	buttonScreen.setBackground(new Color(255,204,153));
-	buttonScreen.setBounds(400,400,100,100);
+	buttonScreen.setBounds(400,400,386,95);
 	    
+	gameBackButton.setPreferredSize(new Dimension(130, 20));
+	gameBackButton.setActionCommand("mainmenu");
+	gameBackButton.addActionListener(this);
+	
+	buttonScreen.add(gameBackButton);
+
 	frame.add(gameScreen);
 	frame.add(scoreBoard);
 	frame.add(mouseSpace);
 	frame.add(buttonScreen);
-				 
-	int bowlnum = 1;
+
+	frame.setVisible(true);
+			 
+	bowlnum = 1;
+	scores = new int[10][2];
 	while (bowlnum <= 10){
 	    if (diffSet.equals("easy")){
-
+		
+		score(bowlnum);
 	    }else if (diffSet.equals("normal")){
-
+		clock.start();
+		score(bowlnum);
 	    }else if (diffSet.equals("hard")){
-
+		
+		score(bowlnum);
 	    }
 	    bowlnum+=1;
 	}
     }
+
+    public void ballMove(){
+	repaint();
+	updateVectors();
+    }
+
+    public void score(int bowl){
+	
+    }
+
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
-	    //  statusLabel.setText("Mouse Clicked: (" + e.getX() + ", " + e.getY() + ")");
+	    if (((e.getX() <= ovalX + 10) || (e.getX() <= ovalX - 10))
+		&& ((e.getY() <= ovalY + 10) || (e.getY() <= ovalY - 10))){
+		ballMove();
+	    }
 	}
 	public void mousePressed(MouseEvent e){
 	    int x = getX();
@@ -256,6 +287,16 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
     }
 
+    public void paint(Graphics g){
+	Graphics2D g2d = (Graphics2D) g;
+	g2d.setColor(new Color(0,204,204));
+	g2d.drawOval(ovalX, ovalY, ovalWidth, ovalHeight);
+    }
+    
+    public void updateVectors(){
+	ovalX += ovalDx;
+	ovalY += ovalDy;
+    }
 }
 
 class ImagePanel extends JPanel{
@@ -278,6 +319,6 @@ class ImagePanel extends JPanel{
     public void paintComponent(Graphics g){
 	g.drawImage(img, 0, 0, null);
     }
-
-
 }
+
+
