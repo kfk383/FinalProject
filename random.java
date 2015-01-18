@@ -7,14 +7,12 @@ import javax.imageio.ImageIO;
 
 
 public class scoreBoard extends JPanel{
-    
-    private String[][] scores;
 
     private Box top1 = Box.createHorizontalBox();
     private Box top2 = Box.createHorizontalBox();
 	
     private Box round1 = Box.createVerticalBox();
-    private Box round2 = Box.createVerticalBox(); 
+    private Box round2 = Box.createVerticalBox();
     private Box round3 = Box.createVerticalBox();
     private Box round4 = Box.createVerticalBox();
     private Box round5 = Box.createVerticalBox();
@@ -212,8 +210,7 @@ public class scoreBoard extends JPanel{
 	    scores[bowlnum][x] = "/";
 	}else{
 	    scores[bowlnum][x] = "" + (Integer.parseInt(num));
-	}
-	insert();
+	}insert();
     }
 
     public void setScore1(int s){

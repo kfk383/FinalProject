@@ -7,14 +7,12 @@ import javax.imageio.ImageIO;
 
 
 public class scoreBoard extends JPanel{
-    
-    private String[][] scores;
 
     private Box top1 = Box.createHorizontalBox();
     private Box top2 = Box.createHorizontalBox();
 	
     private Box round1 = Box.createVerticalBox();
-    private Box round2 = Box.createVerticalBox(); 
+    private Box round2 = Box.createVerticalBox();
     private Box round3 = Box.createVerticalBox();
     private Box round4 = Box.createVerticalBox();
     private Box round5 = Box.createVerticalBox();
@@ -184,36 +182,6 @@ public class scoreBoard extends JPanel{
 
 	add(top1);
 	add(top2);
-
-	scores = new String[10][3];
-	for (int i = 0; i < 10; i++){
-	    for (int x = 0; x < 3; x++){
-		scores[i][x] = "0";
-	    }
-	}
-    }
-
-    public void score(int bowlnum, int x, String num){
-	int holder = 0;
-	if (scores[bowlnum - 1][0].equals("X") || (scores[bowlnum - 2][0].equals("X"))){
-	    if (scores[bowlnum - 1][0].equals("X")){
-		holder = bowlnum - 1;
-		scores[holder][0] = "" + (Integer.parseInt(scores[holder][0]) + Integer.parseInt(scores[holder][0]));
-	    }else{
-		holder = bowlnum - 2;
-	    }
-	    scores[holder][2] = "" + (Integer.parseInt(scores[holder][2]) + Integer.parseInt(num));
-	}else if (scores[bowlnum - 1][1].equals("/")){
-	    scores[bowlnum - 1][2] = "" + (Integer.parseInt(scores[bowlnum - 1][2]) + Integer.parseInt(num));
-	}
-	if (num.equals("X")){
-	    scores[bowlnum][x] = "X";
-	}else if (num.equals("/")){
-	    scores[bowlnum][x] = "/";
-	}else{
-	    scores[bowlnum][x] = "" + (Integer.parseInt(num));
-	}
-	insert();
     }
 
     public void setScore1(int s){
