@@ -11,7 +11,6 @@ public class FinalProject extends JFrame implements ActionListener{
     private ImagePanel background;
 
     private int bowlnum;
-    private String[][]scores;
 
     //Main Menu Options */
     private JPanel start = new JPanel();
@@ -219,20 +218,26 @@ public class FinalProject extends JFrame implements ActionListener{
 	    diffSet = "Easy";
 	    buttonScreen1.setSpeed(0);
 	    buttonScreen1.setMass(10);
+	    gameScreen1.setMass(10);
+	    gameScreen1.setSpeed(0);
 	}else if (difficultyNormal.isSelected()){
 	    diffSet = "Normal";	    
 	    buttonScreen1.setSpeed(10);
 	    buttonScreen1.setMass(30);
+	    gameScreen1.setMass(30);
+	    gameScreen1.setSpeed(10);
 	}else if (difficultyHard.isSelected()){
 	    diffSet = "Hard";
 	    buttonScreen1.setSpeed(20);
 	    buttonScreen1.setMass(50);
+	    gameScreen1.setMass(50);
+	    gameScreen1.setSpeed(20);
 	}
 	if (settingsBG1.isSelected()){
 	    bgSet = 1;
 	    gameScreen1.setBackground(new Color(255,244,77));
 	}else if (settingsBG2.isSelected()){
-	    bgSet = 1;
+	    bgSet = 2;
 	    gameScreen1.setBackground(new Color(175,164,157));
 	}
 	
@@ -256,39 +261,19 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.setVisible(true);
 			 
 	bowlnum = 0;
-	scores = new String[10][3];
-	for (int i = 0; i < 10; i++){
-	    for (int x = 0; x < 3; x++){
-		scores[i][x] = "0";
-	    }
-	}
 
 	while (bowlnum < 10){
-	    if (diffSet.equals("easy")){	
+	    if (diffSet.equals("easy")){
+		gameScreen1.animate();
 		//	score(bowlnum, x, num);
-	    }else if (diffSet.equals("normal")){;
+	    }else if (diffSet.equals("normal")){
+		gameScreen1.animate();
 		//	score(bowlnum, x, num);
 	    }else if (diffSet.equals("hard")){
+		gameScreen1.animate();
 		//	score(bowlnum, x, num);
 	    }
 	    bowlnum+=1;
-	}
-    }
-
-    class CustomMouseListener implements MouseListener{
-	public void mouseClicked(MouseEvent e){
-	}
-	public void mousePressed(MouseEvent e){
-	    int x = getX();
-	    int y = getY();
-	}
-	public void mouseReleased(MouseEvent e){
-	}
-	public void mouseEntered(MouseEvent e){
-	    int x = getX();
-	    int y = getY();
-	}
-	public void mouseExited(MouseEvent e){
 	}
     }
 }
