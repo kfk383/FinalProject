@@ -62,10 +62,6 @@ public class FinalProject extends JFrame implements ActionListener{
 
     private JButton gameBackButton = new JButton("Main Menu");
 
-    private int ovalX = 40, ovalY = 400, ovalWidth = 50, ovalHeight = 50;
-    private int ovalDx = -20, ovalDy = 0;
-    private Timer clock = new Timer(1000,this);
-
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
@@ -232,41 +228,22 @@ public class FinalProject extends JFrame implements ActionListener{
 	bowlnum = 1;
 	scores = new int[10][2];
 	while (bowlnum <= 10){
-	    if (diffSet.equals("easy")){
-		
+	    if (diffSet.equals("easy")){	
 		score(bowlnum);
-	    }else if (diffSet.equals("normal")){
-		clock.start();
-	        ballMove();
+	    }else if (diffSet.equals("normal")){;
 		score(bowlnum);
 	    }else if (diffSet.equals("hard")){
-		
 		score(bowlnum);
 	    }
 	    bowlnum+=1;
 	}
     }
 
-    public void ballMove(){
-	repaint();
-	updateVectors();
-	try{
-	    Thread.sleep(10);
-	}catch(InterruptedException e){
-	    System.out.println("nooo");
-	}
-    }
-
-    public void score(int bowl){
-	
+    public void score(int bowl){	
     }
 
     class CustomMouseListener implements MouseListener{
 	public void mouseClicked(MouseEvent e){
-	    if (((e.getX() <= ovalX + 10) || (e.getX() <= ovalX - 10))
-		&& ((e.getY() <= ovalY + 10) || (e.getY() <= ovalY - 10))){
-		ballMove();
-	    }
 	}
 	public void mousePressed(MouseEvent e){
 	    int x = getX();
@@ -281,26 +258,5 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
 	public void mouseExited(MouseEvent e){
 	}
-    }
-
-    public void paint(Graphics g){
-	super.paint(g);
-	Graphics2D g2d = (Graphics2D) g;
-	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	g2d.setColor(new Color(0,204,204));
-	g2d.fillOval(ovalX, ovalY, ovalWidth, ovalHeight);
-	
-    }
-    
-    public void updateVectors(){
-	ovalX += ovalDx;
-	ovalY += ovalDy;
-    }
-
-    public void paintComponent(Graphics g){
-	//	g.drawImage(img, 0, 0, null);
-	g.setColor(new Color(0,204,204));
-	g.fillOval(ovalX, ovalY, ovalWidth, ovalHeight);
-	
     }
 }

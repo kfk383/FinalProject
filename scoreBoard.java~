@@ -40,102 +40,102 @@ public class scoreBoard extends JPanel{
 
 	JTextField name1 = new JTextField(30);
 	name1.setHorizontalAlignment(SwingConstants.CENTER);
-	name1.setText("Round 1");
+	name1.setText("1");
 	round1.add(name1);
 
 	JTextField display1 = new JTextField(30);
 	display1.setHorizontalAlignment(SwingConstants.CENTER);
-	display1.setText(score1 + "");
+	display1.setText(score1);
 	round1.add(display1);
 
 	JTextField name2 = new JTextField(30);
 	name2.setHorizontalAlignment(SwingConstants.CENTER);
-	name2.setText("Round 2");
+	name2.setText("2");
 	round2.add(name2);
 
 	JTextField display2 = new JTextField(30);
 	display2.setHorizontalAlignment(SwingConstants.CENTER);
-	display2.setText(score2 + "");
+	display2.setText(score2);
 	round2.add(display2);
 
 	JTextField name3 = new JTextField(30);
 	name3.setHorizontalAlignment(SwingConstants.CENTER);
-	name3.setText("Round 3");
+	name3.setText("3");
 	round3.add(name3);
 
 	JTextField display3 = new JTextField(30);
 	display3.setHorizontalAlignment(SwingConstants.CENTER);
-	display3.setText(score3 + "");
+	display3.setText(score3);
 	round3.add(display3);
 
 	JTextField name4 = new JTextField(30);
 	name4.setHorizontalAlignment(SwingConstants.CENTER);
-	name4.setText("Round 4");
+	name4.setText("4");
 	round4.add(name4);
 
 	JTextField display4 = new JTextField(30);
 	display4.setHorizontalAlignment(SwingConstants.CENTER);
-	display4.setText(score4 + "");
+	display4.setText(score4);
 	round4.add(display4);
 
 	JTextField name5 = new JTextField(30);
 	name5.setHorizontalAlignment(SwingConstants.CENTER);
-	name5.setText("Round 5");
+	name5.setText("5");
 	round5.add(name5);
 
 	JTextField display5 = new JTextField(30);
 	display5.setHorizontalAlignment(SwingConstants.CENTER);
-	display5.setText(score5 + "");
+	display5.setText(score5);
 	round5.add(display5);
 
 	JTextField name6 = new JTextField(30);
 	name6.setHorizontalAlignment(SwingConstants.CENTER);
-	name6.setText("Round 6");
+	name6.setText("6");
 	round6.add(name6);
 
 	JTextField display6 = new JTextField(30);
 	display6.setHorizontalAlignment(SwingConstants.CENTER);
-	display6.setText(score6 + "");
+	display6.setText(score6);
 	round6.add(display6);
 
 	JTextField name7 = new JTextField(30);
 	name7.setHorizontalAlignment(SwingConstants.CENTER);
-	name7.setText("Round 7");
+	name7.setText("7");
 	round7.add(name7);
 
 	JTextField display7 = new JTextField(30);
 	display7.setHorizontalAlignment(SwingConstants.CENTER);
-	display7.setText(score7 + "");
+	display7.setText(score7);
 	round7.add(display7);
 
 	JTextField name8 = new JTextField(30);
 	name8.setHorizontalAlignment(SwingConstants.CENTER);
-	name8.setText("Round 8");
+	name8.setText("8");
 	round8.add(name8);
 
 	JTextField display8 = new JTextField(30);
 	display8.setHorizontalAlignment(SwingConstants.CENTER);
-	display8.setText(score8 + "");
+	display8.setText(score8);
 	round8.add(display8);
 
 	JTextField name9 = new JTextField(30);
 	name9.setHorizontalAlignment(SwingConstants.CENTER);
-	name9.setText("Round 9");
+	name9.setText("9");
 	round9.add(name9);
 
 	JTextField display9 = new JTextField(30);
 	display9.setHorizontalAlignment(SwingConstants.CENTER);
-	display9.setText(score9 + "");
+	display9.setText(score9);
 	round9.add(display9);
 
 	JTextField name10 = new JTextField(30);
 	name10.setHorizontalAlignment(SwingConstants.CENTER);
-	name10.setText("Round 10");
+	name10.setText("10");
 	round10.add(name10);
 
 	JTextField display10 = new JTextField(30);
 	display10.setHorizontalAlignment(SwingConstants.CENTER);
-	display10.setText(score10 + "");
+	display10.setText(score10);
 	round10.add(display10);
 
 	top1.add(round1);
