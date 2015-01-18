@@ -12,4 +12,10 @@ public class gameScreen extends JPanel{
 	setBackground(new Color(255,244,77));
 	setBounds(0,0,400,495);
     }
+
+    public void paintComponent(Graphics g){
+	super.paintComponent(g);
+	g.setColor(Color.BLUE);
+	g.fillOval(0,0,30,30);
+    }	    
 }

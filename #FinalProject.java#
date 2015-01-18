@@ -11,7 +11,6 @@ public class FinalProject extends JFrame implements ActionListener{
     private ImagePanel background;
 
     private int bowlnum;
-    private String[][]scores;
 
     //Main Menu Options */
     private JPanel start = new JPanel();
@@ -256,12 +255,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.setVisible(true);
 			 
 	bowlnum = 0;
-	scores = new String[10][3];
-	for (int i = 0; i < 10; i++){
-	    for (int x = 0; x < 3; x++){
-		scores[i][x] = "0";
-	    }
-	}
 
 	while (bowlnum < 10){
 	    if (diffSet.equals("easy")){	

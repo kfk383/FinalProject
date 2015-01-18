@@ -11,7 +11,7 @@ public class gameScreen extends JPanel{
     public gameScreen(){
 	setBackground(new Color(255,244,77));
 	setBounds(50,0,300,495);
-
+	
     }
 
     public void paintComponent(Graphics g){
