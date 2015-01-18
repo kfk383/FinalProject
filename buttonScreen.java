@@ -11,14 +11,14 @@ public class buttonScreen extends JPanel{
     private String windDirection = "Center";
     private int mass = 30;
 
-    JPanel windP = new JPanel();
-    JTextField wind = new JTextField(8);
+    private JPanel windP = new JPanel();
+    private JTextField wind = new JTextField(8);
 
-    JPanel windDP = new JPanel();
-    JTextField windD = new JTextField(10);
+    private JPanel windDP = new JPanel();
+    private JTextField windD = new JTextField(10);
 
-    JPanel massWP = new JPanel();
-    JTextField massW = new JTextField(8);
+    private JPanel massWP = new JPanel();
+    private JTextField massW = new JTextField(8);
 
     public buttonScreen(){
 	setBackground(new Color(255,204,153));
