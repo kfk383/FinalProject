@@ -67,19 +67,19 @@ January 13, 2015
 
 January 14, 2015
 - Worked on animations and drawing objects
-- 
+
 January 15, 2015
--Researched animations
+- Further researched animations
 
 January 16, 2015
--Cirle made to be animated
--Reorganized code
+- Circle made to be animated
+- Reorganized code
 
 January 17, 2015
--Created backgrounds for all the different options of settings and difficulty
--Made scoring algorithm
--Primed settings and difficulty for implementation to the game
--Changed scoreboard to be compatible with changes made within the game
+- Created backgrounds for all the different options of settings and difficulty
+- Made scoring algorithm
+- Primed settings and difficulty for implementation to the game
+- Changed scoreboard to be compatible with changes made within the game
 
 January 18, 2015
--
+- 
