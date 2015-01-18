@@ -39,7 +39,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JRadioButton settingsBG1 = new JRadioButton("Background 1");
     private JRadioButton settingsBG2 = new JRadioButton("Background 2");
 
-    private String bgSet = "";
+    private int bgSet = 1;
     private JButton settingsBackButton = new JButton("Main Menu");
 
     //Difficulty Features */
@@ -165,8 +165,14 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.pack();
 	}
 	if (action.equals("difficulty")){
-	    menuSelection("difficulty.jpg");
-
+	    if (diffSet.equals("Normal")){
+		menuSelection("difficultyN.jpg");
+	    }else if (diffSet.equals("Hard")){
+		menuSelection("difficultyH.jpg");
+	    }else if (diffSet.equals("Easy")){
+		menuSelection("difficultyE.jpg");
+	    }
+	    
 	    difficultyOptions.add(difficultyEasy);
 	    difficultyOptions.add(difficultyNormal);
 	    difficultyOptions.add(difficultyHard);
@@ -201,9 +207,9 @@ public class FinalProject extends JFrame implements ActionListener{
 	    diffSet = "hard";
 	}
 	if (settingsBG1.isSelected()){
-	    bgSet = "1";
+	    bgSet = 1;
 	}else if (settingsBG2.isSelected()){
-	    bgSet = "2";
+	    bgSet = 1;
 	}
 	
     } 
