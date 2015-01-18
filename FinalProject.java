@@ -216,11 +216,11 @@ public class FinalProject extends JFrame implements ActionListener{
 	    frame.pack();
 	}
 	if (difficultyEasy.isSelected()){
-	    diffSet = "easy";
+	    diffSet = "Easy";
 	}else if (difficultyNormal.isSelected()){
-	    diffSet = "normal";
+	    diffSet = "Normal";
 	}else if (difficultyHard.isSelected()){
-	    diffSet = "hard";
+	    diffSet = "Hard";
 	}
 	if (settingsBG1.isSelected()){
 	    bgSet = 1;
