@@ -55,12 +55,10 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficultyBackButton = new JButton("Main Menu");
 
     //Starting the Game! */
-    private boolean gameOn;
-
-    private JPanel gameScreen = new JPanel();
-    private JPanel scoreBoard = new JPanel();
-    private JPanel mouseSpace = new JPanel();
-    private JPanel buttonScreen = new JPanel();
+    private gameScreen gameScreen1 = new gameScreen();
+    private scoreBoard scoreBoard1 = new scoreBoard();
+    private mouseSpace mouseSpace1 = new mouseSpace();
+    private buttonScreen buttonScreen1 = new buttonScreen();
 
     private JButton gameBackButton = new JButton("Main Menu");
 
@@ -121,9 +119,6 @@ public class FinalProject extends JFrame implements ActionListener{
 
     public static void main(String[] args) throws InterruptedException{
 	FinalProject a = new FinalProject();
-	while (a.gameOn){
-	    a.game();
-	}
     }
 
     public void menuSelection(String imageName){
@@ -140,7 +135,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	String action = e.getActionCommand();
 
 	if (action.equals("start")){
-	    gameOn = true;
+	    game();
 	}
 	if (action.equals("instructions")){
 	    menuSelection("instructions.jpg");
@@ -214,34 +209,23 @@ public class FinalProject extends JFrame implements ActionListener{
 	}else if (settingsBG2.isSelected()){
 	    bgSet = "2";
 	}
+	
     } 
 
-    public void game() throws InterruptedException{
+    public void game(){
 	frame.getContentPane().removeAll();
 	frame.getContentPane().repaint();
 
-	gameScreen.setBackground(new Color(255,244,77));
-	gameScreen.setBounds(0,0,400,495);
-
-	scoreBoard.setBackground(new Color(0,77,204));
-	scoreBoard.setBounds(400,0,386,150);
-
-	mouseSpace.setBackground(new Color(77,153,77));
-	mouseSpace.setBounds(400,150,386,250);
-	
-	buttonScreen.setBackground(new Color(255,204,153));
-	buttonScreen.setBounds(400,400,386,95);
-	    
 	gameBackButton.setPreferredSize(new Dimension(130, 20));
 	gameBackButton.setActionCommand("mainmenu");
 	gameBackButton.addActionListener(this);
 	
-	buttonScreen.add(gameBackButton);
+	buttonScreen1.add(gameBackButton);
 
-	frame.add(gameScreen);
-	frame.add(scoreBoard);
-	frame.add(mouseSpace);
-	frame.add(buttonScreen);
+	frame.add(gameScreen1);
+	frame.add(scoreBoard1);
+	frame.add(mouseSpace1);
+	frame.add(buttonScreen1);
 
 	frame.setVisible(true);
 			 
@@ -263,12 +247,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
     }
 
-    public void ballMove() throws InterruptedException{
+    public void ballMove(){
 	repaint();
 	updateVectors();
-	catch(InterruptedException e){
+	try{
 	    Thread.sleep(10);
-	}try{
+	}catch(InterruptedException e){
 	    System.out.println("nooo");
 	}
     }
@@ -305,34 +289,18 @@ public class FinalProject extends JFrame implements ActionListener{
 	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	g2d.setColor(new Color(0,204,204));
 	g2d.fillOval(ovalX, ovalY, ovalWidth, ovalHeight);
+	
     }
     
     public void updateVectors(){
 	ovalX += ovalDx;
 	ovalY += ovalDy;
     }
-}
-
-class ImagePanel extends JPanel{
-    private Image img;
-
-    public ImagePanel(String img){
-	this(new ImageIcon(img).getImage());
-    }
-
-    public ImagePanel(Image img){
-	this.img = img;
-	Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
-	setPreferredSize(size);
-	setMinimumSize(size);
-	setMaximumSize(size);
-	setSize(size);
-	setLayout(null);
-    }
 
     public void paintComponent(Graphics g){
-	g.drawImage(img, 0, 0, null);
+	//	g.drawImage(img, 0, 0, null);
+	g.setColor(new Color(0,204,204));
+	g.fillOval(ovalX, ovalY, ovalWidth, ovalHeight);
+	
     }
 }
-
-

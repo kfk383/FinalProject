@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-public class FinalProject extends JFrame implements ActionListener{
+public class WorkingCircle extends JFrame implements ActionListener{
 
     private JFrame frame;
     private ImagePanel background;
@@ -65,7 +65,8 @@ public class FinalProject extends JFrame implements ActionListener{
     private int ovalX = 40, ovalY = 400, ovalWidth = 50, ovalHeight = 50;
     private int ovalDx = -20, ovalDy = 0;
     private Timer clock = new Timer(1000,this);
-    public FinalProject(){
+
+    public WorkingCircle(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
 	
@@ -116,8 +117,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	difficultyNormal.setSelected(true);
     }
 
-    public static void main(String[] args){
-	FinalProject a = new FinalProject();
+    public static void main(String[] args) throws InterruptedException{
+	WorkingCircle a = new WorkingCircle();
     }
 
     public void menuSelection(String imageName){
@@ -208,6 +209,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	}else if (settingsBG2.isSelected()){
 	    bgSet = "2";
 	}
+	
     } 
 
     public void game(){
@@ -232,11 +234,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	buttonScreen.add(gameBackButton);
 
-	frame.add(gameScreen);
-	frame.add(scoreBoard);
-	frame.add(mouseSpace);
-	frame.add(buttonScreen);
-
+	// frame.add(gameScreen);
+	// frame.add(scoreBoard);
+	// frame.add(mouseSpace);
+	// frame.add(buttonScreen);
+	frame.add(new TestPanel());
+	System.out.println("added new test");
 	frame.setVisible(true);
 			 
 	bowlnum = 1;
@@ -247,6 +250,7 @@ public class FinalProject extends JFrame implements ActionListener{
 		score(bowlnum);
 	    }else if (diffSet.equals("normal")){
 		clock.start();
+	        ballMove();
 		score(bowlnum);
 	    }else if (diffSet.equals("hard")){
 		
@@ -259,6 +263,11 @@ public class FinalProject extends JFrame implements ActionListener{
     public void ballMove(){
 	repaint();
 	updateVectors();
+	try{
+	    Thread.sleep(10);
+	}catch(InterruptedException e){
+	    System.out.println("nooo");
+	}
     }
 
     public void score(int bowl){
@@ -288,37 +297,33 @@ public class FinalProject extends JFrame implements ActionListener{
     }
 
     public void paint(Graphics g){
+	//super.paint(g);
 	Graphics2D g2d = (Graphics2D) g;
+	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	g2d.setColor(new Color(0,204,204));
-	g2d.drawOval(ovalX, ovalY, ovalWidth, ovalHeight);
+	//g2d.fillOval(ovalX, ovalY, ovalWidth, ovalHeight);
+	g2d.drawOval(0,0, getWidth(), getHeight());
     }
     
     public void updateVectors(){
 	ovalX += ovalDx;
 	ovalY += ovalDy;
     }
-}
 
-class ImagePanel extends JPanel{
-    private Image img;
-
-    public ImagePanel(String img){
-	this(new ImageIcon(img).getImage());
-    }
-
-    public ImagePanel(Image img){
-	this.img = img;
-	Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
-	setPreferredSize(size);
-	setMinimumSize(size);
-	setMaximumSize(size);
-	setSize(size);
-	setLayout(null);
-    }
-
-    public void paintComponent(Graphics g){
-	g.drawImage(img, 0, 0, null);
-    }
 }
 
 
+class TestPanel extends JPanel{
+    public TestPanel(){
+	setBackground(Color.RED);
+	setSize(300,300);
+    }
+    @Override
+    public void paintComponent(Graphics g) {
+	System.out.println("PAINT SOMETHING!!!!");
+	super.paintComponent(g);
+	g.setColor(Color.BLUE);
+	g.fillOval(0,0,30,30);
+    }//end drawCircle
+
+}
