@@ -7,68 +7,68 @@ import javax.imageio.ImageIO;
 
 
 public class buttonScreen extends JPanel{
-    private int windSpeed = 10;
-    private String windDirection = "Center";
+    private int tiltSpeed = 10;
+    private String tiltDirection = "Middle";
     private int mass = 30;
 
-    private JPanel windP = new JPanel();
-    private JTextField wind = new JTextField(8);
+    private JPanel tiltP = new JPanel();
+    private JLabel tilt = new JLabel("");
 
-    private JPanel windDP = new JPanel();
-    private JTextField windD = new JTextField(10);
+    private JPanel tiltDP = new JPanel();
+    private JLabel tiltD = new JLabel("");
 
     private JPanel massWP = new JPanel();
-    private JTextField massW = new JTextField(8);
+    private JLabel massW = new JLabel("");
 
     public buttonScreen(){
 	setBackground(new Color(255,204,153));
 	setBounds(400,400,386,95);
 
-	wind.setHorizontalAlignment(SwingConstants.CENTER);
-	wind.setText("Speed: " + windSpeed + "mph");
-	windP.add(wind);
+	tilt.setHorizontalAlignment(SwingConstants.CENTER);
+	tilt.setText("Tilt: " + tiltSpeed + " to The " + tiltDirection);
+	tiltP.add(tilt);
 
-	windD.setHorizontalAlignment(SwingConstants.CENTER);
-	if (windDirection.equals("Right")){
-	    windD.setText("Direction: To Right");
-	}else if (windDirection.equals("Left")){
-	    windD.setText("Direction: To Left");
-	}else if (windDirection.equals("Center")){
-	    windD.setText("Direction: No Wind");
+	tiltD.setHorizontalAlignment(SwingConstants.CENTER);
+	if (tiltDirection.equals("Right")){
+	    tiltD.setText("  Tilt To Right  ");
+	}else if (tiltDirection.equals("Left")){
+	    tiltD.setText("  Tilt To Left  ");
+	}else if (tiltDirection.equals("Center")){
+	    tiltD.setText("    No Tilt     ");
 	}
-	windDP.add(windD);
+	tiltDP.add(tiltD);
 
 	massW.setHorizontalAlignment(SwingConstants.CENTER);
 	massW.setText("Mass: " + mass + "kg");
 	massWP.add(massW);
 
-	add(windP);
-	add(windDP);
+	add(tiltP);
+	add(tiltDP);
 	add(massWP);
     }
 
     public void setSpeed(int s){
-	windSpeed = s;
-	wind.setText("Speed: " + windSpeed + "mph");
+	tiltSpeed = s;
+	tilt.setText("Tilt: " + tiltSpeed + " to The " + tiltDirection);
 	revalidate();
     }
     public int getSpeed(){
-	return windSpeed;
+	return tiltSpeed;
     }
 
     public void setDirection(String d){
-	windDirection = d;
-	if (windDirection.equals("Right")){
-	    windD.setText("Direction: To Right");
-	}else if (windDirection.equals("Left")){
-	    windD.setText("Direction: To Left");
-	}else if (windDirection.equals("Center")){
-	    windD.setText("Direction: No Wind");
+	tiltDirection = d;
+	if (tiltDirection.equals("Right")){
+	    tiltD.setText("  Tilt To Right  ");
+	}else if (tiltDirection.equals("Left")){
+	    tiltD.setText("  Tilt To Left  ");
+	}else if (tiltDirection.equals("Middle")){
+	    tiltD.setText("    No Tilt     ");
 	}
 	revalidate();
     }
     public String getDirection(){
-	return windDirection;
+	return tiltDirection;
     }
 
     public void setMass(int m){
