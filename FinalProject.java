@@ -217,15 +217,23 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
 	if (difficultyEasy.isSelected()){
 	    diffSet = "Easy";
+	    buttonScreen1.setSpeed(0);
+	    buttonScreen1.setMass(10);
 	}else if (difficultyNormal.isSelected()){
-	    diffSet = "Normal";
+	    diffSet = "Normal";	    
+	    buttonScreen1.setSpeed(10);
+	    buttonScreen1.setMass(30);
 	}else if (difficultyHard.isSelected()){
 	    diffSet = "Hard";
+	    buttonScreen1.setSpeed(20);
+	    buttonScreen1.setMass(50);
 	}
 	if (settingsBG1.isSelected()){
 	    bgSet = 1;
+	    gameScreen1.setBackground(new Color(255,244,77));
 	}else if (settingsBG2.isSelected()){
 	    bgSet = 1;
+	    gameScreen1.setBackground(new Color(175,164,157));
 	}
 	
     } 
