@@ -11,7 +11,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private ImagePanel background;
 
     private int bowlnum;
-    private int[][]scores = new int[10][2];
+    private String[][]scores;
 
     //Main Menu Options */
     private JPanel start = new JPanel();
@@ -39,7 +39,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JRadioButton settingsBG1 = new JRadioButton("Background 1");
     private JRadioButton settingsBG2 = new JRadioButton("Background 2");
 
-    private String bgSet = "";
+    private int bgSet = 1;
     private JButton settingsBackButton = new JButton("Main Menu");
 
     //Difficulty Features */
@@ -127,6 +127,71 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.pack();
     }
 
+    public void instructions(){
+	menuSelection("instructions.jpg");
+	
+	instructionsBackButton.setPreferredSize(new Dimension(130, 20));
+	instructionsBack.add(instructionsBackButton);
+	instructionsBackButton.setActionCommand("mainmenu");
+	instructionsBackButton.addActionListener(this);
+	instructionsBack.setBounds(600,420,175,125);
+	
+	frame.add(instructionsBack);
+	frame.pack();
+    }
+
+    public void settings(){
+	if (bgSet == 1){
+	    menuSelection("settings1.jpg");
+	}else if (bgSet == 2){
+	    menuSelection("settings2.jpg");
+	}
+	
+	settingsOptions.add(settingsBG1);
+	settingsOptions.add(settingsBG2);
+	settingsMenu.add(settingsBG1);
+	settingsMenu.add(settingsBG2);
+	settingsMenu.setBounds(300,200,200,200);
+	
+	settingsBackButton.setPreferredSize(new Dimension(130,20));
+	settingsBack.add(settingsBackButton);
+	settingsBackButton.setActionCommand("mainmenu");
+	settingsBackButton.addActionListener(this);
+	settingsBack.setBounds(328,350,150,100);
+	
+	frame.add(settingsMenu);
+	frame.add(settingsBack);
+	frame.pack();
+    }
+
+    public void difficulty(){
+	if (diffSet.equals("Normal")){
+	    menuSelection("difficultyN.jpg");
+	}else if (diffSet.equals("Hard")){
+	    menuSelection("difficultyH.jpg");
+	}else if (diffSet.equals("Easy")){
+	    menuSelection("difficultyE.jpg");
+	}
+	
+	difficultyOptions.add(difficultyEasy);
+	difficultyOptions.add(difficultyNormal);
+	difficultyOptions.add(difficultyHard);
+	difficultyMenu.add(difficultyEasy);
+	difficultyMenu.add(difficultyNormal);
+	difficultyMenu.add(difficultyHard);
+	difficultyMenu.setBounds(340,180,100,200);
+	
+	difficultyBackButton.setPreferredSize(new Dimension(130,20));
+	difficultyBackButton.setActionCommand("mainmenu");
+	difficultyBackButton.addActionListener(this);
+	difficultyBack.add(difficultyBackButton);
+	difficultyBack.setBounds(315,350,150,100);
+	
+	frame.add(difficultyMenu);
+	frame.add(difficultyBack);
+	frame.pack();
+    }
+
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
 
@@ -134,56 +199,13 @@ public class FinalProject extends JFrame implements ActionListener{
 	    game();
 	}
 	if (action.equals("instructions")){
-	    menuSelection("instructions.jpg");
-
-	    instructionsBackButton.setPreferredSize(new Dimension(130, 20));
-	    instructionsBack.add(instructionsBackButton);
-	    instructionsBackButton.setActionCommand("mainmenu");
-	    instructionsBackButton.addActionListener(this);
-	    instructionsBack.setBounds(600,420,175,125);
-
-	    frame.add(instructionsBack);
-	    frame.pack();
+	    instructions();
 	}
 	if (action.equals("settings")){
-	    menuSelection("settings.jpg");
-
-	    settingsOptions.add(settingsBG1);
-	    settingsOptions.add(settingsBG2);
-	    settingsMenu.add(settingsBG1);
-	    settingsMenu.add(settingsBG2);
-	    settingsMenu.setBounds(300,200,200,200);
-
-	    settingsBackButton.setPreferredSize(new Dimension(130,20));
-	    settingsBack.add(settingsBackButton);
-	    settingsBackButton.setActionCommand("mainmenu");
-	    settingsBackButton.addActionListener(this);
-	    settingsBack.setBounds(328,350,150,100);
-
-       	    frame.add(settingsMenu);
-	    frame.add(settingsBack);
-	    frame.pack();
+	    settings();
 	}
 	if (action.equals("difficulty")){
-	    menuSelection("difficulty.jpg");
-
-	    difficultyOptions.add(difficultyEasy);
-	    difficultyOptions.add(difficultyNormal);
-	    difficultyOptions.add(difficultyHard);
-	    difficultyMenu.add(difficultyEasy);
-	    difficultyMenu.add(difficultyNormal);
-	    difficultyMenu.add(difficultyHard);
-	    difficultyMenu.setBounds(340,180,100,200);
-
-	    difficultyBackButton.setPreferredSize(new Dimension(130,20));
-	    difficultyBackButton.setActionCommand("mainmenu");
-	    difficultyBackButton.addActionListener(this);
-	    difficultyBack.add(difficultyBackButton);
-	    difficultyBack.setBounds(315,350,150,100);
-
-	    frame.add(difficultyMenu);
-	    frame.add(difficultyBack);
-	    frame.pack();
+	    difficulty();
 	}
 	if (action.equals("mainmenu")){
 	    menuSelection("mainmenu.jpg");
@@ -201,9 +223,9 @@ public class FinalProject extends JFrame implements ActionListener{
 	    diffSet = "hard";
 	}
 	if (settingsBG1.isSelected()){
-	    bgSet = "1";
+	    bgSet = 1;
 	}else if (settingsBG2.isSelected()){
-	    bgSet = "2";
+	    bgSet = 1;
 	}
 	
     } 
@@ -225,21 +247,46 @@ public class FinalProject extends JFrame implements ActionListener{
 
 	frame.setVisible(true);
 			 
-	bowlnum = 1;
-	scores = new int[10][2];
-	while (bowlnum <= 10){
+	bowlnum = 0;
+	scores = new String[10][3];
+	for (int i = 0; i < 10; i++){
+	    for (int x = 0; x < 3; x++){
+		scores[i][x] = "0";
+	    }
+	}
+
+	while (bowlnum < 10){
 	    if (diffSet.equals("easy")){	
-		score(bowlnum);
+		//	score(bowlnum, x, num);
 	    }else if (diffSet.equals("normal")){;
-		score(bowlnum);
+		//	score(bowlnum, x, num);
 	    }else if (diffSet.equals("hard")){
-		score(bowlnum);
+		//	score(bowlnum, x, num);
 	    }
 	    bowlnum+=1;
 	}
     }
 
-    public void score(int bowl){	
+    public void score(int bowlnum, int x, String num){
+	int holder = 0;
+	if (scores[bowlnum - 1][0].equals("X") || (scores[bowlnum - 2][0].equals("X"))){
+	    if (scores[bowlnum - 1][0].equals("X")){
+		holder = bowlnum - 1;
+		scores[holder][0] = "" + (Integer.parseInt(scores[holder][0]) + Integer.parseInt(scores[holder][0]));
+	    }else{
+		holder = bowlnum - 2;
+	    }
+	    scores[holder][2] = "" + (Integer.parseInt(scores[holder][2]) + Integer.parseInt(num));
+	}else if (scores[bowlnum - 1][1].equals("/")){
+	    scores[bowlnum - 1][2] = "" + (Integer.parseInt(scores[bowlnum - 1][2]) + Integer.parseInt(num));
+	}
+	if (num.equals("X")){
+	    scores[bowlnum][x] = "X";
+	}else if (num.equals("/")){
+	    scores[bowlnum][x] = "/";
+	}else{
+	    scores[bowlnum][x] = "" + (Integer.parseInt(num));
+	}
     }
 
     class CustomMouseListener implements MouseListener{
@@ -254,7 +301,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	public void mouseEntered(MouseEvent e){
 	    int x = getX();
 	    int y = getY();
-	    //  ("Mouse Entered: (" + e.getX() + ", " + e.getY() + ")");
 	}
 	public void mouseExited(MouseEvent e){
 	}
