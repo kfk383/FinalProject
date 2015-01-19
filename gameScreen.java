@@ -5,12 +5,13 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-public class GameScreen extends JPanel implements MouseListener,ActionListener{
+public class GameScreen extends JPanel implements MouseListener,ActionListener,Runnable{
 
     private boolean enter = true;
     
-    private int speed;
-    private int mass;
+    private int speed = 10;
+    private int mass= 10;
+    private int tilt = 0;
     
     private int ballDx;
     private int ballDy;
@@ -18,7 +19,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
     private int ballX = 130;
     private int ballY = 400;
     
-    private Timer clock = new Timer(100,this);
+    private Timer clock = new Timer(500,this);
 
     private String stage = "aim";
 
@@ -29,6 +30,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
 	enter = true;
 	ballX = 130;
 	ballY = 425;
+	clock.setInitialDelay(500);
 	clock.start();
     }
 
@@ -79,7 +81,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
 	    g.setColor(Color.RED);
 	    g.fillOval(40,10,12,12);
 	    g.fillOval(95,10,12,12);
-	    g.fillOval(150,10,12,12);
+	    g.fillOval(150,10,12,12);	
 	    g.fillOval(205,10,12,12);
 	    g.fillOval(68,40,12,12);
 	    g.fillOval(123,40,12,12);
@@ -91,7 +93,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
 	    g.setColor(Color.BLUE);
 	    g.drawOval(ballX,ballY,30,30);
 	    g.fillOval(ballX,ballY,30,30);
-	}
+	}System.out.println("working");
     }	    
 
     public void setSpeed(int x){
@@ -102,14 +104,18 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
 	mass = x;
     }
 
+    public void setTilt(int x){
+	tilt = x;
+    }
+
     public void updateVectors(){
 	ballX -= ballDx;
 	ballY -= ballDy;
     }
 
     public void setDxDy(){
-        ballDx = speed/10 + 1;
-	ballDy = 8 - (mass / 10);
+        ballDx  = 2 * tilt;
+	ballDy = speed/10 + 5 - mass/10;
     }
 
     public void setStage(String x){
@@ -138,13 +144,15 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
 	int x = ballX;
 	int y = ballY;
 	if (stage.equals("roll")){
-	    if (y > 0 && (x > 0 && x < 250)){
+	    while (y > 0 && (x > 0 && x < 250)){
 		setDxDy();
 		updateVectors();
 		repaint();
-	    }else{
-		stage = "aim";
 	    }
+	    setStage("aim");
+	    setY(400);
+	    setX(130);
+	    repaint();
 	}
     }
 
@@ -155,6 +163,10 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
 	if (action.equals("bowl")){
 	    stage = "roll";
 	}
+	if (stage.equals("aim")){
+	    clock.restart();
+	}
+	repaint();
     }
 
     public void mouseClicked(MouseEvent e){
@@ -205,5 +217,8 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener{
 	}
     }
     public void mouseExited(MouseEvent e){
+    }
+    public void run(){
+
     }
 }
