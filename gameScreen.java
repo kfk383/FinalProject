@@ -24,25 +24,73 @@ public class gameScreen extends JPanel implements MouseListener,ActionListener{
 
     public gameScreen(){
 	setBackground(new Color(255,244,77));
-	setBounds(50,0,300,495);
+	setBounds(75,0,250,495);
 	addMouseListener(this);
 	enter = true;
 	ballX = 130;
-	ballY = 400;
+	ballY = 425;
     }
 
     public void paintComponent(Graphics g){
 	super.paintComponent(g);
-	g.setColor(Color.BLUE);
+	g.setColor(Color.BLACK);
 	if (enter == true){
-	    ballX = 130;
-	    ballY = 400;
-	    g.drawOval(ballX,ballY,40,40);
-	    g.fillOval(ballX,ballY,40,40);
+	    ballX = 115;
+	    ballY = 425;
+	    g.drawOval(40,10,10,10);
+	    g.drawOval(95,10,10,10);
+	    g.drawOval(150,10,10,10);
+	    g.drawOval(205,10,10,10);
+	    g.drawOval(68,40,10,10);
+	    g.drawOval(123,40,10,10);
+	    g.drawOval(178,40,10,10);
+	    g.drawOval(95,70,10,10);
+	    g.drawOval(150,70,10,10);
+	    g.drawOval(123,100,10,10);
+
+	    g.setColor(Color.RED);
+	    g.fillOval(40,10,10,10);
+	    g.fillOval(95,10,10,10);
+	    g.fillOval(150,10,10,10);
+	    g.fillOval(205,10,10,10);
+	    g.fillOval(68,40,10,10);
+	    g.fillOval(123,40,10,10);
+	    g.fillOval(178,40,10,10);
+	    g.fillOval(95,70,10,10);
+	    g.fillOval(150,70,10,10);
+	    g.fillOval(123,100,10,10);
+
+	    g.setColor(Color.BLUE);
+	    g.drawOval(ballX,ballY,30,30);
+	    g.fillOval(ballX,ballY,30,30);
 	    enter = false;
 	}else{
-	g.drawOval(ballX,ballY,40,40);
-	g.fillOval(ballX,ballY,40,40);
+	    g.drawOval(40,10,10,10);
+	    g.drawOval(95,10,10,10);
+	    g.drawOval(150,10,10,10);
+	    g.drawOval(205,10,10,10);
+	    g.drawOval(68,40,10,10);
+	    g.drawOval(123,40,10,10);
+	    g.drawOval(178,40,10,10);
+	    g.drawOval(95,70,10,10);
+	    g.drawOval(150,70,10,10);
+	    g.drawOval(123,100,10,10);
+
+	    g.setColor(Color.RED);
+	    g.fillOval(40,10,10,10);
+	    g.fillOval(95,10,10,10);
+	    g.fillOval(150,10,10,10);
+	    g.fillOval(205,10,10,10);
+	    g.fillOval(68,40,10,10);
+	    g.fillOval(123,40,10,10);
+	    g.fillOval(178,40,10,10);
+	    g.fillOval(95,70,10,10);
+	    g.fillOval(150,70,10,10);
+	    g.fillOval(123,100,10,10);
+	    
+	    g.setColor(Color.BLUE);
+	    g.drawOval(ballX,ballY,30,30);
+	    g.fillOval(ballX,ballY,30,30);
 	}
     }	    
 
