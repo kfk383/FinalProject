@@ -5,33 +5,93 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-public class gameScreen extends JPanel implements ActionListener{
+public class gameScreen extends JPanel implements MouseListener,ActionListener{
+
+    private boolean enter = true;
 
     private int speed;
     private int mass;
- 
+    
     private int ballDx;
     private int ballDy;
-
+    
     private int ballX = 130;
     private int ballY = 400;
-
+    
     private String stage = "aim";
-
+    
     private Timer clock = new Timer(1000, this);
 
     public gameScreen(){
 	setBackground(new Color(255,244,77));
-	setBounds(50,0,300,495);
+	setBounds(75,0,250,495);
+	addMouseListener(this);
+	enter = true;
 	ballX = 130;
-	ballY = 400;
+	ballY = 425;
     }
 
     public void paintComponent(Graphics g){
 	super.paintComponent(g);
-	g.setColor(Color.BLUE);
-	g.drawOval(ballX,ballY,40,40);
-	g.fillOval(ballX,ballY,40,40);
+	g.setColor(Color.BLACK);
+	if (enter == true){
+	    ballX = 115;
+	    ballY = 425;
+	    g.drawOval(40,10,10,10);
+	    g.drawOval(95,10,10,10);
+	    g.drawOval(150,10,10,10);
+	    g.drawOval(205,10,10,10);
+	    g.drawOval(68,40,10,10);
+	    g.drawOval(123,40,10,10);
+	    g.drawOval(178,40,10,10);
+	    g.drawOval(95,70,10,10);
+	    g.drawOval(150,70,10,10);
+	    g.drawOval(123,100,10,10);
+
+	    g.setColor(Color.RED);
+	    g.fillOval(40,10,10,10);
+	    g.fillOval(95,10,10,10);
+	    g.fillOval(150,10,10,10);
+	    g.fillOval(205,10,10,10);
+	    g.fillOval(68,40,10,10);
+	    g.fillOval(123,40,10,10);
+	    g.fillOval(178,40,10,10);
+	    g.fillOval(95,70,10,10);
+	    g.fillOval(150,70,10,10);
+	    g.fillOval(123,100,10,10);
+
+	    g.setColor(Color.BLUE);
+	    g.drawOval(ballX,ballY,30,30);
+	    g.fillOval(ballX,ballY,30,30);
+	    enter = false;
+	}else{
+	    g.drawOval(40,10,10,10);
+	    g.drawOval(95,10,10,10);
+	    g.drawOval(150,10,10,10);
+	    g.drawOval(205,10,10,10);
+	    g.drawOval(68,40,10,10);
+	    g.drawOval(123,40,10,10);
+	    g.drawOval(178,40,10,10);
+	    g.drawOval(95,70,10,10);
+	    g.drawOval(150,70,10,10);
+	    g.drawOval(123,100,10,10);
+
+	    g.setColor(Color.RED);
+	    g.fillOval(40,10,10,10);
+	    g.fillOval(95,10,10,10);
+	    g.fillOval(150,10,10,10);
+	    g.fillOval(205,10,10,10);
+	    g.fillOval(68,40,10,10);
+	    g.fillOval(123,40,10,10);
+	    g.fillOval(178,40,10,10);
+	    g.fillOval(95,70,10,10);
+	    g.fillOval(150,70,10,10);
+	    g.fillOval(123,100,10,10);
+	    
+	    g.setColor(Color.BLUE);
+	    g.drawOval(ballX,ballY,30,30);
+	    g.fillOval(ballX,ballY,30,30);
+	}
     }	    
 
     public void setSpeed(int x){
@@ -61,7 +121,7 @@ public class gameScreen extends JPanel implements ActionListener{
     public void setDx(int x){
 	ballDx = x;
     }
-
+    
     public void setDy(int x){
 	ballDy = x;
     }
@@ -82,7 +142,56 @@ public class gameScreen extends JPanel implements ActionListener{
 	}
     }
 
+
     public void actionPerformed(ActionEvent e){
 
+    }
+
+    public void mouseClicked(MouseEvent e){
+    }
+    public void mousePressed(MouseEvent e){
+	int x = e.getX();
+	int y = e.getY();
+	if (stage.equals("aim")){
+	    if (x <= 250 && x >= 25){
+		setX(x);
+		repaint();
+	    }
+	}else if (stage.equals("roll")){
+	    if (ballX < x){
+		ballDx += 2;
+	    }else if (ballX > x){
+		ballDx -= 2;
+	    }
+	}
+    }
+    public void mouseReleased(MouseEvent e){
+	int x = e.getX();
+	int y = e.getY();
+	if (stage.equals("aim")){
+	    if (x <= 250 && x >= 25){
+		setX(x);
+		repaint();
+	    }
+	}else if (stage.equals("roll")){
+	    if (ballX < x){
+		ballDx += 2;
+	    }else if (ballX > x){
+		ballDx -= 2;
+	    }
+	}
+    }
+    public void mouseEntered(MouseEvent e){
+	int x = e.getX();
+	int y = e.getY();
+	if (stage.equals("roll")){
+	    if (ballX < x){
+		ballDx += 1;
+	    }else if (ballX > x){
+		ballDx -= 1;
+	    }
+	}
+    }
+    public void mouseExited(MouseEvent e){
     }
 }
