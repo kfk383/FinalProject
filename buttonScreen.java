@@ -7,34 +7,34 @@ import javax.imageio.ImageIO;
 
 
 public class buttonScreen extends JPanel{
-    private int tiltSpeed = 10;
-    private String tiltDirection = "Middle";
+    private int tiltSpeed = 10; 
+    private String tiltDirection = "Center";
     private int mass = 30;
 
     private JPanel tiltP = new JPanel();
-    private JLabel tilt = new JLabel("");
+    private JTextField tilt = new JTextField(8);
 
     private JPanel tiltDP = new JPanel();
-    private JLabel tiltD = new JLabel("");
+    private JTextField tiltD = new JTextField(10);
 
     private JPanel massWP = new JPanel();
-    private JLabel massW = new JLabel("");
+    private JTextField massW = new JTextField(8);
 
     public buttonScreen(){
 	setBackground(new Color(255,204,153));
 	setBounds(400,400,386,95);
 
 	tilt.setHorizontalAlignment(SwingConstants.CENTER);
-	tilt.setText("Tilt: " + tiltSpeed + " to The " + tiltDirection);
+	tilt.setText("Speed: " + tiltSpeed + "mph");
 	tiltP.add(tilt);
 
 	tiltD.setHorizontalAlignment(SwingConstants.CENTER);
 	if (tiltDirection.equals("Right")){
-	    tiltD.setText("  Tilt To Right  ");
+	    tiltD.setText("Direction: To Right");
 	}else if (tiltDirection.equals("Left")){
-	    tiltD.setText("  Tilt To Left  ");
+	    tiltD.setText("Direction: To Left");
 	}else if (tiltDirection.equals("Center")){
-	    tiltD.setText("    No Tilt     ");
+	    tiltD.setText("Direction: No Tilt");
 	}
 	tiltDP.add(tiltD);
 
@@ -49,7 +49,7 @@ public class buttonScreen extends JPanel{
 
     public void setSpeed(int s){
 	tiltSpeed = s;
-	tilt.setText("Tilt: " + tiltSpeed + " to The " + tiltDirection);
+	tilt.setText("Speed: " + tiltSpeed + "mph");
 	revalidate();
     }
     public int getSpeed(){
@@ -59,11 +59,11 @@ public class buttonScreen extends JPanel{
     public void setDirection(String d){
 	tiltDirection = d;
 	if (tiltDirection.equals("Right")){
-	    tiltD.setText("  Tilt To Right  ");
+	    tiltD.setText("Direction: To Right");
 	}else if (tiltDirection.equals("Left")){
-	    tiltD.setText("  Tilt To Left  ");
-	}else if (tiltDirection.equals("Middle")){
-	    tiltD.setText("    No Tilt     ");
+	    tiltD.setText("Direction: To Left");
+	}else if (tiltDirection.equals("Center")){
+	    tiltD.setText("Direction: No Tilt");
 	}
 	revalidate();
     }

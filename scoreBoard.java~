@@ -216,6 +216,20 @@ public class scoreBoard extends JPanel{
 	insert();
     }
 
+    public void insert(){
+	display1.setText("" + scores[0][2]);
+	display2.setText("" + scores[1][2]);
+	display3.setText("" + scores[2][2]);
+	display4.setText("" + scores[3][2]);
+	display5.setText("" + scores[4][2]);
+	display6.setText("" + scores[5][2]);
+	display7.setText("" + scores[6][2]);
+	display8.setText("" + scores[7][2]);
+	display9.setText("" + scores[8][2]);
+	display10.setText("" + scores[9][2]);
+	
+    }
+
     public void setScore1(int s){
 	score1 = s;
 	display1.setText(score1 + "");

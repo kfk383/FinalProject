@@ -214,6 +214,7 @@ public class scoreBoard extends JPanel{
 	    scores[bowlnum][x] = "" + (Integer.parseInt(num));
 	}
 	insert();
+	revalidate();
     }
 
     public void insert(){
@@ -227,93 +228,5 @@ public class scoreBoard extends JPanel{
 	display8.setText("" + scores[7][2]);
 	display9.setText("" + scores[8][2]);
 	display10.setText("" + scores[9][2]);
-	
-    }
-
-    public void setScore1(int s){
-	score1 = s;
-	display1.setText(score1 + "");
-	revalidate();
-    }
-    public int getScore1(){
-	return score1;
-    }
-
-    public void setScore2(int s){
-	score2 = s;
-	display2.setText(score2 + "");
-	revalidate();
-    }
-    public int getScore2(){
-	return score2;
-    }
-
-    public void setScore3(int s){
-	score3 = s;
-	display3.setText(score3 + "");
-	revalidate();
-    }
-    public int getScore3(){
-	return score3;
-    }
-
-    public void setScore4(int s){
-	score4 = s;
-	display4.setText(score4 + "");
-	revalidate();
-    }
-    public int getScore4(){
-	return score4;
-    }
-
-    public void setScore5(int s){
-	score5 = s;
-	display5.setText(score5 + "");
-	revalidate();
-    }
-    public int getScore5(){
-	return score5;
-    }
-    public void setScore6(int s){
-	score6 = s;
-	display6.setText(score6 + "");
-	revalidate();
-    }
-    public int getScore6(){
-	return score6;
-    }
-
-    public void setScore7(int s){
-	score7 = s;
-	display7.setText(score7 + "");
-	revalidate();
-    }
-    public int getScore7(){
-	return score7;
-    }
-    public void setScore8(int s){
-	score8 = s;
-	display8.setText(score8 + "");
-	revalidate();
-    }
-    public int getScore8(){
-	return score8;
-    }
-
-    public void setScore9(int s){
-	score9 = s;
-	display9.setText(score9 + "");
-	revalidate();
-    }
-    public int getScore9(){
-	return score9;
-    }
-    public void setScore10(int s){
-	score10 = s;
-	display10.setText(score10 + "");
-	revalidate();
-    }
-    public int getScore10(){
-	return score10;
     }
 }

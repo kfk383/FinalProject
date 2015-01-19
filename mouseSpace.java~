@@ -16,8 +16,8 @@ public class mouseSpace extends JPanel implements MouseListener,ActionListener{
     private int ballDx;
     private int ballDy;
     
-    private int ballX = 175;
-    private int ballY = 100;
+    private int ballX = 130;
+    private int ballY = 400;
     
     private String stage = "aim";
     
@@ -28,16 +28,16 @@ public class mouseSpace extends JPanel implements MouseListener,ActionListener{
 	setBounds(400,150,386,250);
 	addMouseListener(this);
 	enter = true;
-	ballX = 175;
-	ballY = 100;
+	ballX = 130;
+	ballY = 200;
     }
 
     public void paintComponent(Graphics g){
 	super.paintComponent(g);
 	g.setColor(Color.BLUE);
 	if (enter == true){
-	    ballX = 175;
-	    ballY = 100;
+	    ballX = 130;
+	    ballY = 400;
 	    g.drawOval(ballX,ballY,40,40);
 	    g.fillOval(ballX,ballY,40,40);
 	    enter = false;
