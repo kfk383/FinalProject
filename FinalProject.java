@@ -1,8 +1,9 @@
-import java.awt.event.*;
-import javax.swing.*;
-import java.awt.*;
 import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.logging.*;
+
+import javax.swing.*;
 import javax.imageio.ImageIO;
 
 public class FinalProject extends JFrame implements ActionListener{
@@ -113,6 +114,7 @@ public class FinalProject extends JFrame implements ActionListener{
 
 	settingsBG1.setSelected(true);
 	difficultyNormal.setSelected(true);
+	PlaySong.play("Fireflies.wav");
     }
 
     public static void main(String[] args) throws InterruptedException{

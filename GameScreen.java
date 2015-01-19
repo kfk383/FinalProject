@@ -149,16 +149,16 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.drawOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.RED);
-	    g2d.fillOval(pin1X,pin1Y,12,12);
-	    g2d.fillOval(pin2X,pin2Y,12,12);
-	    g2d.fillOval(pin3X,pin3Y,12,12);
-	    g2d.fillOval(pin4X,pin4Y,12,12);
-	    g2d.fillOval(pin5X,pin5Y,12,12);
-	    g2d.fillOval(pin6X,pin6Y,12,12);
-	    g2d.fillOval(pin7X,pin7Y,12,12);
-	    g2d.fillOval(pin8X,pin8Y,12,12);
-	    g2d.fillOval(pin9X,pin9Y,12,12);
-	    g2d.fillOval(pin10X,pin9Y,12,12);
+	    if (draw1) g2d.fillOval(pin1X,pin1Y,12,12);
+	    if (draw2) g2d.fillOval(pin2X,pin2Y,12,12);
+	    if (draw3) g2d.fillOval(pin3X,pin3Y,12,12);
+	    if (draw4) g2d.fillOval(pin4X,pin4Y,12,12);
+	    if (draw5) g2d.fillOval(pin5X,pin5Y,12,12);
+	    if (draw6) g2d.fillOval(pin6X,pin6Y,12,12);
+	    if (draw7) g2d.fillOval(pin7X,pin7Y,12,12);
+	    if (draw8) g2d.fillOval(pin8X,pin8Y,12,12);
+	    if (draw9) g2d.fillOval(pin9X,pin9Y,12,12);
+	    if (draw10) g2d.fillOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
 	    g2d.drawOval(ballX,ballY,30,30);
