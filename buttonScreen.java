@@ -26,6 +26,7 @@ public class buttonScreen extends JPanel{
 
 	tilt.setHorizontalAlignment(SwingConstants.CENTER);
 	tilt.setText("Speed: " + tiltSpeed + "mph");
+	tilt.setEditable(false);
 	tiltP.add(tilt);
 
 	tiltD.setHorizontalAlignment(SwingConstants.CENTER);
@@ -36,10 +37,12 @@ public class buttonScreen extends JPanel{
 	}else if (tiltDirection.equals("Center")){
 	    tiltD.setText("Direction: No Tilt");
 	}
+	tiltD.setEditable(false);
 	tiltDP.add(tiltD);
 
 	massW.setHorizontalAlignment(SwingConstants.CENTER);
 	massW.setText("Mass: " + mass + "kg");
+	massW.setEditable(false);
 	massWP.add(massW);
 
 	add(tiltP);
