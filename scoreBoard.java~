@@ -6,7 +6,7 @@ import java.util.logging.*;
 import javax.imageio.ImageIO;
 
 
-public class ScoreBoard extends JPanel{
+public class scoreBoard extends JPanel{
     
     private String[][] scores;
 
@@ -65,7 +65,7 @@ public class ScoreBoard extends JPanel{
     private JTextField name10 = new JTextField(30);
     private JTextField display10 = new JTextField(30);
 
-    public ScoreBoard(){
+    public scoreBoard(){
 	setBackground(new Color(0,77,204));
 	setBounds(400,0,386,150);
 

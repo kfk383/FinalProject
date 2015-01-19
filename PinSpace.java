@@ -5,13 +5,13 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-public class mouseSpace extends JPanel implements ActionListener, MouseListener{
+public class PinSpace extends JPanel implements MouseListener,ActionListener{
 
     private Timer clock = new Timer(1000, this);
 
-    public mouseSpace(){
+    public PinSpace(){
 	setBackground(new Color(204,153,0));
-	setBounds(400,150,386,250);
+	setBounds(400,151,386,250);
 	addMouseListener(this);
 	repaint();
 	clock.start();
@@ -22,29 +22,28 @@ public class mouseSpace extends JPanel implements ActionListener, MouseListener{
         Graphics2D g2d = (Graphics2D)g;
 
 	g2d.setColor(Color.BLACK);
-	g2d.drawOval(450,170,15,15);
-	/**	g.drawOval(475,160,15,15);
-	g.drawOval(530,10,15,15);
-	g.drawOval(585,10,15,15);
-	g.drawOval(448,40,15,15);
-	g.drawOval(503,40,15,15);
-	g.drawOval(558,40,15,15);
-	g.drawOval(475,70,15,15);
-	g.drawOval(530,70,15,15);
-	g.drawOval(503,100,15,15);
+	g2d.drawOval(90,40,18,18);
+	g.drawOval(150,40,18,18);
+	g.drawOval(210,40,18,18);
+	g.drawOval(270,40,18,18);
+	g.drawOval(120,80,18,18);
+	g.drawOval(180,80,18,18);
+	g.drawOval(240,80,18,18);
+	g.drawOval(150,120,18,18);
+	g.drawOval(210,120,18,18);
+	g.drawOval(180,160,18,18);
 	
 	g.setColor(Color.RED);
-	g.fillOval(420,10,15,15);
-	g.fillOval(475,10,15,15);
-	g.fillOval(530,10,15,15);
-	g.fillOval(585,10,15,15);
-	g.fillOval(448,40,15,15);
-	g.fillOval(503,40,15,15);
-	g.fillOval(558,40,15,15);
-	g.fillOval(475,70,15,15);
-	g.fillOval(530,70,15,15);
-	g.fillOval(503,100,15,15);
-	*/
+	g2d.fillOval(90,40,18,18);
+	g.fillOval(150,40,18,18);
+	g.fillOval(210,40,18,18);
+	g.fillOval(270,40,18,18);
+	g.fillOval(120,80,18,18);
+	g.fillOval(180,80,18,18);
+	g.fillOval(240,80,18,18);
+	g.fillOval(150,120,18,18);
+	g.fillOval(210,120,18,18);
+	g.fillOval(180,160,18,18);
     }	    
 
     public void actionPerformed(ActionEvent e){
