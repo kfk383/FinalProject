@@ -54,10 +54,10 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficultyBackButton = new JButton("Main Menu");
 
     //Starting the Game! */
-    private gameScreen gameScreen1 = new gameScreen();
-    private scoreBoard scoreBoard1 = new scoreBoard();
-    private mouseSpace mouseSpace1 = new mouseSpace();
-    private buttonScreen buttonScreen1 = new buttonScreen();
+    private GameScreen gameScreen1 = new GameScreen();
+    private ScoreBoard scoreBoard1 = new ScoreBoard();
+    private PinSpace pinSpace1 = new PinSpace();
+    private ButtonScreen buttonScreen1 = new ButtonScreen();
 
     private JButton gameBackButton = new JButton("Main Menu");
 
@@ -255,7 +255,7 @@ public class FinalProject extends JFrame implements ActionListener{
 
 	frame.add(gameScreen1);
 	frame.add(scoreBoard1);
-	frame.add(mouseSpace1);
+	frame.add(pinSpace1);
 	frame.add(buttonScreen1);
 
 	frame.setVisible(true);

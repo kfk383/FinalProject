@@ -56,7 +56,7 @@ public class FinalProject extends JFrame implements ActionListener{
     //Starting the Game! */
     private GameScreen gameScreen1 = new GameScreen();
     private ScoreBoard scoreBoard1 = new ScoreBoard();
-    private PinSpace pinSpace1 = new PinSpace();
+    private PinSpace pinSpace1 = new PinSpace(gameScreen1);
     private ButtonScreen buttonScreen1 = new ButtonScreen();
 
     private JButton gameBackButton = new JButton("Main Menu");
@@ -265,13 +265,10 @@ public class FinalProject extends JFrame implements ActionListener{
 	while (bowlnum < 10){
 	    if (diffSet.equals("easy")){
 		gameScreen1.animate();
-		//	score(bowlnum, x, num);
 	    }else if (diffSet.equals("normal")){
 		gameScreen1.animate();
-		//	score(bowlnum, x, num);
 	    }else if (diffSet.equals("hard")){
 		gameScreen1.animate();
-		//	score(bowlnum, x, num);
 	    }
 	    bowlnum+=1;
 	}

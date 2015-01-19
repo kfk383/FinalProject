@@ -41,7 +41,7 @@ public class ButtonScreen extends JPanel{
 	tiltDP.add(tiltD);
 
 	massW.setHorizontalAlignment(SwingConstants.CENTER);
-	massW.setText("Mass: " + mass + "kg");
+	massW.setText("Mass: " + mass + "lb");
 	massW.setEditable(false);
 	massWP.add(massW);
 
@@ -76,7 +76,7 @@ public class ButtonScreen extends JPanel{
 
     public void setMass(int m){
 	mass = m;
-	massW.setText("Mass: " + mass + "kg");
+	massW.setText("Mass: " + mass + "lb");
 	revalidate();
     }
     public int getMass(){
