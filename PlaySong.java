@@ -30,7 +30,7 @@ public class PlaySong extends Thread {
                 DataLine.Info info = new DataLine.Info(Clip.class, format);
                 clip = (Clip) AudioSystem.getLine(info);
                 clip.open(stream);
-                clip.loop(0);
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
                 do{
                     try{
                         Thread.sleep(100);

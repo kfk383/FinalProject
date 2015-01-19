@@ -11,19 +11,19 @@ public class PlaySong extends Thread {
     private final String resource;
 
     public static void play(String resource) {
-        Thread t = new SoundThread(resource);
+        Thread t = new PlaySong(resource);
         t.setDaemon(true);
         t.start();
     }
 
-    public SoundThread(String resource) {
+    public PlaySong(String resource) {
         this.resource = resource;
     }
 
     public void run(){
         Clip clip = null;
         try {
-            InputStream in = SoundThread.class.getClassLoader().getResourceAsStream(resource);
+            InputStream in = PlaySong.class.getClassLoader().getResourceAsStream(resource);
             if (in != null){
                 AudioInputStream stream = AudioSystem.getAudioInputStream(in);
                 AudioFormat format = stream.getFormat();
@@ -39,14 +39,14 @@ public class PlaySong extends Thread {
                 } while(clip.isRunning());
             }
         }catch (Exception e) {
-            x.printStackTrace(System.out);
+            e.printStackTrace(System.out);
         }finally{
             try{
                 if(clip != null) {
                     clip.close();
                 }
             }catch(Exception e) {
-                x.printStackTrace(System.out);
+                e.printStackTrace(System.out);
             }
         }
     }
