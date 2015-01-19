@@ -4,17 +4,81 @@ import java.awt.*;
 import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
+import java.util.*;
 
 public class GameScreen extends JPanel implements MouseListener,ActionListener,Runnable{
 
-    private boolean enter = true;
-    
+    private Random r = new Random();
+
+    private boolean enter = true;    
+
+    private Boolean draw1 = true;
+    private Boolean draw2 = true;
+    private Boolean draw3 = true;
+    private Boolean draw4 = true;
+    private Boolean draw5 = true;
+    private Boolean draw6 = true;
+    private Boolean draw7 = true;
+    private Boolean draw8 = true;
+    private Boolean draw9 = true;
+    private Boolean draw10 = true;
+
     private int speed = 10;
     private int mass= 10;
     private int tilt = 0;
     
     private int ballDx;
     private int ballDy;
+
+    private int pin1Dx = 0;
+    private int pin1Dy = 0;
+    private int pin1X = 40;
+    private int pin1Y = 10;
+
+    private int pin2Dx = 0;
+    private int pin2Dy = 0;
+    private int pin2X = 95;
+    private int pin2Y = 10;
+
+    private int pin3Dx = 0;
+    private int pin3Dy = 0;
+    private int pin3X = 150;
+    private int pin3Y = 10;
+
+    private int pin4Dx = 0;
+    private int pin4Dy = 0;
+    private int pin4X = 205;
+    private int pin4Y = 10;
+
+    private int pin5Dx = 0;
+    private int pin5Dy = 0;
+    private int pin5X = 68;
+    private int pin5Y = 40;
+
+    private int pin6Dx = 0;
+    private int pin6Dy = 0;
+    private int pin6X = 123;
+    private int pin6Y = 40;
+
+    private int pin7Dx = 0;
+    private int pin7Dy = 0;
+    private int pin7X = 178;
+    private int pin7Y = 40;
+
+    private int pin8Dx = 0;
+    private int pin8Dy = 0;
+    private int pin8X = 95;
+    private int pin8Y = 70;
+
+    private int pin9Dx = 0;
+    private int pin9Dy = 0;
+    private int pin9X = 150;
+    private int pin9Y = 70;
+
+    private int pin10Dx = 0;
+    private int pin10Dy = 0;
+    private int pin10X = 123;
+    private int pin10Y = 100;
     
     private int ballX = 130;
     private int ballY = 400;
@@ -45,61 +109,93 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	if (enter == true){
 	    ballX = 115;
 	    ballY = 425;
-	    g2d.drawOval(40,10,12,12);
-	    g2d.drawOval(95,10,12,12);
-	    g2d.drawOval(150,10,12,12);
-	    g2d.drawOval(205,10,12,12);
-	    g2d.drawOval(68,40,12,12);
-	    g2d.drawOval(123,40,12,12);
-	    g2d.drawOval(178,40,12,12);
-	    g2d.drawOval(95,70,12,12);
-	    g2d.drawOval(150,70,12,12);
-	    g2d.drawOval(123,100,12,12);
+	    g2d.drawOval(pin1X,pin1Y,12,12);
+	    g2d.drawOval(pin2X,pin2Y,12,12);
+	    g2d.drawOval(pin3X,pin3Y,12,12);
+	    g2d.drawOval(pin4X,pin4Y,12,12);
+	    g2d.drawOval(pin5X,pin5Y,12,12);
+	    g2d.drawOval(pin6X,pin6Y,12,12);
+	    g2d.drawOval(pin7X,pin7Y,12,12);
+	    g2d.drawOval(pin8X,pin8Y,12,12);
+	    g2d.drawOval(pin9X,pin9Y,12,12);
+	    g2d.drawOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.RED);
-	    g2d.fillOval(40,10,12,12);
-	    g2d.fillOval(95,10,12,12);
-	    g2d.fillOval(150,10,12,12);
-	    g2d.fillOval(205,10,12,12);
-	    g2d.fillOval(68,40,12,12);
-	    g2d.fillOval(123,40,12,12);
-	    g2d.fillOval(178,40,12,12);
-	    g2d.fillOval(95,70,12,12);
-	    g2d.fillOval(150,70,12,12);
-	    g2d.fillOval(123,100,12,12);
+	    g2d.fillOval(pin1X,pin1Y,12,12);
+	    g2d.fillOval(pin2X,pin2Y,12,12);
+	    g2d.fillOval(pin3X,pin3Y,12,12);
+	    g2d.fillOval(pin4X,pin4Y,12,12);
+	    g2d.fillOval(pin5X,pin5Y,12,12);
+	    g2d.fillOval(pin6X,pin6Y,12,12);
+	    g2d.fillOval(pin7X,pin7Y,12,12);
+	    g2d.fillOval(pin8X,pin8Y,12,12);
+	    g2d.fillOval(pin9X,pin9Y,12,12);
+	    g2d.fillOval(pin10X,pin9Y,12,12);
+
 	    g2d.setColor(Color.BLUE);
 	    g2d.drawOval(ballX,ballY,30,30);
 	    g2d.fillOval(ballX,ballY,30,30);
 	    enter = false;
 	}else{
-	    g2d.drawOval(40,10,12,12);
-	    g2d.drawOval(95,10,12,12);
-	    g2d.drawOval(150,10,12,12);
-	    g2d.drawOval(205,10,12,12);
-	    g2d.drawOval(68,40,12,12);
-	    g2d.drawOval(123,40,12,12);
-	    g2d.drawOval(178,40,12,12);
-	    g2d.drawOval(95,70,12,12);
-	    g2d.drawOval(150,70,12,12);
-	    g2d.drawOval(123,100,12,12);
+	    g2d.drawOval(pin1X,pin1Y,12,12);
+	    g2d.drawOval(pin2X,pin2Y,12,12);
+	    g2d.drawOval(pin3X,pin3Y,12,12);
+	    g2d.drawOval(pin4X,pin4Y,12,12);
+	    g2d.drawOval(pin5X,pin5Y,12,12);
+	    g2d.drawOval(pin6X,pin6Y,12,12);
+	    g2d.drawOval(pin7X,pin7Y,12,12);
+	    g2d.drawOval(pin8X,pin8Y,12,12);
+	    g2d.drawOval(pin9X,pin9Y,12,12);
+	    g2d.drawOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.RED);
-	    g2d.fillOval(40,10,12,12);
-	    g2d.fillOval(95,10,12,12);
-	    g2d.fillOval(150,10,12,12);	
-	    g2d.fillOval(205,10,12,12);
-	    g2d.fillOval(68,40,12,12);
-	    g2d.fillOval(123,40,12,12);
-	    g2d.fillOval(178,40,12,12);
-	    g2d.fillOval(95,70,12,12);
-	    g2d.fillOval(150,70,12,12);
-	    g2d.fillOval(123,100,12,12);
-	    
-	    g.setColor(Color.BLUE);
-	    g.drawOval(ballX,ballY,30,30);
-	    g.fillOval(ballX,ballY,30,30);
+	    g2d.fillOval(pin1X,pin1Y,12,12);
+	    g2d.fillOval(pin2X,pin2Y,12,12);
+	    g2d.fillOval(pin3X,pin3Y,12,12);
+	    g2d.fillOval(pin4X,pin4Y,12,12);
+	    g2d.fillOval(pin5X,pin5Y,12,12);
+	    g2d.fillOval(pin6X,pin6Y,12,12);
+	    g2d.fillOval(pin7X,pin7Y,12,12);
+	    g2d.fillOval(pin8X,pin8Y,12,12);
+	    g2d.fillOval(pin9X,pin9Y,12,12);
+	    g2d.fillOval(pin10X,pin9Y,12,12);
+
+	    g2d.setColor(Color.BLUE);
+	    g2d.drawOval(ballX,ballY,30,30);
+	    g2d.fillOval(ballX,ballY,30,30);
 	}
     }	    
+    
+    public void setDraw1(Boolean x){
+	draw1 = x;
+    }
+    public void setDraw2(Boolean x){
+	draw2 = x;
+    }   
+    public void setDraw3(Boolean x){
+	draw3 = x;
+    }   
+    public void setDraw4(Boolean x){
+	draw4 = x;
+    }    
+    public void setDraw5(Boolean x){
+	draw5 = x;
+    }   
+    public void setDraw6(Boolean x){
+	draw6 = x;
+    }    
+    public void setDraw7(Boolean x){
+	draw7 = x;
+    }    
+    public void setDraw8(Boolean x){
+	draw8 = x;
+    }    
+    public void setDraw9(Boolean x){
+	draw9 = x;
+    }   
+    public void setDraw10(Boolean x){
+	draw10 = x;
+    }
 
     public void setSpeed(int x){
 	speed = x;
