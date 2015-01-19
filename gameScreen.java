@@ -24,7 +24,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     private String stage = "aim";
 
     public GameScreen(){
-	setBackground(new Color(255,244,77));
+	setBackground(new Color(255,215,0));
 	setBounds(75,0,250,495);
 	addMouseListener(this);
 	enter = true;
@@ -36,62 +36,67 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     public void paintComponent(Graphics g){
 	super.paintComponent(g);
 	g.setColor(Color.BLACK);
+	Graphics2D g2d = (Graphics2D) g;
+	
+	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+			     RenderingHints.VALUE_ANTIALIAS_ON); 
+
 	if (enter == true){
 	    ballX = 115;
 	    ballY = 425;
-	    g.drawOval(40,10,12,12);
-	    g.drawOval(95,10,12,12);
-	    g.drawOval(150,10,12,12);
-	    g.drawOval(205,10,12,12);
-	    g.drawOval(68,40,12,12);
-	    g.drawOval(123,40,12,12);
-	    g.drawOval(178,40,12,12);
-	    g.drawOval(95,70,12,12);
-	    g.drawOval(150,70,12,12);
-	    g.drawOval(123,100,12,12);
+	    g2d.drawOval(40,10,12,12);
+	    g2d.drawOval(95,10,12,12);
+	    g2d.drawOval(150,10,12,12);
+	    g2d.drawOval(205,10,12,12);
+	    g2d.drawOval(68,40,12,12);
+	    g2d.drawOval(123,40,12,12);
+	    g2d.drawOval(178,40,12,12);
+	    g2d.drawOval(95,70,12,12);
+	    g2d.drawOval(150,70,12,12);
+	    g2d.drawOval(123,100,12,12);
 
-	    g.setColor(Color.RED);
-	    g.fillOval(40,10,12,12);
-	    g.fillOval(95,10,12,12);
-	    g.fillOval(150,10,12,12);
-	    g.fillOval(205,10,12,12);
-	    g.fillOval(68,40,12,12);
-	    g.fillOval(123,40,12,12);
-	    g.fillOval(178,40,12,12);
-	    g.fillOval(95,70,12,12);
-	    g.fillOval(150,70,12,12);
-	    g.fillOval(123,100,12,12);
-	    g.setColor(Color.BLUE);
-	    g.drawOval(ballX,ballY,30,30);
-	    g.fillOval(ballX,ballY,30,30);
+	    g2d.setColor(Color.RED);
+	    g2d.fillOval(40,10,12,12);
+	    g2d.fillOval(95,10,12,12);
+	    g2d.fillOval(150,10,12,12);
+	    g2d.fillOval(205,10,12,12);
+	    g2d.fillOval(68,40,12,12);
+	    g2d.fillOval(123,40,12,12);
+	    g2d.fillOval(178,40,12,12);
+	    g2d.fillOval(95,70,12,12);
+	    g2d.fillOval(150,70,12,12);
+	    g2d.fillOval(123,100,12,12);
+	    g2d.setColor(Color.BLUE);
+	    g2d.drawOval(ballX,ballY,30,30);
+	    g2d.fillOval(ballX,ballY,30,30);
 	    enter = false;
 	}else{
-	    g.drawOval(40,10,12,12);
-	    g.drawOval(95,10,12,12);
-	    g.drawOval(150,10,12,12);
-	    g.drawOval(205,10,12,12);
-	    g.drawOval(68,40,12,12);
-	    g.drawOval(123,40,12,12);
-	    g.drawOval(178,40,12,12);
-	    g.drawOval(95,70,12,12);
-	    g.drawOval(150,70,12,12);
-	    g.drawOval(123,100,12,12);
+	    g2d.drawOval(40,10,12,12);
+	    g2d.drawOval(95,10,12,12);
+	    g2d.drawOval(150,10,12,12);
+	    g2d.drawOval(205,10,12,12);
+	    g2d.drawOval(68,40,12,12);
+	    g2d.drawOval(123,40,12,12);
+	    g2d.drawOval(178,40,12,12);
+	    g2d.drawOval(95,70,12,12);
+	    g2d.drawOval(150,70,12,12);
+	    g2d.drawOval(123,100,12,12);
 
-	    g.setColor(Color.RED);
-	    g.fillOval(40,10,12,12);
-	    g.fillOval(95,10,12,12);
-	    g.fillOval(150,10,12,12);	
-	    g.fillOval(205,10,12,12);
-	    g.fillOval(68,40,12,12);
-	    g.fillOval(123,40,12,12);
-	    g.fillOval(178,40,12,12);
-	    g.fillOval(95,70,12,12);
-	    g.fillOval(150,70,12,12);
-	    g.fillOval(123,100,12,12);
+	    g2d.setColor(Color.RED);
+	    g2d.fillOval(40,10,12,12);
+	    g2d.fillOval(95,10,12,12);
+	    g2d.fillOval(150,10,12,12);	
+	    g2d.fillOval(205,10,12,12);
+	    g2d.fillOval(68,40,12,12);
+	    g2d.fillOval(123,40,12,12);
+	    g2d.fillOval(178,40,12,12);
+	    g2d.fillOval(95,70,12,12);
+	    g2d.fillOval(150,70,12,12);
+	    g2d.fillOval(123,100,12,12);
 	    
-	    g.setColor(Color.BLUE);
-	    g.drawOval(ballX,ballY,30,30);
-	    g.fillOval(ballX,ballY,30,30);
+	    g2d.setColor(Color.BLUE);
+	    g2d.drawOval(ballX,ballY,30,30);
+	    g2d.fillOval(ballX,ballY,30,30);
 	}System.out.println("working");
     }	    
 

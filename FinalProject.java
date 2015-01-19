@@ -59,6 +59,9 @@ public class FinalProject extends JFrame implements ActionListener{
     private PinSpace pinSpace1 = new PinSpace(gameScreen1);
     private ButtonScreen buttonScreen1 = new ButtonScreen();
 
+    private JPanel gutter1 = new JPanel();
+    private JPanel gutter2 = new JPanel();
+
     private JButton gameBackButton = new JButton("Main Menu");
 
     public FinalProject(){
@@ -160,6 +163,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	frame.add(settingsMenu);
 	frame.add(settingsBack);
+	frame.getContentPane().setBackground(Color.GREEN);
 	frame.pack();
     }
 
@@ -235,10 +239,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
 	if (settingsBG1.isSelected()){
 	    bgSet = 1;
-	    gameScreen1.setBackground(new Color(255,244,77));
+	    gameScreen1.setBackground(new Color(255,215,0));
+	    pinSpace1.setBackground(new Color(255,140,0));
 	}else if (settingsBG2.isSelected()){
 	    bgSet = 2;
-	    gameScreen1.setBackground(new Color(175,164,157));
+	    gameScreen1.setBackground(new Color(135,206,235));
+	    pinSpace1.setBackground(new Color(0,191,255));
 	}
 	
     } 
@@ -246,6 +252,12 @@ public class FinalProject extends JFrame implements ActionListener{
     public void game(){
 	frame.getContentPane().removeAll();
 	frame.getContentPane().repaint();
+
+	gutter1.setBackground(new Color(0,100,0));
+	gutter1.setBounds(0,0,75,495);
+
+	gutter2.setBackground(new Color(0,100,0));
+	gutter2.setBounds(325,0,75,495);
 
 	gameBackButton.setPreferredSize(new Dimension(130, 20));
 	gameBackButton.setActionCommand("mainmenu");
@@ -257,6 +269,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.add(scoreBoard1);
 	frame.add(pinSpace1);
 	frame.add(buttonScreen1);
+	frame.add(gutter1);
+	frame.add(gutter2);
 
 	frame.setVisible(true);
 			 
