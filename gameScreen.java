@@ -18,10 +18,11 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     
     private int ballX = 130;
     private int ballY = 400;
-    
-    public Thread t = new Thread();
 
     private String stage = "aim";
+    
+    public Thread t = new Thread();
+    public Thread t2 = new Thread();
 
     public GameScreen(){
 	setBackground(new Color(255,244,77));
@@ -92,7 +93,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g.setColor(Color.BLUE);
 	    g.drawOval(ballX,ballY,30,30);
 	    g.fillOval(ballX,ballY,30,30);
-	}System.out.println("working");
+	}
     }	    
 
     public void setSpeed(int x){
@@ -114,7 +115,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 
     public void setDxDy(){
         ballDx  = 2 * tilt;
-	ballDy = speed/10 + 5 - mass/10;
+	ballDy = speed/10 + 6 - mass/10;
     }
 
     public void setStage(String x){
@@ -140,22 +141,18 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     }
 
     public void animate(){
-	int x = ballX;
-	int y = ballY;
 	if (stage.equals("roll")){
-	    while (y > 0 && (x > 0 && x < 250)){
-		System.out.println("looping");
+	    while (ballY > 10 && ballX > 0 && ballX < 250){
 		setDxDy();
 		updateVectors();
-		repaint();
+	        paintComponent(this.getGraphics());
 		try{
-		    t.sleep(500);
+		    t.sleep(100);
 		}catch(InterruptedException e){
 
 		}
 	    }
 	    setStage("aim");
-	    System.out.println(stage);
 	    setY(400);
 	    setX(130);
 	    repaint();
@@ -169,13 +166,14 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	if (action.equals("bowl")){
 	    stage = "roll";
 	}
-	repaint();
+        paintComponent(this.getGraphics());
     }
 
     public void mouseClicked(MouseEvent e){
 
     }
     public void mousePressed(MouseEvent e){
+	System.out.println("a");
 	int x = e.getX();
 	int y = e.getY();
 	if (stage.equals("aim")){
