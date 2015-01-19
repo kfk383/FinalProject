@@ -153,7 +153,7 @@ public class gameScreen extends JPanel implements MouseListener,ActionListener{
 	int x = e.getX();
 	int y = e.getY();
 	if (stage.equals("aim")){
-	    if (x <= 250 && x >= 25){
+	    if (x <= 200 && x >= 25){
 		setX(x);
 		repaint();
 	    }
@@ -163,13 +163,14 @@ public class gameScreen extends JPanel implements MouseListener,ActionListener{
 	    }else if (ballX > x){
 		ballDx -= 2;
 	    }
+	    repaint();
 	}
     }
     public void mouseReleased(MouseEvent e){
 	int x = e.getX();
 	int y = e.getY();
 	if (stage.equals("aim")){
-	    if (x <= 250 && x >= 25){
+	    if (x <= 200 && x >= 25){
 		setX(x);
 		repaint();
 	    }
