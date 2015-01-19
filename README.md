@@ -1,21 +1,22 @@
 FinalProject - 2D Bowling
 =========================
-The goal of the project is to create a simple bowling game.
+The goal of the project is to create a simple bowling game using components of JPanel, JFrame, MouseListener, and ActionListener that will allow the player to interact with the program in a GUI.
 
 Features that will be utilized:
-- A main menu with buttons for game start, instructions, and settings.
-- Before launching the ball:
-   - Setting the power of launch
-   - Setting the position on the alley that the ball will be launched
-   - Setting that the ball will be launched from.
+- A main menu with buttons for game start, instructions, settings, and difficulty.
+- Factors that are set before launching the ball:
+   - Setting the power of launch.
+   - Setting the position on the alley that the ball will be launched.
+   - Note : You must accomodate for a built in "tilt" on the lane that will offset your launch to either side with varying degrees.
 - Upon launch:
    - The movement of the ball will be controlled by the computer mouse by some degree to allow for curve balls and a slight change of angle after launch.
-   - The view of the GUI will shift so that the striking of the ball with the pins at the end of the alley will be at a bird's eye view.
+   - Avoid going into the gutters, which are on either side of the lane. 
 
 This project will require:
-- The use of JPanel from a regular java program
+- The use of JPanel and various extensions from a regular java program
 - The calculation of effective angular movement while the ball is moving (and the implementation of this with the position of the ball in the GUI)
 - Knowledge of the rules of bowling
+- Use of simple animations and graphics.
  
 
 
@@ -70,16 +71,15 @@ January 14, 2015
 
 January 15, 2015
 - Further researched animations
+- Drew the bowling ball and started implementing MouseListener to its movement
 
 January 16, 2015
 - Circle made to be animated
 - Reorganized code
-
-January 17, 2015
 - Created backgrounds for all the different options of settings and difficulty
-- Made scoring algorithm
-- Primed settings and difficulty for implementation to the game
+- Wrote scoring algorithm
+- Implemented settings and background options into the game interface
 - Changed scoreboard to be compatible with changes made within the game
-
-January 18, 2015
-- 
+- Generated the subscreens inside of the game (gameScreen, mouseSpace, buttonScreen, scoreBoard)
+- Finished on moving the ball to different parts of the lane
+- Generated bowling pins at the end of the lane
