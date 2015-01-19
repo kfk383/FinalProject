@@ -19,7 +19,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     private int ballX = 130;
     private int ballY = 400;
     
-    private Timer clock = new Timer(500,this);
+    public Thread t = new Thread();
 
     private String stage = "aim";
 
@@ -30,8 +30,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	enter = true;
 	ballX = 130;
 	ballY = 425;
-	clock.setInitialDelay(500);
-	clock.start();
+	t.start();
     }
 
     public void paintComponent(Graphics g){
@@ -145,11 +144,18 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	int y = ballY;
 	if (stage.equals("roll")){
 	    while (y > 0 && (x > 0 && x < 250)){
+		System.out.println("looping");
 		setDxDy();
 		updateVectors();
 		repaint();
+		try{
+		    t.sleep(500);
+		}catch(InterruptedException e){
+
+		}
 	    }
 	    setStage("aim");
+	    System.out.println(stage);
 	    setY(400);
 	    setX(130);
 	    repaint();
@@ -162,9 +168,6 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	String action = e.getActionCommand();
 	if (action.equals("bowl")){
 	    stage = "roll";
-	}
-	if (stage.equals("aim")){
-	    clock.restart();
 	}
 	repaint();
     }
