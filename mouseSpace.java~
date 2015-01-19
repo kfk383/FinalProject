@@ -10,6 +10,8 @@ public class mouseSpace extends JPanel implements ActionListener, MouseListener{
     private Timer clock = new Timer(1000, this);
 
     public mouseSpace(){
+	setLayout(null);
+	setOpaque(true);
 	setBackground(new Color(204,153,0));
 	setBounds(400,150,386,250);
 	addMouseListener(this);
@@ -19,11 +21,10 @@ public class mouseSpace extends JPanel implements ActionListener, MouseListener{
 
     public void paintComponent(Graphics g){
 	super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D)g;
 
-	g2d.setColor(Color.BLACK);
-	g2d.drawOval(450,170,15,15);
-	/**	g.drawOval(475,160,15,15);
+	g.setColor(Color.BLACK);
+	g.drawOval(420,160,15,15);
+	g.drawOval(475,160,15,15);
 	g.drawOval(530,10,15,15);
 	g.drawOval(585,10,15,15);
 	g.drawOval(448,40,15,15);
@@ -44,20 +45,24 @@ public class mouseSpace extends JPanel implements ActionListener, MouseListener{
 	g.fillOval(475,70,15,15);
 	g.fillOval(530,70,15,15);
 	g.fillOval(503,100,15,15);
-	*/
     }	    
 
     public void actionPerformed(ActionEvent e){
 	repaint();
     }
     public void mouseClicked(MouseEvent e){
+
     }
     public void mousePressed(MouseEvent e){
+
     }
     public void mouseReleased(MouseEvent e){
+
     }
     public void mouseEntered(MouseEvent e){
+
     }
     public void mouseExited(MouseEvent e){
+
     }
 }
