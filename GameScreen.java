@@ -8,10 +8,15 @@ import java.util.*;
 
 public class GameScreen extends JPanel implements MouseListener,ActionListener,Runnable{
 
-    private Random r = new Random();
+    private Random r = new Random(1);
     private int bowlnum = 1;
     private int trial = 1;
     private boolean enter = true;    
+
+    private String[][]scores = new String[10][2];
+
+    private int a = 0;
+    private int b = 0;
 
     private Boolean draw1 = true;
     private Boolean draw2 = true;
@@ -100,6 +105,10 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	t.start();
     }
 
+    public String[][] getScores(){
+	return scores;
+    }
+
     public void paintComponent(Graphics g){
 	super.paintComponent(g);
 	g.setColor(Color.BLACK);
@@ -135,8 +144,8 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.fillOval(pin10X,pin10Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
-	    g2d.drawOval(ballX,ballY,30,30);
-	    g2d.fillOval(ballX,ballY,30,30);
+	    g2d.drawOval(ballX,ballY,40,40);
+	    g2d.fillOval(ballX,ballY,40,40);
 	    enter = false;
 	}else{
 	    g2d.drawOval(pin1X,pin1Y,12,12);
@@ -163,12 +172,12 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    if (draw10 || stage.equals("aim")) g2d.fillOval(pin10X,pin10Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
-	    g2d.drawOval(ballX,ballY,30,30);
-	    g2d.fillOval(ballX,ballY,30,30);
+	    g2d.drawOval(ballX,ballY,40,40);
+	    g2d.fillOval(ballX,ballY,40,40);
 	}
     }	    
   
-    public void counter(){
+    public void counter(int a1, int b1){
 	if (draw1 == false) counter++;
 	if (draw2 == false) counter++;
 	if (draw3 == false) counter++;
@@ -179,37 +188,81 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	if (draw8 == false) counter++;
 	if (draw9 == false) counter++;
 	if (draw10 == false) counter++;
-    }
-  
-    public void setDraw1(Boolean x){
-	draw1 = x;
-    }
-    public void setDraw2(Boolean x){
-	draw2 = x;
-    }   
-    public void setDraw3(Boolean x){
-	draw3 = x;
-    }   
-    public void setDraw4(Boolean x){
-	draw4 = x;
-    }    
-    public void setDraw5(Boolean x){
-	draw5 = x;
-    }   
-    public void setDraw6(Boolean x){
-	draw6 = x;
-    }    
-    public void setDraw7(Boolean x){
-	draw7 = x;
-    }    
-    public void setDraw8(Boolean x){
-	draw8 = x;
-    }    
-    public void setDraw9(Boolean x){
-	draw9 = x;
-    }   
-    public void setDraw10(Boolean x){
-	draw10 = x;
+	if (b == 1 && counter == 10){
+	    scores[a1][b1] = "/";
+	}else if (b1 == 0 && counter == 10){
+	    scores[a1][b1] = "X";
+	}else{
+	scores[a1][b1] = "" + counter;
+	}
+	if (b1 == 0){
+	    b += 1;
+	    stage = "aim";
+	}else if (b1 == 1){
+	    b = 0;
+	    a+= 1;
+	    draw1 = true;
+	    draw2 = true;
+	    draw3 = true;
+	    draw4 = true;
+	    draw5 = true;
+	    draw6 = true;
+	    draw7 = true;
+	    draw8 = true;
+	    draw9 = true;
+	    draw10 = true;
+	    
+	    pin1Dx = 0;
+	    pin1Dy = 0;
+	    pin1X = 40;
+	    pin1Y = 10;
+	    
+	    pin2Dx = 0;
+	    pin2Dy = 0;
+	    pin2X = 95;
+	    pin2Y = 10;
+	    
+	    pin3Dx = 0;
+	    pin3Dy = 0;
+	    pin3X = 150;
+	    pin3Y = 10;
+	    
+	    pin4Dx = 0;
+	    pin4Dy = 0;
+	    pin4X = 205;
+	    pin4Y = 10;
+	    
+	    pin5Dx = 0;
+	    pin5Dy = 0;
+	    pin5X = 68;
+	    pin5Y = 40;
+
+	    pin6Dx = 0;
+	    pin6Dy = 0;
+	    pin6X = 123;
+	    pin6Y = 40;
+	    
+	    pin7Dx = 0;
+	    pin7Dy = 0;
+	    pin7X = 178;
+	    pin7Y = 40;
+	    
+	    pin8Dx = 0;
+	    pin8Dy = 0;
+	    pin8X = 95;
+	    pin8Y = 70;
+	    
+	    pin9Dx = 0;
+	    pin9Dy = 0;
+	    pin9X = 150;
+	    pin9Y = 70;
+	    
+	    pin10Dx = 0;
+	    pin10Dy = 0;
+	    pin10X = 123;
+	    pin10Y = 100;
+	}
+	    stage = "aim";
     }
 
     public void setSpeed(int x){
@@ -227,34 +280,42 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     public void updateVectors(){
 	ballX -= ballDx;
 	ballY -= ballDy;
+
 	pin1X -= pin1Dx;
 	pin1Y -= pin1Dy;
+
 	pin2X -= pin2Dx;
 	pin2Y -= pin2Dy;
+
 	pin3X -= pin3Dx;
 	pin3Y -= pin3Dy;
+
 	pin4X -= pin4Dx;
 	pin4Y -= pin4Dy;
+
 	pin5X -= pin5Dx;
 	pin5Y -= pin5Dy;
+
 	pin6X -= pin6Dx;
 	pin6Y -= pin6Dy;
+
 	pin7X -= pin7Dx;
 	pin7Y -= pin7Dy;
+
 	pin8X -= pin8Dx;
 	pin8Y -= pin8Dy;
+
 	pin9X -= pin9Dx;
 	pin9Y -= pin9Dy;
+
 	pin10X -= pin10Dx;
 	pin10Y -= pin10Dy;
     }
 
     public void setDxDy(){
-        ballDx  = 2 * tilt;
-	ballDy = speed/10 + 6 - mass/10;
-	if (r.nextInt(8) == 0){
-	    ballDx += (r.nextInt(8) - 4);
-	}
+	int curve = r.nextInt(3) - 1;
+        ballDx  = 2 * tilt + curve;
+	ballDy = speed/10 + 10 - mass/10;
     }
 
     public void setStage(String x){
@@ -281,7 +342,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 
     public void animate(){
 	if (stage.equals("roll")){
-	    while (ballY > 10 && ballX > 0 && ballX < 250){
+	    while (ballY > 0 && ballX > 0 && ballX < 250){
 		setDxDy();
 		updateVectors();
 	        paintComponent(this.getGraphics());
@@ -321,11 +382,12 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 
 		}
 	    }
-	    stage = "aim";
 	    setY(400);
 	    setX(130);
+	    stage = "aim";
 	    repaint();
 	}
+	stage = "aim";
     }
 
     public void collideMove(int i){
@@ -370,19 +432,19 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 		pin4Dx = ballDx - 2;
 		pin4Dy = r.nextInt(6) + 5;
 	    }else{
-		pin5Dx = r.nextInt(16) - 8;
-		pin5Dy = r.nextInt(6) + 5;
+		pin4Dx = r.nextInt(16) - 8;
+		pin4Dy = r.nextInt(6) + 5;
 	    }draw4 = false;
 	}else if (i == 5){
 	    if (ballDx > 0){
-		pin6Dx = ballDx + 2;
-		pin6Dy = r.nextInt(6) + 5;
+		pin5Dx = ballDx + 2;
+		pin5Dy = r.nextInt(6) + 5;
 	    }else if (ballDx < 0){
-		pin6Dx = ballDx - 2;
-		pin6Dy = r.nextInt(6) + 5;
+		pin5Dx = ballDx - 2;
+		pin5Dy = r.nextInt(6) + 5;
 	    }else{
-		pin6Dx = r.nextInt(16) - 8;
-		pin6Dy = r.nextInt(6) + 5;
+		pin5Dx = r.nextInt(16) - 8;
+		pin5Dy = r.nextInt(6) + 5;
 	    }draw5 = false;
 	}else if (i == 6){
 	    if (ballDx > 0){
@@ -443,7 +505,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     }
 
     public Rectangle ballBounds(){
-	return new Rectangle(ballX, ballY, 30,30);
+	return new Rectangle(ballX, ballY, 40,40);
     }
     public Rectangle getBounds1(){
 	return new Rectangle(pin1X,pin1Y,12,12);
@@ -508,10 +570,11 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     }
 
     public void actionPerformed(ActionEvent e){
-	animate();
 	String action = e.getActionCommand();
 	if (action.equals("bowl")){
 	    stage = "roll";
+	    animate();
+	    counter(a,b);
 	}
         paintComponent(this.getGraphics());
     }
