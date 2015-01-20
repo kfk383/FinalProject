@@ -84,6 +84,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     private int ballY = 400;
 
     private String stage = "aim";
+    private int counter = 0;
     
     public Thread t = new Thread();
     public Thread t2 = new Thread();
@@ -149,23 +150,36 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.drawOval(pin10X,pin10Y,12,12);
 
 	    g2d.setColor(Color.RED);
-	    if (draw1) g2d.fillOval(pin1X,pin1Y,12,12);
-	    if (draw2) g2d.fillOval(pin2X,pin2Y,12,12);
-	    if (draw3) g2d.fillOval(pin3X,pin3Y,12,12);
-	    if (draw4) g2d.fillOval(pin4X,pin4Y,12,12);
-	    if (draw5) g2d.fillOval(pin5X,pin5Y,12,12);
-	    if (draw6) g2d.fillOval(pin6X,pin6Y,12,12);
-	    if (draw7) g2d.fillOval(pin7X,pin7Y,12,12);
-	    if (draw8) g2d.fillOval(pin8X,pin8Y,12,12);
-	    if (draw9) g2d.fillOval(pin9X,pin9Y,12,12);
-	    if (draw10) g2d.fillOval(pin10X,pin9Y,12,12);
+	    if (draw1 || stage.equals("aim")) g2d.fillOval(pin1X,pin1Y,12,12);
+	    if (draw2 || stage.equals("aim")) g2d.fillOval(pin2X,pin2Y,12,12);
+	    if (draw3 || stage.equals("aim")) g2d.fillOval(pin3X,pin3Y,12,12);
+	    if (draw4 || stage.equals("aim")) g2d.fillOval(pin4X,pin4Y,12,12);
+	    if (draw5 || stage.equals("aim")) g2d.fillOval(pin5X,pin5Y,12,12);
+	    if (draw6 || stage.equals("aim")) g2d.fillOval(pin6X,pin6Y,12,12);
+	    if (draw7 || stage.equals("aim")) g2d.fillOval(pin7X,pin7Y,12,12);
+	    if (draw8 || stage.equals("aim")) g2d.fillOval(pin8X,pin8Y,12,12);
+	    if (draw9 || stage.equals("aim")) g2d.fillOval(pin9X,pin9Y,12,12);
+	    if (draw10 || stage.equals("aim")) g2d.fillOval(pin10X,pin10Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
 	    g2d.drawOval(ballX,ballY,30,30);
 	    g2d.fillOval(ballX,ballY,30,30);
 	}
     }	    
-    
+  
+    public void counter(){
+	if (draw1 == false) counter++;
+	if (draw2 == false) counter++;
+	if (draw3 == false) counter++;
+	if (draw4 == false) counter++;
+	if (draw5 == false) counter++;
+	if (draw6 == false) counter++;
+	if (draw7 == false) counter++;
+	if (draw8 == false) counter++;
+	if (draw9 == false) counter++;
+	if (draw10 == false) counter++;
+    }
+  
     public void setDraw1(Boolean x){
 	draw1 = x;
     }
@@ -212,11 +226,34 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     public void updateVectors(){
 	ballX -= ballDx;
 	ballY -= ballDy;
+	pin1X -= pin1Dx;
+	pin1Y -= pin1Dy;
+	pin2X -= pin2Dx;
+	pin2Y -= pin2Dy;
+	pin3X -= pin3Dx;
+	pin3Y -= pin3Dy;
+	pin4X -= pin4Dx;
+	pin4Y -= pin4Dy;
+	pin5X -= pin5Dx;
+	pin5Y -= pin5Dy;
+	pin6X -= pin6Dx;
+	pin6Y -= pin6Dy;
+	pin7X -= pin7Dx;
+	pin7Y -= pin7Dy;
+	pin8X -= pin8Dx;
+	pin8Y -= pin8Dy;
+	pin9X -= pin9Dx;
+	pin9Y -= pin9Dy;
+	pin10X -= pin10Dx;
+	pin10Y -= pin10Dy;
     }
 
     public void setDxDy(){
         ballDx  = 2 * tilt;
 	ballDy = speed/10 + 6 - mass/10;
+	if (r.nextInt(8) == 0){
+	    ballDx += (r.nextInt(8) - 4);
+	}
     }
 
     public void setStage(String x){
@@ -247,19 +284,227 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 		setDxDy();
 		updateVectors();
 	        paintComponent(this.getGraphics());
+		if (collision1()){
+		    collideMove(1);
+		}
+		if (collision2()){
+		    collideMove(2);
+		}
+		if (collision3()){
+		    collideMove(3);
+		}
+		if (collision4()){
+		    collideMove(4);
+		}
+		if (collision5()){
+		    collideMove(5);
+		}
+		if (collision6()){
+		    collideMove(6);
+		}
+		if (collision7()){
+		    collideMove(7);
+		}
+		if (collision8()){
+		    collideMove(8);
+		}
+		if (collision9()){
+		    collideMove(9);
+		}
+		if (collision10()){
+		    collideMove(10);
+		}
 		try{
 		    t.sleep(100);
 		}catch(InterruptedException e){
 
 		}
 	    }
-	    setStage("aim");
+	    stage = "aim";
 	    setY(400);
 	    setX(130);
 	    repaint();
 	}
     }
 
+    public void collideMove(int i){
+	if (i == 1){
+	    if (ballDx > 0){
+		pin1Dx = ballDx + 2;
+		pin1Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin1Dx = ballDx - 2;
+		pin1Dy = r.nextInt(6) + 5;
+	    }else{
+		pin1Dx = r.nextInt(16) - 8;
+		pin1Dy = r.nextInt(6) + 5;
+	    }draw1 = false;
+	}else if (i == 2){
+	    if (ballDx > 0){
+		pin2Dx = ballDx + 2;
+		pin2Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin2Dx = ballDx - 2;
+		pin2Dy = r.nextInt(6) + 5;
+	    }else{
+		pin2Dx = r.nextInt(16) - 8;
+		pin2Dy = r.nextInt(6) + 5;
+	    }draw2 = false;
+	}else if (i == 3){
+	    if (ballDx > 0){
+		pin3Dx = ballDx + 2;
+		pin3Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin3Dx = ballDx - 2;
+		pin3Dy = r.nextInt(6) + 5;
+	    }else{
+		pin3Dx = r.nextInt(16) - 8;
+		pin3Dy = r.nextInt(6) + 5;
+	    }draw3 = false;
+	}else if (i == 4){
+	    if (ballDx > 0){
+		pin4Dx = ballDx + 2;
+		pin4Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin4Dx = ballDx - 2;
+		pin4Dy = r.nextInt(6) + 5;
+	    }else{
+		pin5Dx = r.nextInt(16) - 8;
+		pin5Dy = r.nextInt(6) + 5;
+	    }draw4 = false;
+	}else if (i == 5){
+	    if (ballDx > 0){
+		pin6Dx = ballDx + 2;
+		pin6Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin6Dx = ballDx - 2;
+		pin6Dy = r.nextInt(6) + 5;
+	    }else{
+		pin6Dx = r.nextInt(16) - 8;
+		pin6Dy = r.nextInt(6) + 5;
+	    }draw5 = false;
+	}else if (i == 6){
+	    if (ballDx > 0){
+		pin6Dx = ballDx + 2;
+		pin6Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin6Dx = ballDx - 2;
+		pin6Dy = r.nextInt(6) + 5;
+	    }else{
+		pin6Dx = r.nextInt(16) - 8;
+		pin6Dy = r.nextInt(6) + 5;
+	    }draw6 = false;
+	}else if (i == 7){
+	    if (ballDx > 0){
+		pin7Dx = ballDx + 2;
+		pin7Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin7Dx = ballDx - 2;
+		pin7Dy = r.nextInt(6) + 5;
+	    }else{
+		pin7Dx = r.nextInt(16) - 8;
+		pin7Dy = r.nextInt(6) + 5;
+	    }draw7 = false;
+	}else if (i == 8){
+	    if (ballDx > 0){
+		pin8Dx = ballDx + 2;
+		pin8Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin8Dx = ballDx - 2;
+		pin8Dy = r.nextInt(6);
+	    }else{
+		pin8Dx = r.nextInt(16) - 8;
+		pin8Dy = r.nextInt(6);
+	    }draw8 = false;
+	}else if (i == 9){
+	    if (ballDx > 0){
+		pin9Dx = ballDx + 2;
+		pin9Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin9Dx = ballDx - 2;
+		pin9Dy = r.nextInt(6) + 5;
+	    }else{
+		pin9Dx = r.nextInt(16) - 8;
+		pin9Dy = r.nextInt(6) + 5;
+	    }draw9 = false;
+	}else if (i == 10){
+	    if (ballDx > 0){
+		pin10Dx = ballDx + 2;
+		pin10Dy = r.nextInt(6) + 5;
+	    }else if (ballDx < 0){
+		pin10Dx = ballDx - 2;
+		pin10Dy = r.nextInt(6) + 5;
+	    }else{
+		pin10Dx = r.nextInt(16) - 8;
+		pin10Dy = r.nextInt(6) + 5;
+	    }draw10 = false;
+	}
+    }
+
+    public Rectangle ballBounds(){
+	return new Rectangle(ballX, ballY, 30,30);
+    }
+    public Rectangle getBounds1(){
+	return new Rectangle(pin1X,pin1Y,12,12);
+    }
+    public Rectangle getBounds2(){
+	return new Rectangle(pin2X,pin2Y,12,12);
+    }
+    public Rectangle getBounds3(){
+	return new Rectangle(pin3X,pin3Y,12,12);
+    }
+    public Rectangle getBounds4(){
+	return new Rectangle(pin4X,pin4Y,12,12);
+    }
+    public Rectangle getBounds5(){
+	return new Rectangle(pin5X,pin5Y,12,12);
+    }
+    public Rectangle getBounds6(){
+	return new Rectangle(pin6X,pin6Y,12,12);
+    }
+    public Rectangle getBounds7(){
+	return new Rectangle(pin7X,pin7Y,12,12);
+    }
+    public Rectangle getBounds8(){
+	return new Rectangle(pin8X,pin8Y,12,12);
+    }
+    public Rectangle getBounds9(){
+	return new Rectangle(pin9X,pin9Y,12,12);
+    }
+    public Rectangle getBounds10(){
+	return new Rectangle(pin10X,pin10Y,12,12);
+    }
+
+    public Boolean collision1(){
+	return ballBounds().intersects(getBounds1());
+    }
+    public Boolean collision2(){
+	return ballBounds().intersects(getBounds2());
+    }    
+    public Boolean collision3(){
+	return ballBounds().intersects(getBounds3());
+    }   
+    public Boolean collision4(){
+	return ballBounds().intersects(getBounds4());
+    }   
+    public Boolean collision5(){
+	return ballBounds().intersects(getBounds5());
+    }    
+    public Boolean collision6(){
+	return ballBounds().intersects(getBounds6());
+    }    
+    public Boolean collision7(){
+	return ballBounds().intersects(getBounds7());
+    }   
+    public Boolean collision8(){
+	return ballBounds().intersects(getBounds8());
+    }   
+    public Boolean collision9(){
+	return ballBounds().intersects(getBounds9());
+    }    
+    public Boolean collision10(){
+	return ballBounds().intersects(getBounds10());
+    }
 
     public void actionPerformed(ActionEvent e){
 	animate();
@@ -274,7 +519,6 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 
     }
     public void mousePressed(MouseEvent e){
-	System.out.println("a");
 	int x = e.getX();
 	int y = e.getY();
 	if (stage.equals("aim")){
@@ -282,13 +526,6 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 		setX(x);
 		repaint();
 	    }
-	}else if (stage.equals("roll")){
-	    if (ballX < x){
-		ballDx += 2;
-	    }else if (ballX > x){
-		ballDx -= 2;
-	    }
-	    repaint();
 	}
     }
     public void mouseReleased(MouseEvent e){
@@ -299,24 +536,9 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 		setX(x);
 		repaint();
 	    }
-	}else if (stage.equals("roll")){
-	    if (ballX < x){
-		ballDx += 2;
-	    }else if (ballX > x){
-		ballDx -= 2;
-	    }
 	}
     }
     public void mouseEntered(MouseEvent e){
-	int x = e.getX();
-	int y = e.getY();
-	if (stage.equals("roll")){
-	    if (ballX < x){
-		ballDx += 1;
-	    }else if (ballX > x){
-		ballDx -= 1;
-	    }
-	}
     }
     public void mouseExited(MouseEvent e){
     }
