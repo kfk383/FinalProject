@@ -9,7 +9,8 @@ import java.util.*;
 public class GameScreen extends JPanel implements MouseListener,ActionListener,Runnable{
 
     private Random r = new Random();
-
+    private int bowlnum = 1;
+    private int trial = 1;
     private boolean enter = true;    
 
     private Boolean draw1 = true;
@@ -150,7 +151,6 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.drawOval(pin10X,pin10Y,12,12);
 
 	    g2d.setColor(Color.RED);
-<<<<<<< HEAD
 	    if (draw1 || stage.equals("aim")) g2d.fillOval(pin1X,pin1Y,12,12);
 	    if (draw2 || stage.equals("aim")) g2d.fillOval(pin2X,pin2Y,12,12);
 	    if (draw3 || stage.equals("aim")) g2d.fillOval(pin3X,pin3Y,12,12);
@@ -161,18 +161,6 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    if (draw8 || stage.equals("aim")) g2d.fillOval(pin8X,pin8Y,12,12);
 	    if (draw9 || stage.equals("aim")) g2d.fillOval(pin9X,pin9Y,12,12);
 	    if (draw10 || stage.equals("aim")) g2d.fillOval(pin10X,pin10Y,12,12);
-=======
-	    if (draw1) g2d.fillOval(pin1X,pin1Y,12,12);
-	    if (draw2) g2d.fillOval(pin2X,pin2Y,12,12);
-	    if (draw3) g2d.fillOval(pin3X,pin3Y,12,12);
-	    if (draw4) g2d.fillOval(pin4X,pin4Y,12,12);
-	    if (draw5) g2d.fillOval(pin5X,pin5Y,12,12);
-	    if (draw6) g2d.fillOval(pin6X,pin6Y,12,12);
-	    if (draw7) g2d.fillOval(pin7X,pin7Y,12,12);
-	    if (draw8) g2d.fillOval(pin8X,pin8Y,12,12);
-	    if (draw9) g2d.fillOval(pin9X,pin9Y,12,12);
-	    if (draw10) g2d.fillOval(pin10X,pin10Y,12,12);
->>>>>>> 6e1e1b3248eb1e0f4558545c11f54a9b702b95ca
 
 	    g2d.setColor(Color.BLUE);
 	    g2d.drawOval(ballX,ballY,30,30);
