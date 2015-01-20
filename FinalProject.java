@@ -165,7 +165,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	frame.add(settingsMenu);
 	frame.add(settingsBack);
-	frame.getContentPane().setBackground(Color.GREEN);
 	frame.pack();
     }
 
@@ -199,6 +198,7 @@ public class FinalProject extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
+	SoundEffects.play("Options.wav");
 
 	if (action.equals("start")){
 	    game();
