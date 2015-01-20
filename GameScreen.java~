@@ -118,7 +118,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.drawOval(pin7X,pin7Y,12,12);
 	    g2d.drawOval(pin8X,pin8Y,12,12);
 	    g2d.drawOval(pin9X,pin9Y,12,12);
-	    g2d.drawOval(pin10X,pin10Y,12,12);
+	    g2d.drawOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.RED);
 	    g2d.fillOval(pin1X,pin1Y,12,12);
@@ -130,7 +130,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.fillOval(pin7X,pin7Y,12,12);
 	    g2d.fillOval(pin8X,pin8Y,12,12);
 	    g2d.fillOval(pin9X,pin9Y,12,12);
-	    g2d.fillOval(pin10X,pin10Y,12,12);
+	    g2d.fillOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
 	    g2d.drawOval(ballX,ballY,30,30);
@@ -146,7 +146,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.drawOval(pin7X,pin7Y,12,12);
 	    g2d.drawOval(pin8X,pin8Y,12,12);
 	    g2d.drawOval(pin9X,pin9Y,12,12);
-	    g2d.drawOval(pin10X,pin10Y,12,12);
+	    g2d.drawOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.RED);
 	    if (draw1) g2d.fillOval(pin1X,pin1Y,12,12);
@@ -158,7 +158,7 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    if (draw7) g2d.fillOval(pin7X,pin7Y,12,12);
 	    if (draw8) g2d.fillOval(pin8X,pin8Y,12,12);
 	    if (draw9) g2d.fillOval(pin9X,pin9Y,12,12);
-	    if (draw10) g2d.fillOval(pin10X,pin10Y,12,12);
+	    if (draw10) g2d.fillOval(pin10X,pin9Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
 	    g2d.drawOval(ballX,ballY,30,30);

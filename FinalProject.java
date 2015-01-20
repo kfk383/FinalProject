@@ -165,7 +165,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	frame.add(settingsMenu);
 	frame.add(settingsBack);
-	frame.getContentPane().setBackground(Color.GREEN);
 	frame.pack();
     }
 
