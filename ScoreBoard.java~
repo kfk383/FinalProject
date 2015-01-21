@@ -8,8 +8,7 @@ import javax.imageio.ImageIO;
 
 public class ScoreBoard extends JPanel{
     
-    private int[] scores = new int[10];
-    private int total = 0;
+    private String[][] scores;
 
     private Box top1 = Box.createHorizontalBox();
     private Box top2 = Box.createHorizontalBox();
@@ -186,38 +185,48 @@ public class ScoreBoard extends JPanel{
 	add(top1);
 	add(top2);
 
-	scores = new int[10];
+	scores = new String[10][3];
 	for (int i = 0; i < 10; i++){
-		scores[i] = 0;
+	    for (int x = 0; x < 3; x++){
+		scores[i][x] = "0";
+	    }
 	}
     }
 
-    public void score(int[][]data){
-	for (int i = 0; i < data.length; i++){
-	    scores[i] = data[i][1];
-	    if (i > 0 && (data[i][0] == 10 || data[i][1] == 10)){
-		scores[i] = 10;
+    public void score(int bowlnum, int x, String num){
+	int holder = 0;
+	if (scores[bowlnum - 1][0].equals("X") || (scores[bowlnum - 2][0].equals("X"))){
+	    if (scores[bowlnum - 1][0].equals("X")){
+		holder = bowlnum - 1;
+		scores[holder][0] = "" + (Integer.parseInt(scores[holder][0]) + Integer.parseInt(scores[holder][0]));
+	    }else{
+		holder = bowlnum - 2;
 	    }
-	    if (i > 0 && (data[i - 1][1] == 10 || data[i - 1][0] == 10)){
-		scores[i - 1] += scores[i];
-	    }
-	    if (i > 1 && (data[i - 2][0] == 10)){
-		scores[i - 2] += scores[i];
-	    }
+	    scores[holder][2] = "" + (Integer.parseInt(scores[holder][2]) + Integer.parseInt(num));
+	}else if (scores[bowlnum - 1][1].equals("/")){
+	    scores[bowlnum - 1][2] = "" + (Integer.parseInt(scores[bowlnum - 1][2]) + Integer.parseInt(num));
+	}
+	if (num.equals("X")){
+	    scores[bowlnum][x] = "X";
+	}else if (num.equals("/")){
+	    scores[bowlnum][x] = "/";
+	}else{
+	    scores[bowlnum][x] = "" + (Integer.parseInt(num));
 	}
 	insert();
+	revalidate();
     }
 
     public void insert(){
-	display1.setText("" + scores[0]);
-	display2.setText("" + scores[1]);
-	display3.setText("" + scores[2]);
-	display4.setText("" + scores[3]);
-	display5.setText("" + scores[4]);
-	display6.setText("" + scores[5]);
-	display7.setText("" + scores[6]);
-	display8.setText("" + scores[7]);
-	display9.setText("" + scores[8]);
-	display10.setText("" + scores[9]);
+	display1.setText("" + scores[0][2]);
+	display2.setText("" + scores[1][2]);
+	display3.setText("" + scores[2][2]);
+	display4.setText("" + scores[3][2]);
+	display5.setText("" + scores[4][2]);
+	display6.setText("" + scores[5][2]);
+	display7.setText("" + scores[6][2]);
+	display8.setText("" + scores[7][2]);
+	display9.setText("" + scores[8][2]);
+	display10.setText("" + scores[9][2]);
     }
 }

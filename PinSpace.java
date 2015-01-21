@@ -108,9 +108,7 @@ public class PinSpace extends JPanel implements MouseListener,ActionListener{
 	repaint();
 	String action = e.getActionCommand();
 	try{
-	    if (action.equals("bowl")){
-		System.out.println("bowl");
-	    }
+	    
 	}catch(NullPointerException a){
 	    
 	}

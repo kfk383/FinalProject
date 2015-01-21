@@ -11,9 +11,14 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     private Random r = new Random(1);
     private int bowlnum = 1;
     private int trial = 1;
-    private boolean enter = true;    
+    private int handicap = 0;
+    private boolean enter = true;   
 
-    private String[][]scores = new String[10][2];
+    private PinSpace pinSpace = new PinSpace(this);
+    private ScoreBoard scoreBoard = new ScoreBoard();
+    private ButtonScreen buttonScreen = new ButtonScreen();
+
+    private int[][]scores = new int[10][2];
 
     private int a = 0;
     private int b = 0;
@@ -105,7 +110,17 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	t.start();
     }
 
-    public String[][] getScores(){
+    public void addButtons(ButtonScreen b){
+	buttonScreen = b;
+    }
+    public void addPins(PinSpace p){
+	pinSpace = p;
+    }
+    public void addScore(ScoreBoard s){
+	scoreBoard = s;
+    }
+
+    public int[][] getScores(){
 	return scores;
     }
 
@@ -144,8 +159,8 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    g2d.fillOval(pin10X,pin10Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
-	    g2d.drawOval(ballX,ballY,40,40);
-	    g2d.fillOval(ballX,ballY,40,40);
+	    g2d.drawOval(ballX,ballY,40 + handicap,40 + handicap);
+	    g2d.fillOval(ballX,ballY,40 + handicap,40 + handicap);
 	    enter = false;
 	}else{
 	    g2d.drawOval(pin1X,pin1Y,12,12);
@@ -172,12 +187,12 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    if (draw10 || stage.equals("aim")) g2d.fillOval(pin10X,pin10Y,12,12);
 
 	    g2d.setColor(Color.BLUE);
-	    g2d.drawOval(ballX,ballY,40,40);
-	    g2d.fillOval(ballX,ballY,40,40);
+	    g2d.drawOval(ballX,ballY,40 + handicap,40 + handicap);
+	    g2d.fillOval(ballX,ballY,40 + handicap,40 + handicap);
 	}
     }	    
   
-    public void counter(int a1, int b1){
+    public int[][] countPoints(int a1, int b1){
 	if (draw1 == false) counter++;
 	if (draw2 == false) counter++;
 	if (draw3 == false) counter++;
@@ -189,11 +204,13 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	if (draw9 == false) counter++;
 	if (draw10 == false) counter++;
 	if (b == 1 && counter == 10){
-	    scores[a1][b1] = "/";
+	    scores[a1][b1] = 10;
 	}else if (b1 == 0 && counter == 10){
-	    scores[a1][b1] = "X";
+	    scores[a1][b1] = 10;
+	    scores[a1][b1 + 1] = 0;
+	    b+= 1;
 	}else{
-	scores[a1][b1] = "" + counter;
+	scores[a1][b1] = counter;
 	}
 	if (b1 == 0){
 	    b += 1;
@@ -263,6 +280,19 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    pin10Y = 100;
 	}
 	    stage = "aim";
+	    return scores;
+    }
+
+    public void setHandicap(int a){
+	handicap = a;
+    }
+
+    public int getBowlnumA(){
+	return a;
+    }
+
+    public int getBowlnumB(){
+	return b;
     }
 
     public void setSpeed(int x){
@@ -322,6 +352,10 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	if (x.equals("aim") || x.equals("roll")){
 	    stage = x;
 	}
+    }
+
+    public String getStage(){
+	return stage;
     }
 
     public void setDx(int x){
@@ -574,7 +608,19 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	if (action.equals("bowl")){
 	    stage = "roll";
 	    animate();
-	    counter(a,b);
+	    int[][]data = countPoints(a,b);
+	    scoreBoard.score(data);
+	    pinSpace.setDraw1(draw1);
+	    pinSpace.setDraw2(draw2);
+	    pinSpace.setDraw3(draw3);	    
+	    pinSpace.setDraw4(draw4);	    
+	    pinSpace.setDraw5(draw5);	    
+	    pinSpace.setDraw6(draw6);	   
+	    pinSpace.setDraw7(draw7);	
+	    pinSpace.setDraw8(draw8);	  
+	    pinSpace.setDraw9(draw9);	  
+	    pinSpace.setDraw10(draw10);
+	    pinSpace.repaint();
 	}
         paintComponent(this.getGraphics());
     }

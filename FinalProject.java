@@ -2,6 +2,7 @@ import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.logging.*;
+import java.util.*;
 
 import javax.swing.*;
 import javax.imageio.ImageIO;
@@ -12,6 +13,8 @@ public class FinalProject extends JFrame implements ActionListener{
     private ImagePanel background;
 
     private int bowlnum;
+
+    private Random r = new Random();
 
     //Main Menu Options */
     private JPanel start = new JPanel();
@@ -267,6 +270,50 @@ public class FinalProject extends JFrame implements ActionListener{
 	
 	buttonScreen1.add(gameBackButton);
 
+	if (diffSet.equals("Easy")){
+	    gameScreen1.setSpeed(10);
+	    gameScreen1.setMass(10);
+	    gameScreen1.setTilt(0);
+	    gameScreen1.setHandicap(8);
+	    buttonScreen1.setSpeed(0);
+	    buttonScreen1.setMass(10);
+	    buttonScreen1.setDirection("Center");
+	}else if (diffSet.equals("Normal")){
+	    int num = r.nextInt(15) + 5;
+	    int num1 = r.nextInt(5) - 2;
+	    gameScreen1.setSpeed(num);
+	    gameScreen1.setMass(15);
+	    buttonScreen1.setSpeed(num);
+	    buttonScreen1.setMass(15);
+	    String direction = "";
+	    if (num1 < 0){
+		direction = "Right";
+	    }else if (num1 > 0){
+		direction = "Left";
+	    }else direction = "Center";
+	    buttonScreen1.setDirection(direction);
+	    gameScreen1.setHandicap(4);
+	}else if (diffSet.equals("Hard")){
+	    int num = r.nextInt(20) + 5;
+	    int num1 = r.nextInt(9) - 4;
+	    gameScreen1.setSpeed(num);
+	    gameScreen1.setMass(20);
+	    buttonScreen1.setSpeed(num);
+	    buttonScreen1.setMass(20);
+	    String direction = "";
+	    if (num1 < 0){
+		direction = "Right";
+	    }else if (num1 > 0){
+		direction = "Left";
+	    }else direction = "Center";
+	    buttonScreen1.setDirection(direction);
+	    gameScreen1.setHandicap(0);
+	}
+
+	gameScreen1.addButtons(buttonScreen1);
+	gameScreen1.addScore(scoreBoard1);
+	gameScreen1.addPins(pinSpace1);
+
 	frame.add(gameScreen1);
 	frame.add(scoreBoard1);
 	frame.add(pinSpace1);
@@ -275,18 +322,5 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.add(gutter2);
 
 	frame.setVisible(true);
-			 
-	bowlnum = 0;
-
-	while (bowlnum < 10){
-	    if (diffSet.equals("easy")){
-		gameScreen1.animate();
-	    }else if (diffSet.equals("normal")){
-		gameScreen1.animate();
-	    }else if (diffSet.equals("hard")){
-		gameScreen1.animate();
-	    }
-	    bowlnum+=1;
-	}
     }
 }
