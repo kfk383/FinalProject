@@ -66,6 +66,9 @@ public class ScoreBoard extends JPanel{
     private JTextField name10 = new JTextField(30);
     private JTextField display10 = new JTextField(30);
 
+/**
+ * Constructor for the scoreboard of the game screen (located at the top left corner)
+ */
     public ScoreBoard(){
 	setBackground(new Color(0,77,204));
 	setBounds(400,0,386,150);
@@ -192,6 +195,10 @@ public class ScoreBoard extends JPanel{
 	}
     }
 
+/**
+ * Takes in a 2D array of integers that contain scores and converts them into a 1D array of scores.
+ * @param int[][] data the 2D array of integers that will be converted into scores.
+ */ 
     public void score(int[][]data){
 	for (int i = 0; i < data.length; i++){
 	    scores[i] = data[i][1];
@@ -208,6 +215,9 @@ public class ScoreBoard extends JPanel{
 	insert();
     }
 
+/**
+ * Takes the 1D array that is output by score(int[][]data) and displays them in the GUI.
+ */ 
     public void insert(){
 	display1.setText("" + scores[0]);
 	display2.setText("" + scores[1]);
