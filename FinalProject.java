@@ -58,6 +58,8 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton difficultyBackButton = new JButton("Main Menu");
 
     //Starting the Game! */
+    private boolean gameOn = true;
+
     private GameScreen gameScreen1 = new GameScreen();
     private ScoreBoard scoreBoard1 = new ScoreBoard();
     private PinSpace pinSpace1 = new PinSpace(gameScreen1);
@@ -128,6 +130,11 @@ public class FinalProject extends JFrame implements ActionListener{
  */
     public static void main(String[] args) throws InterruptedException{
 	FinalProject a = new FinalProject();
+	while (a.gameOn){
+	    if ((a.gameScreen1.getCommand()).equals("end all")){
+		a.frame.dispose();
+	    }
+	}
     }
 
 /**

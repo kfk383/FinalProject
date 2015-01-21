@@ -232,9 +232,9 @@ public class ScoreBoard extends JPanel{
     }
 
  /**
-  * Gives FinalProject the player's score for display.
+  * Gives GameScreen the player's score for display.
   */
-    public int getTotal(){
-	return total;
+    public int getScore10(){
+	return scores[9];
     }
 }
