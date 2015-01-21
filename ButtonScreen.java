@@ -85,7 +85,7 @@ public class ButtonScreen extends JPanel{
     }
 /**
  * Get method for the direction of the ball's tilt
- */'
+ */
     public String getDirection(){
 	return tiltDirection;
     }
