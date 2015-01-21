@@ -83,3 +83,8 @@ January 16, 2015
 - Generated the subscreens inside of the game (gameScreen, mouseSpace, buttonScreen, scoreBoard)
 - Finished on moving the ball to different parts of the lane
 - Generated bowling pins at the end of the lane
+
+January 20, 2015
+- Finished integrating classes with one another
+- Touched up on scoring functions
+- Changed settings to be transferred to each JPanel on the game screen.
