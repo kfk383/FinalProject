@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-public class PinSpace extends JPanel implements MouseListener,ActionListener{
+public class PinSpace extends JPanel implements ActionListener{
 
     private Timer clock = new Timer(1000, this);
 
@@ -112,15 +112,5 @@ public class PinSpace extends JPanel implements MouseListener,ActionListener{
 	}catch(NullPointerException a){
 	    
 	}
-    }
-    public void mouseClicked(MouseEvent e){
-    }
-    public void mousePressed(MouseEvent e){
-    }
-    public void mouseReleased(MouseEvent e){
-    }
-    public void mouseEntered(MouseEvent e){
-    }
-    public void mouseExited(MouseEvent e){
     }
 }

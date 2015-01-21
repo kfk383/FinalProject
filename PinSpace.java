@@ -28,7 +28,6 @@ public class PinSpace extends JPanel implements ActionListener{
     public PinSpace(GameScreen a){
 	setBackground(new Color(255,140,0));
 	setBounds(400,151,386,250);
-	addMouseListener(this);
 	repaint();
 	stage = "aim";
 	clock.start();
