@@ -100,6 +100,9 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
     public Thread t = new Thread();
     public Thread t2 = new Thread();
 
+/**
+ * Constructor for the main playing screen of the game.
+ */
     public GameScreen(){
 	setBackground(new Color(255,215,0));
 	setBounds(75,0,250,495);
@@ -110,20 +113,38 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	t.start();
     }
 
+/**
+ * Adds a ButtonScreen object so that the GameScreen object may alter elements in the other JPanel.
+ */ 
     public void addButtons(ButtonScreen b){
 	buttonScreen = b;
     }
+    
+/**
+ * Adds a PinSpace object so that the GameScreen object may alter elements in the other JPanel.
+ */ 
     public void addPins(PinSpace p){
 	pinSpace = p;
     }
+    
+/**
+ * Adds a ScoreBoard object so that the GameScreen object may alter elements in the other JPanel.
+ */ 
     public void addScore(ScoreBoard s){
 	scoreBoard = s;
     }
 
+/**
+ * Get method for hte 2D array scores, which has the bowling scores stored inside.
+ */
     public int[][] getScores(){
 	return scores;
     }
 
+/**
+ * Paints the bowling pins and the bowling ball according to predetermined coordinates, which have already been declared in other functions.
+ * @param Graphics g the graphics on which the object will be painted upon.
+ */
     public void paintComponent(Graphics g){
 	super.paintComponent(g);
 	g.setColor(Color.BLACK);
@@ -192,6 +213,11 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	}
     }	    
   
+/**
+ * Counts the number of pins still standing after each bowl, then adds it into the 2D array with the given index.
+ * @param int a1 the index of the first layered array that the pin number will be added into.
+ * @param int b1 the index of the second layered array that the pin number will be added into.
+ */ 
     public int[][] countPoints(int a1, int b1){
 	if (draw1 == false) counter++;
 	if (draw2 == false) counter++;
@@ -283,30 +309,56 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    return scores;
     }
 
+/**
+ * Sets the increase on the diameter of the bowling ball to make it easier to bowl down pins.
+ * @param int a the number that will be added to the original diameter of the ball
+ */ 
     public void setHandicap(int a){
 	handicap = a;
     }
 
+/**
+ * Get method for the bowling round
+ */
     public int getBowlnumA(){
 	return a;
     }
 
+/**
+ * Get method for the bowling try number
+ */ 
     public int getBowlnumB(){
 	return b;
     }
 
+/**
+ * Sets the speed of the bowling ball for the bowl.
+ * @param int x the desired speed of the ball.
+ */ 
     public void setSpeed(int x){
 	speed = x;
     }
 
+/**
+ * Sets the mass of the bowling ball, which will factor into the speed of the ball.
+ * @param int x the desired mass of the ball.
+ */ 
     public void setMass(int x){
 	mass = x;
     }
 
+/**
+ * Sets the tilt amount for the ball, which will affect the amount the ball moves from side to side.
+ * @param int x the desired tilt of the ball.
+ */
+ 
     public void setTilt(int x){
 	tilt = x;
     }
 
+/**
+ * Changes the location of each object by a set amount, altering their x- and y-coordinates.
+ */ 
     public void updateVectors(){
 	ballX -= ballDx;
 	ballY -= ballDy;
@@ -342,38 +394,67 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	pin10Y -= pin10Dy;
     }
 
+/**
+ * Sets the change of the x and y coordinates of the bowling ball, factoring in the speed, mass, and tilt.
+ */
     public void setDxDy(){
 	int curve = r.nextInt(3) - 1;
         ballDx  = 2 * tilt + curve;
 	ballDy = speed/10 + 10 - mass/10;
     }
 
+/**
+ * Sets the stage of the ball to either aiming or rolling the ball.
+ * @param String x the desired stage of the ball.
+ */
     public void setStage(String x){
 	if (x.equals("aim") || x.equals("roll")){
 	    stage = x;
 	}
     }
 
+/**
+ * Get method for the ball's stage as either aiming or rolling
+ */
     public String getStage(){
 	return stage;
     }
 
+/**
+ * Sets the change of the x-coordinate of the bowling ball in animations.
+ * @param int x the change of the x-coordinate of the ball in animations.
+ */ 
     public void setDx(int x){
 	ballDx = x;
     }
-    
+
+/**
+ * Sets the change of the y-coordinate of the bowling ball in animations.
+ * @param int x the change of the y-coordinate of the ball in animations.
+ */     
     public void setDy(int x){
 	ballDy = x;
     }
 
+/**
+ * Sets the x-coordinate of the bowling ball.
+ * @param int x the desired x-coordinate of the bowling ball
+ */
     public void setX(int x){
 	ballX = x;
     }
 
+/**
+ * Sets the y-coordinate of the bowling ball.
+ * @param int x the desired y-coordinate of the bowling ball
+ */
     public void setY(int x){
 	ballY = x;
     }
 
+/**
+ * Animates the bowling ball and bowling pins according to their respective dy and dx values.
+ */
     public void animate(){
 	if (stage.equals("roll")){
 	    while (ballY > 0 && ballX > 0 && ballX < 250){
@@ -424,6 +505,10 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	stage = "aim";
     }
 
+/**
+ * Accounts for the movement of the bowling pins upon collision with the bowling ball.
+ * @param int i the bowling pin that is moving upon its collision with the bowling ball.
+ */ 
     public void collideMove(int i){
 	if (i == 1){
 	    if (ballDx > 0){
@@ -538,71 +623,138 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	}
     }
 
+/** 
+ * Returns the bounds of the bowling ball on the GUI
+ */
     public Rectangle ballBounds(){
 	return new Rectangle(ballX, ballY, 40,40);
     }
+ /** 
+ * Returns the bounds of the first bowling pin on the GUI
+ */
     public Rectangle getBounds1(){
 	return new Rectangle(pin1X,pin1Y,12,12);
     }
+/** 
+ * Returns the bounds of the second bowling pin on the GUI
+ */    
     public Rectangle getBounds2(){
 	return new Rectangle(pin2X,pin2Y,12,12);
     }
+/** 
+ * Returns the bounds of the third bowling pin on the GUI
+ */    
     public Rectangle getBounds3(){
 	return new Rectangle(pin3X,pin3Y,12,12);
     }
+ /** 
+ * Returns the bounds of the fourth bowling pin on the GUI
+ */
     public Rectangle getBounds4(){
 	return new Rectangle(pin4X,pin4Y,12,12);
     }
+ /** 
+ * Returns the bounds of the fifth bowling pin on the GUI
+ */
     public Rectangle getBounds5(){
 	return new Rectangle(pin5X,pin5Y,12,12);
     }
+/** 
+ * Returns the bounds of the sixth bowling pin on the GUI
+ */    
     public Rectangle getBounds6(){
 	return new Rectangle(pin6X,pin6Y,12,12);
     }
+/** 
+ * Returns the bounds of the seventh bowling pin on the GUI
+ */    
     public Rectangle getBounds7(){
 	return new Rectangle(pin7X,pin7Y,12,12);
     }
+/** 
+ * Returns the bounds of the eighth bowling pin on the GUI
+ */    
     public Rectangle getBounds8(){
 	return new Rectangle(pin8X,pin8Y,12,12);
     }
+/** 
+ * Returns the bounds of the ninth bowling pin on the GUI
+ */    
     public Rectangle getBounds9(){
 	return new Rectangle(pin9X,pin9Y,12,12);
     }
+/** 
+ * Returns the bounds of the tenth bowling pin on the GUI
+ */    
     public Rectangle getBounds10(){
 	return new Rectangle(pin10X,pin10Y,12,12);
     }
 
+/**
+ * Checks if the bowling ball hits bowling pin 1
+ */ 
     public Boolean collision1(){
 	return ballBounds().intersects(getBounds1());
     }
+/**
+ * Checks if the bowling ball hits bowling pin 2
+ */     
     public Boolean collision2(){
 	return ballBounds().intersects(getBounds2());
-    }    
+    }  
+/**
+ * Checks if the bowling ball hits bowling pin 3
+ */     
     public Boolean collision3(){
 	return ballBounds().intersects(getBounds3());
     }   
+/**
+ * Checks if the bowling ball hits bowling pin 4
+ */     
     public Boolean collision4(){
 	return ballBounds().intersects(getBounds4());
     }   
+/**
+ * Checks if the bowling ball hits bowling pin 5
+ */     
     public Boolean collision5(){
 	return ballBounds().intersects(getBounds5());
     }    
+/**
+ * Checks if the bowling ball hits bowling pin 6
+ */     
     public Boolean collision6(){
 	return ballBounds().intersects(getBounds6());
     }    
+/**
+ * Checks if the bowling ball hits bowling pin 7
+ */     
     public Boolean collision7(){
 	return ballBounds().intersects(getBounds7());
     }   
+/**
+ * Checks if the bowling ball hits bowling pin 8
+ */     
     public Boolean collision8(){
 	return ballBounds().intersects(getBounds8());
     }   
+/**
+ * Checks if the bowling ball hits bowling pin 9
+ */     
     public Boolean collision9(){
 	return ballBounds().intersects(getBounds9());
     }    
+/**
+ * Checks if the bowling ball hits bowling pin 10
+ */     
     public Boolean collision10(){
 	return ballBounds().intersects(getBounds10());
     }
 
+/**
+ * Gives function to buttons and other features on the game screen
+ * @param ActionEvent e the action event that comes from the utilization of features on the game screen.
+ */ 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
 	if (action.equals("bowl")){
@@ -624,10 +776,17 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	}
         paintComponent(this.getGraphics());
     }
-
+/**
+ * Override of the mouseClicked function in MouseListener class
+ * @param MouseEvent e events that are triggered by actions of the mouse.
+ */
     public void mouseClicked(MouseEvent e){
 
     }
+ /**
+ * Changes the coordinates of the ball if the mouse is pressed and the stage is in "aim
+ * @param MouseEvent e events that are triggered by actions of the mouse.
+ */
     public void mousePressed(MouseEvent e){
 	int x = e.getX();
 	int y = e.getY();
@@ -638,6 +797,10 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    }
 	}
     }
+ /**
+ * Changes the coordinates of the ball if the mouse is released and the stage is in "aim
+ * @param MouseEvent e events that are triggered by actions of the mouse.
+ */
     public void mouseReleased(MouseEvent e){
 	int x = e.getX();
 	int y = e.getY();
@@ -648,10 +811,21 @@ public class GameScreen extends JPanel implements MouseListener,ActionListener,R
 	    }
 	}
     }
+/**
+ * Override of the mouseEntered function in MouseListener class
+ * @param MouseEvent e events that are triggered by actions of the mouse.
+ */
     public void mouseEntered(MouseEvent e){
     }
+/**
+ * Override of the mouseExited function in MouseListener class
+ * @param MouseEvent e events that are triggered by actions of the mouse.
+ */
     public void mouseExited(MouseEvent e){
     }
+/**
+ * Override of the run() function in class Runnable
+ */
     public void run(){
 
     }
