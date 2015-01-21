@@ -68,6 +68,10 @@ public class FinalProject extends JFrame implements ActionListener{
 
     private JButton gameBackButton = new JButton("Main Menu");
 
+/**
+ * Constructor for the final project as a whole.
+ * Lays out the main menu screen with buttons for game start, settings, difficulty, and instructions.
+ */
     public FinalProject(){
 	frame = new JFrame();
 	background = new ImagePanel(new ImageIcon("mainmenu.jpg").getImage());
@@ -119,11 +123,17 @@ public class FinalProject extends JFrame implements ActionListener{
 	difficultyNormal.setSelected(true);
 	PlaySong.play("Fireflies.wav");
     }
-
+/**
+ * Main function that creates the GUI in which the project will be executed.
+ */
     public static void main(String[] args) throws InterruptedException{
 	FinalProject a = new FinalProject();
     }
 
+/**
+ * Removes all elements of the JFrame and adds in an image as a background.
+ * @param String imageName the filepath of the image that will be added as the background.
+ */
     public void menuSelection(String imageName){
 	frame.getContentPane().removeAll();
 	frame.getContentPane().repaint();
@@ -134,6 +144,10 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.pack();
     }
 
+/**
+ * Sets the screen for the instructions option
+ * Is called on after pressing the "instructions" button on the main menu screen
+ */
     public void instructions(){
 	menuSelection("instructions.jpg");
 	
@@ -147,6 +161,10 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.pack();
     }
 
+/**
+ * Sets the screen for the settings option
+ * Is called on after pressing the "settings" button on the main menu screen
+ */
     public void settings(){
 	if (bgSet == 1){
 	    menuSelection("settings1.jpg");
@@ -171,6 +189,10 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.pack();
     }
 
+/**
+ * Sets the screen for the difficulty option
+ * Is called on after pressing the "difficulty" button on the main menu screen
+ */
     public void difficulty(){
 	if (diffSet.equals("Normal")){
 	    menuSelection("difficultyN.jpg");
@@ -199,6 +221,11 @@ public class FinalProject extends JFrame implements ActionListener{
 	frame.pack();
     }
 
+/** 
+ * Overriding the function actionPerformed in abstract class ActionListener
+ * Provides function for the buttons and other features in the GUI of the final project
+ * @param ActionEvent e the event that is output from the activation of features in the GUI
+ */ 
     public void actionPerformed(ActionEvent e){
 	String action = e.getActionCommand();
 	SoundEffects.play("Options.wav");
@@ -254,6 +281,11 @@ public class FinalProject extends JFrame implements ActionListener{
 	
     } 
 
+/**
+ * Sets up the GUI for the game
+ * Adds individual JPanels that cut up the screen into four separate parts for the game's execution
+ * Factors in the settings to initialize the four subpanels of the screen.
+ */
     public void game(){
 	frame.getContentPane().removeAll();
 	frame.getContentPane().repaint();
