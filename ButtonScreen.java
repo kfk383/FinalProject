@@ -5,7 +5,6 @@ import java.io.*;
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 
-
 public class ButtonScreen extends JPanel{
     private int tiltSpeed = 10; 
     private String tiltDirection = "Center";
@@ -20,6 +19,9 @@ public class ButtonScreen extends JPanel{
     private JPanel massWP = new JPanel();
     private JTextField massW = new JTextField(8);
 
+/**
+ * Constructor for the buttonScreen (bottom left corner of the game screen)
+ */
     public ButtonScreen(){
 	setBackground(new Color(255,204,153));
 	setBounds(400,400,386,95);
@@ -50,15 +52,26 @@ public class ButtonScreen extends JPanel{
 	add(massWP);
     }
 
+/**
+ * Set method for the speed of the ball
+ * @param int s the desired speed of the ball
+ */ 
     public void setSpeed(int s){
 	tiltSpeed = s;
 	tilt.setText("Speed: " + tiltSpeed + "mph");
 	revalidate();
     }
+/**
+ * Get method for the speed of the bowling ball
+ */
     public int getSpeed(){
 	return tiltSpeed;
     }
 
+/**
+ * Set method for the direction of the ball's tilt
+ * @param String d the desired direction of tilt
+ */
     public void setDirection(String d){
 	tiltDirection = d;
 	if (tiltDirection.equals("Right")){
@@ -70,15 +83,26 @@ public class ButtonScreen extends JPanel{
 	}
 	revalidate();
     }
+/**
+ * Get method for the direction of the ball's tilt
+ */'
     public String getDirection(){
 	return tiltDirection;
     }
 
+/**
+ * Set method for the mass of the bowling ball
+ * @param int m the desired mass of the bowling ball
+ */
     public void setMass(int m){
 	mass = m;
 	massW.setText("Mass: " + mass + "lb");
 	revalidate();
     }
+    
+/**
+ * Get method for the mass of the bowling ball
+ */
     public int getMass(){
 	return mass;
     }
